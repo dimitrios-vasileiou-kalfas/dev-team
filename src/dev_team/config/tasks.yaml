@@ -275,28 +275,127 @@ research_market:
 
 analyze_competitor:
   description: >
-    Perform TECHNICAL analysis of the competitor WordPress plugin at {competitor_plugin_path}.
+    Perform TECHNICAL analysis of the competitor plugin/extension at {competitor_plugin_path}.
+    
+    **STEP 1: Identify Platform & Technology Stack**
+    
+    First, determine what you're analyzing:
+    - **Platform**: WordPress, Shopify, WooCommerce, Magento, custom platform?
+    - **Backend language**: PHP, Ruby, Python, Node.js, Go?
+    - **Frontend**: React, Vue, Liquid templates, Twig, vanilla JS?
+    - **Framework**: Laravel, Rails, Express, Django?
+    - **Package manager**: Composer, npm, Bundler, pip?
+    
+    Look for clues:
+    - WordPress: `wp-content/plugins/`, PHP files with WordPress headers, `functions.php`
+    - Shopify: `liquid` templates, `theme.liquid`, Shopify API calls
+    - Node.js: `package.json`, `node_modules/`
+    - Ruby: `Gemfile`, `.rb` files
+    - Python: `requirements.txt`, `.py` files
+    
+    **STEP 2: Read the Actual Plugin Code**
+    
+    Navigate to {competitor_plugin_path} and read the actual files (adapt to platform):
+    
+    For ANY platform:
+    - Main entry file (plugin initialization)
+    - Configuration files (package.json, composer.json, Gemfile, requirements.txt)
+    - README, CHANGELOG, documentation
+    
+    For Backend code:
+    - Class/module files (OOP structure, business logic)
+    - Database models or schema files
+    - API integration files
+    - Background job/webhook handlers
+    - Authentication/authorization logic
+    
+    For Frontend code:
+    - Templates (Liquid, Twig, Blade, JSX, Vue)
+    - JavaScript files (components, state management)
+    - Stylesheets (CSS, SCSS, Tailwind)
+    - Asset build configuration
+    
+    For Testing:
+    - Unit test files (PHPUnit, RSpec, Jest, pytest)
+    - Integration tests
+    - E2E tests (Cypress, Playwright, Selenium)
+    
+    **STEP 3: Analyze Technical Implementation (Platform-Specific)**
+    
+    Adapt your analysis to the platform:
+    
+    ### For WordPress Plugins:
+    - Hook and filter usage
+    - Custom post types and taxonomies
+    - Database schema (custom tables)
+    - REST API or GraphQL endpoints
+    - Gutenberg block implementation
+    - Admin interface (React, vanilla JS)
+    
+    ### For Shopify Apps:
+    - Liquid template usage
+    - Shopify API integration (REST, GraphQL)
+    - Webhook handling
+    - App bridge implementation
+    - Metafields usage
+    - Theme app extensions
+    
+    ### For Any Platform:
+    1. **Code Architecture**
+       - OOP/functional patterns
+       - Design patterns used
+       - SOLID principles adherence
+       - Separation of concerns
+       - Code organization
+    
+    2. **Code Quality**
+       - Coding standards compliance
+       - Code complexity and readability
+       - Documentation quality
+       - Error handling
+       - Type safety (TypeScript, PHP types, etc.)
+    
+    3. **Security**
+       - Input validation and sanitization
+       - Output escaping
+       - Authentication/authorization
+       - API key/secret handling
+       - CSRF/XSS protection
+       - Injection prevention
+    
+    4. **Performance**
+       - Database query optimization
+       - API call efficiency
+       - Caching strategies
+       - Asset optimization (minification, lazy loading)
+       - Background job usage
+    
+    5. **Integration Quality**
+       - Platform API usage (correct methods, best practices)
+       - Webhook reliability
+       - Error handling for external services
+       - Rate limiting handling
+    
+    6. **Testing**
+       - Test coverage
+       - Test quality and completeness
+       - CI/CD setup
+    
+    **STEP 4: Identify Opportunities**
+    
+    Based on what you found:
+    - Technical debt and code smells
+    - Architectural weaknesses
+    - Platform-specific features not being used
+    - Security vulnerabilities
+    - Performance bottlenecks
+    - Missing tests
+    - Poor error handling
+    - Outdated dependencies
+    - Better implementation approaches
     
     Your mission is to analyze the CODE and TECHNICAL IMPLEMENTATION, not user feedback
     or market positioning (that's handled by the Market Researcher).
-    
-    Focus on technical aspects:
-    1. Plugin structure and file organization (includes/, src/, admin interface)
-    2. Core features and functionality (what problems does it solve?)
-    3. UI/UX patterns in admin interface
-    4. Code quality and architecture (hooks, filters, database design)
-    5. React implementation (if any) and admin interface patterns
-    6. Database schema and data models
-    7. REST API endpoints and integration patterns
-    8. Security implementations (nonces, sanitization, capabilities)
-    9. Test coverage (PHPUnit, JavaScript tests)
-    
-    Identify:
-    - Weaknesses and limitations (technical debt, poor UX, missing features)
-    - Code quality issues and architectural problems
-    - Missing features that users need (check reviews, support forums)
-    - Opportunities for differentiation and competitive advantages
-    - Features that work well and should be matched or improved
 
   expected_output: >
     Detailed technical analysis report saved to outputs/analysis/technical-analysis.md containing:
@@ -454,28 +553,39 @@ design_architecture:
     Design the technical architecture for Milestone {current_milestone} based on
     approved product requirements and the existing skeleton plugin structure.
     
-    The skeleton plugin has this structure:
-    ```
-    wp-skeleton-plugin/
-    ├── wp-skeleton-plugin.php       # Main plugin file (hooks, activation/deactivation)
-    ├── includes/                    # Core PHP functionality & WordPress hooks
-    ├── src/                         # Modern WordPress development structure
-    │   ├── admin/                   # Admin-specific PHP classes & logic
-    │   ├── frontend/                # Public-facing PHP functionality  
-    │   └── blocks/                  # Gutenberg blocks (can include React)
-    ├── admin-react/                 # React admin interface (DO NOT TOUCH - Frontend Dev's domain)
-    │   ├── src/                     # React components & pages
-    │   │   ├── components/          # Reusable React components
-    │   │   ├── pages/               # Admin page components
-    │   │   ├── hooks/               # Custom React hooks
-    │   │   └── utils/               # JavaScript utilities
-    │   ├── public/                  # Static assets
-    │   ├── build/                   # Built React app (gitignored)
-    │   └── package.json             # React dependencies
-    ├── assets/                      # Plugin assets (CSS, JS, images)
-    ├── tests/                       # PHPUnit and Jest tests
-    └── README.md
-    ```
+    **STEP 1: Look for Architecture Documentation**
+    
+    Search the skeleton plugin at {skeleton_plugin_path} for documentation:
+    - ARCHITECTURE.md or STRUCTURE.md (root folder)
+    - README.md with architecture section
+    - docs/architecture.md or docs/structure.md
+    - Any file describing folder organization, patterns, conventions
+    
+    If documentation exists, use it to understand:
+    - Folder structure and organization
+    - Naming conventions (namespaces, class prefixes, hook names)
+    - Architectural patterns (DI, repository pattern, service layer, etc.)
+    - Design decisions and rationale
+    - Coding standards and style guide
+    
+    **STEP 2: Analyze Code (if documentation missing or incomplete)**
+    
+    If no documentation exists or it's incomplete, analyze the actual code:
+    - Read folder structure and file organization
+    - Examine existing PHP classes (includes/, src/) for patterns
+    - Study React component structure (admin-react/src/)
+    - Review package.json and composer.json
+    - Identify naming conventions and coding style
+    - Understand current hook/filter registration patterns
+    
+    **STEP 3: Design New Features**
+    
+    Based on what you learned, design the architecture for this milestone that:
+    - Follows the skeleton's existing patterns and conventions
+    - Respects folder organization and file structure
+    - Uses the same naming conventions
+    - Integrates seamlessly with existing code
+    - Introduces improvements where beneficial
     
     Design:
     1. **Class Structure** (includes/ and src/ folders)
@@ -561,12 +671,15 @@ implement_backend:
     based on the architecture specification. Work ONLY in PHP files (includes/, src/).
     DO NOT touch admin-react/ folder - that's the Frontend Developer's domain.
     
-    The skeleton plugin structure you're working with:
-    - wp-skeleton-plugin.php: Main plugin file (register hooks, activation)
-    - includes/: Core WordPress functionality, hooks, filters
-    - src/admin/: Admin-specific PHP classes
-    - src/frontend/: Public-facing PHP functionality
-    - src/blocks/: Gutenberg blocks (PHP part)
+    **IMPORTANT:** Read the skeleton plugin structure at {skeleton_plugin_path} to understand:
+    - Existing PHP class naming conventions and patterns
+    - Current folder organization (includes/, src/admin/, src/frontend/, src/blocks/)
+    - Existing hook registration patterns
+    - Database schema patterns (if any)
+    - Testing setup and patterns
+    
+    Follow the skeleton's existing patterns and conventions. If the skeleton uses namespaces,
+    use namespaces. If it uses class prefixes, use the same prefixes. Match the coding style.
     
     Implementation requirements:
     1. **PHP Classes** (OOP + SOLID principles)
@@ -635,20 +748,19 @@ implement_frontend:
     the architecture specification. Work ONLY in admin-react/ folder.
     DO NOT touch PHP files - that's the Backend Developer's domain.
     
-    The admin-react/ structure you're working with:
-    ```
-    admin-react/
-    ├── src/
-    │   ├── components/          # Reusable React components
-    │   ├── pages/              # Admin page components
-    │   ├── hooks/              # Custom React hooks
-    │   ├── utils/              # JavaScript utilities
-    │   ├── App.jsx             # Main app component
-    │   └── index.jsx           # Entry point
-    ├── public/                 # Static assets
-    ├── build/                  # Build output (gitignored)
-    └── package.json
-    ```
+    **IMPORTANT:** Read the skeleton plugin's React structure at {skeleton_plugin_path}/admin-react/ to understand:
+    - Existing React version and setup
+    - Material-UI version and theme configuration
+    - Component naming conventions and patterns
+    - Folder organization (components/, pages/, hooks/, utils/)
+    - State management approach (Context API, Redux, etc.)
+    - API client setup and patterns (how REST API calls are made)
+    - Routing setup (React Router configuration)
+    - Build configuration (webpack, vite, etc.)
+    - Testing patterns (Jest setup, test file naming)
+    
+    Follow the skeleton's existing React patterns, MUI theme, and component structure.
+    Use the same dependencies and coding style as the skeleton.
     
     Implementation requirements:
     1. **React Components** (Material-UI)

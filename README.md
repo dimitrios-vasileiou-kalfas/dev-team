@@ -5,9 +5,11 @@ An AI-powered development team for building WordPress plugins using CrewAI. This
 ## 🚀 Quick Start
 
 ```bash
-# 1. Add your plugins
-cp -r /path/to/competitor-plugin inputs/competitor-plugin/
-cp -r /path/to/skeleton-plugin inputs/skeleton-plugin/
+# 1. Add your plugins (create symlinks - recommended)
+ln -s /absolute/path/to/competitor-plugin inputs/competitor-plugin
+ln -s /absolute/path/to/skeleton-plugin inputs/skeleton-plugin
+
+# See docs/COMPETITOR_PLUGIN_SETUP.md and docs/SKELETON_PLUGIN_SETUP.md for details
 
 # 2. Install dependencies
 crewai install
@@ -30,7 +32,9 @@ crewai run
 
 > 📚 **Detailed Documentation:** See the [docs/](docs/) folder for comprehensive guides:
 > - [Setup Guide](docs/SETUP_COMPLETE.md) - Getting started
-> - [Complete Summary](docs/COMPLETE_SUMMARY.md) - Full overview  
+> - [Complete Summary](docs/COMPLETE_SUMMARY.md) - Full overview
+> - [Competitor Plugin Setup](docs/COMPETITOR_PLUGIN_SETUP.md) - How to add competitor plugin
+> - [Skeleton Plugin Setup](docs/SKELETON_PLUGIN_SETUP.md) - How to add skeleton plugin  
 > - [Niche Strategy](docs/NICHE_AND_LOCALIZATION_ENHANCED.md) - Market specialization
 > - [Analysis Mode](docs/CREW2_DISABLED.md) - Current configuration (Dev crew disabled)
 

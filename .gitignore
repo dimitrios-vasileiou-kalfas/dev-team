@@ -109,12 +109,14 @@ outputs/analysis/*.md
 outputs/analysis/milestones/*.md
 outputs/plugin/
 
-# Project Specific - Inputs (keep structure but ignore actual plugins)
-# Note: You may want to commit example READMEs but not actual plugin code
-inputs/competitor-plugin/*
-!inputs/competitor-plugin/README.md
-inputs/skeleton-plugin/*
-!inputs/skeleton-plugin/README.md
+# Project Specific - Input Plugins (symlinked folders)
+# Each developer creates their own symlinks to local plugin folders
+inputs/competitor-plugin
+inputs/skeleton-plugin
+
+# Keep the folders in git with .gitkeep files
+!inputs/competitor-plugin/.gitkeep
+!inputs/skeleton-plugin/.gitkeep
 
 # Temporary files
 tmp/
