@@ -8,11 +8,13 @@ This folder contains detailed documentation about the WordPress Plugin Developme
 |----------|-------------|
 | [SETUP_COMPLETE.md](SETUP_COMPLETE.md) | Complete setup guide and what was configured |
 | [COMPLETE_SUMMARY.md](COMPLETE_SUMMARY.md) | Full project overview with all 8 agents and workflow |
+| [ARCHITECTURE_SPECIFICATION_WORKFLOW.md](ARCHITECTURE_SPECIFICATION_WORKFLOW.md) | How Software Architect bridges PM vision with development |
 | [COMPETITOR_PLUGIN_SETUP.md](COMPETITOR_PLUGIN_SETUP.md) | How to set up competitor plugin (symlink or copy) |
 | [SKELETON_PLUGIN_SETUP.md](SKELETON_PLUGIN_SETUP.md) | How to set up skeleton plugin (symlink or copy) |
 | [ARCHITECTURE_TEMPLATE.md](ARCHITECTURE_TEMPLATE.md) | Template for documenting your skeleton plugin architecture |
 | [SYMLINK_AND_ARCHITECTURE_APPROACH.md](SYMLINK_AND_ARCHITECTURE_APPROACH.md) | How to use symlinks and documentation-first approach |
 | [PLATFORM_AGNOSTIC_ANALYSIS.md](PLATFORM_AGNOSTIC_ANALYSIS.md) | Why competitor analyst works with any platform (WordPress, Shopify, etc.) |
+| [OLLAMA_MODEL_CONFIGURATION.md](OLLAMA_MODEL_CONFIGURATION.md) | Ollama model selection and configuration for each agent |
 | [MARKET_RESEARCHER_ADDED.md](MARKET_RESEARCHER_ADDED.md) | Details about the Market Researcher agent addition |
 | [NICHE_AND_LOCALIZATION_ENHANCED.md](NICHE_AND_LOCALIZATION_ENHANCED.md) | Niche market & localization focus explanation |
 | [CREW2_DISABLED.md](CREW2_DISABLED.md) | How to run analysis-only mode (Development disabled) |

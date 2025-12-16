@@ -550,120 +550,729 @@ create_roadmap:
 
 design_architecture:
   description: >
-    Design the technical architecture for Milestone {current_milestone} based on
-    approved product requirements and the existing skeleton plugin structure.
+    Design the comprehensive technical architecture for Milestone {current_milestone} by:
+    1. Reading the approved Product Roadmap (from Product Manager)
+    2. Understanding the skeleton plugin structure (from {skeleton_plugin_path})
+    3. Creating a detailed technical specification that bridges business requirements with implementation
     
-    **STEP 1: Look for Architecture Documentation**
+    **YOUR MISSION:** Create a complete architectural blueprint that allows Backend and Frontend
+    developers to work independently while building a cohesive system. This specification is the
+    "contract" between PM's vision and developers' implementation.
     
-    Search the skeleton plugin at {skeleton_plugin_path} for documentation:
-    - ARCHITECTURE.md or STRUCTURE.md (root folder)
-    - README.md with architecture section
-    - docs/architecture.md or docs/structure.md
-    - Any file describing folder organization, patterns, conventions
+    **STEP 1: Review Product Roadmap & Requirements**
     
-    If documentation exists, use it to understand:
-    - Folder structure and organization
-    - Naming conventions (namespaces, class prefixes, hook names)
-    - Architectural patterns (DI, repository pattern, service layer, etc.)
-    - Design decisions and rationale
-    - Coding standards and style guide
+    Read the approved milestone file: `outputs/analysis/milestones/milestone-{current_milestone}.md`
     
-    **STEP 2: Analyze Code (if documentation missing or incomplete)**
+    Extract:
+    - Feature list and descriptions
+    - Acceptance criteria
+    - User stories
+    - Technical requirements mentioned by PM
+    - Success metrics
     
-    If no documentation exists or it's incomplete, analyze the actual code:
-    - Read folder structure and file organization
-    - Examine existing PHP classes (includes/, src/) for patterns
-    - Study React component structure (admin-react/src/)
-    - Review package.json and composer.json
-    - Identify naming conventions and coding style
-    - Understand current hook/filter registration patterns
+    **STEP 2: Understand Skeleton Plugin Structure**
     
-    **STEP 3: Design New Features**
+    A. Look for architecture documentation:
+       - {skeleton_plugin_path}/ARCHITECTURE.md
+       - {skeleton_plugin_path}/README.md
+       - {skeleton_plugin_path}/docs/
     
-    Based on what you learned, design the architecture for this milestone that:
-    - Follows the skeleton's existing patterns and conventions
-    - Respects folder organization and file structure
-    - Uses the same naming conventions
-    - Integrates seamlessly with existing code
-    - Introduces improvements where beneficial
+    B. If no docs, analyze the code:
+       - Folder structure (includes/, src/, admin-react/)
+       - Existing PHP classes and patterns
+       - React component organization
+       - Naming conventions (namespaces, prefixes)
+       - Current patterns (DI, hooks, state management)
     
-    Design:
-    1. **Class Structure** (includes/ and src/ folders)
-       - Class hierarchy and responsibilities
-       - Interfaces and abstract classes
-       - Dependency injection patterns
+    **STEP 3: Design the Complete Architecture**
+    
+    Create a detailed technical specification that includes:
+    
+    ### A. System Architecture Overview
+    - High-level component diagram
+    - Data flow: User → Frontend → REST API → Backend → Database
+    - Module responsibilities and boundaries
+    - Integration points between components
+    
+    ### B. Backend Architecture (PHP)
+    
+    **For EACH feature in the milestone, specify:**
+    
+    1. **PHP Class Structure**
+       - Exact file path: `src/admin/class-{feature-name}.php`
+       - Class name, namespace, extends/implements
+       - Public methods with signatures: `public function methodName($param1, $param2): ReturnType`
+       - Dependencies (what other classes it needs)
        - SOLID principle application
     
     2. **WordPress Integration**
-       - Hooks and filters to register
-       - Custom post types and taxonomies
-       - Database tables (if needed)
-       - Cron jobs and background processes
+       - Hooks to register: `add_action('hook_name', [$this, 'method'], priority)`
+       - Filters to implement: `add_filter('filter_name', [$this, 'method'])`
+       - Custom post types: `register_post_type('cpt_name', $args)`
+       - Taxonomies: `register_taxonomy('tax_name', $post_type, $args)`
     
-    3. **REST API Design**
-       - Endpoint definitions (routes, methods, parameters)
-       - Request/response schemas
-       - Authentication and permissions
-       - Error handling patterns
+    3. **Database Schema** (if needed)
+       - Table name: `{wpdb->prefix}plugin_table_name`
+       - Columns with types: `id INT(11) AUTO_INCREMENT, name VARCHAR(255), ...`
+       - Indexes and foreign keys
+       - Migration strategy
     
-    4. **React Admin Interface Structure** (admin-react/ folder)
-       - Page components to create
-       - Reusable component library
-       - State management approach
-       - API integration patterns
-       - Routing structure
+    4. **REST API Endpoints**
+       - Route: `/wp-json/plugin-namespace/v1/resource`
+       - Method: GET, POST, PUT, DELETE
+       - Request parameters: `{ param: type, ... }`
+       - Response structure: `{ success: bool, data: {...}, error: string }`
+       - Permission callback: `current_user_can('capability')`
+       - Nonce validation requirements
     
-    5. **Data Flow**
-       - Backend → REST API → Frontend flow
-       - State management in React
-       - Data validation and sanitization points
+    ### C. Frontend Architecture (React)
     
-    6. **File Organization**
-       - New PHP classes to create (with full paths)
-       - New React components to create (with full paths)
-       - Configuration files needed
-       - Asset organization
+    **For EACH feature, specify:**
+    
+    1. **Component Structure**
+       - Page component: `admin-react/src/pages/FeatureName.jsx`
+       - Child components: `admin-react/src/components/FeatureComponent.jsx`
+       - Component props interface: `{ propName: PropType, ... }`
+       - State needed: `useState<Type>(initialValue)`
+    
+    2. **API Integration**
+       - Custom hook: `admin-react/src/hooks/useFeatureData.js`
+       - API calls: `fetch('/wp-json/plugin/v1/endpoint', { method, body })`
+       - Error handling: try/catch with user feedback
+       - Loading states: `isLoading`, `isError`, `isSuccess`
+    
+    3. **Material-UI Components**
+       - Which MUI components to use: `Button, TextField, Dialog, DataGrid, etc.`
+       - Layout structure: `<Container><Grid><Paper>...`
+       - Form handling: `useForm()` or controlled components
+       - Validation: client-side validation rules
+    
+    4. **Routing**
+       - Route path: `/admin.php?page=plugin-page#/feature`
+       - Navigation: `<Link to="/feature">Feature</Link>`
+       - Route guards: permission checks
+    
+    ### D. Data Flow & Contracts
+    
+    **Define the "contract" between BE and FE:**
+    
+    1. **API Data Structures**
+       ```typescript
+       // What Backend sends
+       interface FeatureResponse {
+         id: number;
+         name: string;
+         status: 'active' | 'inactive';
+         createdAt: string;  // ISO format
+       }
+       
+       // What Frontend sends
+       interface FeatureRequest {
+         name: string;
+         config: { key: value };
+       }
+       ```
+    
+    2. **Error Response Format**
+       ```json
+       {
+         "success": false,
+         "error": {
+           "code": "validation_error",
+           "message": "Name is required",
+           "field": "name"
+         }
+       }
+       ```
+    
+    3. **State Management**
+       - Where data lives (Context, local state, URL params)
+       - When to refetch data
+       - Cache invalidation strategy
+    
+    ### E. File Structure Changes
+    
+    **Backend Files to Create:**
+    ```
+    includes/
+      class-{feature}-manager.php        # Main feature class
+    src/
+      admin/
+        class-{feature}-admin.php         # Admin functionality
+        class-{feature}-ajax.php          # AJAX handlers
+      api/
+        class-{feature}-controller.php    # REST API controller
+      models/
+        class-{feature}.php               # Data model
+    ```
+    
+    **Frontend Files to Create:**
+    ```
+    admin-react/src/
+      pages/
+        {Feature}Page.jsx                 # Main page component
+      components/
+        {Feature}List.jsx                 # List component
+        {Feature}Form.jsx                 # Form component
+        {Feature}Details.jsx              # Details component
+      hooks/
+        use{Feature}Data.js               # Data fetching hook
+        use{Feature}Form.js               # Form logic hook
+      utils/
+        {feature}Api.js                   # API client
+    ```
+    
+    ### F. Testing Requirements
+    
+    **Backend Tests:**
+    - `tests/php/test-class-{feature}.php` - Unit tests for each class
+    - Test scenarios: CRUD operations, validation, permissions
+    - Mock WordPress functions with Brain Monkey
+    
+    **Frontend Tests:**
+    - `{Component}.test.jsx` co-located with components
+    - Test rendering, user interactions, API integration
+    - Mock API calls with MSW or jest.mock
+    
+    **E2E Tests:**
+    - `tests/e2e/{feature}.spec.js` - User workflow tests
+    - Test happy path and error scenarios
+    
+    ### G. Security Considerations
+    
+    **Backend:**
+    - Nonce validation: `wp_verify_nonce($nonce, 'action_name')`
+    - Capability checks: `current_user_can('edit_posts')`
+    - Input sanitization: `sanitize_text_field()`, `wp_kses()`
+    - Output escaping: `esc_html()`, `esc_attr()`, `esc_url()`
+    - SQL injection prevention: Use `$wpdb->prepare()`
+    
+    **Frontend:**
+    - XSS prevention: Never use `dangerouslySetInnerHTML`
+    - Validate user input before submission
+    - Display validation errors clearly
+    - Sanitize data from API before rendering
+    
+    ### H. Developer Handoff Checklist
+    
+    **Backend Developer needs:**
+    ✅ Exact class names and file paths
+    ✅ Method signatures with parameters and return types
+    ✅ WordPress hooks/filters to register
+    ✅ Database schema (if needed)
+    ✅ REST API endpoint specifications
+    ✅ Data validation rules
+    ✅ Permission requirements
+    
+    **Frontend Developer needs:**
+    ✅ Component names and file paths
+    ✅ Props interfaces for each component
+    ✅ API endpoints to call (URLs, methods, payloads)
+    ✅ Expected response structures
+    ✅ MUI components to use
+    ✅ Routing configuration
+    ✅ Error handling patterns
+    
+    **Both developers need:**
+    ✅ Data structure contracts (TypeScript interfaces)
+    ✅ API request/response formats
+    ✅ Error handling patterns
+    ✅ Testing requirements
 
   expected_output: >
-    Comprehensive technical specification document containing:
+    Comprehensive Technical Specification saved to outputs/architecture/milestone-{current_milestone}-architecture.md:
     
-    # Technical Architecture - {current_milestone}
+    # Technical Architecture Specification
+    ## Milestone: {current_milestone}
     
-    ## Architecture Overview
-    - High-level system design
+    ## 1. Executive Summary
+    - Features being implemented in this milestone
+    - Key architectural decisions
+    - Technology stack
+    - Integration approach
+    
+    ## 2. Product Requirements (from PM)
+    - Feature list from approved roadmap
+    - User stories and acceptance criteria
+    - Success metrics
+    - Business rules
+    
+    ## 3. Skeleton Plugin Analysis
+    - Current architecture patterns identified
+    - Folder structure being followed
+    - Naming conventions to use
+    - Existing patterns to respect (DI, hooks, state management)
+    
+    ## 4. System Architecture Overview
+    - High-level component diagram (ASCII or description)
+    - Data flow: User → React → REST API → PHP → Database
     - Module responsibilities
-    - Data flow diagrams
+    - Integration points
     
-    ## PHP Backend Structure (includes/ and src/)
-    - Class diagrams and hierarchy
-    - File structure with full paths
-    - WordPress hooks/filters to implement
-    - Database schema changes (if any)
-    - SOLID principles application examples
+    ## 5. Backend Architecture Specification
     
-    ## REST API Specification
-    - Endpoint documentation (route, method, params, response)
-    - Authentication and authorization rules
-    - Error handling patterns
+    ### For EACH feature:
     
-    ## React Frontend Structure (admin-react/)
-    - Component hierarchy and relationships
-    - Page routing structure
-    - State management approach
-    - API integration patterns
-    - MUI theming and styling approach
+    #### 5.1 PHP Class Structure
+    ```
+    File: src/admin/class-{feature-name}.php
+    Namespace: PluginName\Admin
+    Class: Feature_Name
+    Extends: Base_Class (if any)
+    Implements: Interface_Name (if any)
     
-    ## Testing Strategy
-    - PHPUnit test structure for PHP
-    - Jest test structure for React
-    - E2E test scenarios for Playwright
+    Dependencies:
+    - Feature_Repository
+    - Settings_Manager
     
-    ## Implementation Guidelines
-    - Coding standards to follow
-    - Security considerations
-    - Performance optimization strategies
+    Public Methods:
+    - __construct(Feature_Repository $repo, Settings_Manager $settings)
+    - register_hooks(): void
+    - handle_action($data): bool|WP_Error
+    - validate_input($data): array
+    - get_feature_data($id): array|WP_Error
+    
+    SOLID Application:
+    - Single Responsibility: Only handles feature admin logic
+    - Open/Closed: Extends base, uses interfaces
+    - Dependency Injection: Constructor injection
+    ```
+    
+    #### 5.2 WordPress Integration
+    ```
+    Hooks to Register:
+    - add_action('admin_init', [$this, 'register_settings'], 10)
+    - add_action('admin_menu', [$this, 'add_menu_page'], 20)
+    - add_action('wp_ajax_feature_action', [$this, 'handle_ajax'])
+    
+    Filters:
+    - add_filter('plugin_feature_data', [$this, 'filter_data'], 10, 2)
+    
+    Custom Post Types:
+    - register_post_type('plugin_feature', [
+        'labels' => [...],
+        'public' => false,
+        'show_ui' => true,
+        'supports' => ['title', 'editor']
+      ])
+    ```
+    
+    #### 5.3 Database Schema (if needed)
+    ```sql
+    CREATE TABLE {wpdb->prefix}plugin_features (
+      id BIGINT(20) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+      name VARCHAR(255) NOT NULL,
+      config TEXT,
+      status ENUM('active', 'inactive') DEFAULT 'active',
+      user_id BIGINT(20) UNSIGNED NOT NULL,
+      created_at DATETIME NOT NULL,
+      updated_at DATETIME NOT NULL,
+      INDEX idx_status (status),
+      INDEX idx_user (user_id),
+      FOREIGN KEY (user_id) REFERENCES {wpdb->prefix}users(ID)
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+    ```
+    
+    #### 5.4 REST API Endpoints
+    ```
+    Endpoint 1: Get All Features
+    - Route: /wp-json/plugin-namespace/v1/features
+    - Method: GET
+    - Parameters: 
+      * page (int, optional, default=1)
+      * per_page (int, optional, default=10)
+      * status (string, optional, 'active'|'inactive')
+    - Response: {
+        success: true,
+        data: [
+          { id: 1, name: "Feature", status: "active", ... }
+        ],
+        pagination: {
+          total: 100,
+          pages: 10,
+          current: 1
+        }
+      }
+    - Permission: current_user_can('manage_options')
+    - Nonce: Required in X-WP-Nonce header
+    
+    Endpoint 2: Create Feature
+    - Route: /wp-json/plugin-namespace/v1/features
+    - Method: POST
+    - Request Body: {
+        name: string (required, max 255 chars),
+        config: object (optional),
+        status: 'active'|'inactive' (optional, default='active')
+      }
+    - Validation:
+      * name: required, string, max_length(255)
+      * config: optional, object
+      * status: optional, in_array(['active', 'inactive'])
+    - Response Success: {
+        success: true,
+        data: { id: 1, name: "...", ... },
+        message: "Feature created successfully"
+      }
+    - Response Error: {
+        success: false,
+        error: {
+          code: "validation_error",
+          message: "Name is required",
+          field: "name"
+        }
+      }
+    - Permission: current_user_can('manage_options')
+    - Nonce: Required
+    
+    [... similar specs for UPDATE, DELETE endpoints ...]
+    ```
+    
+    ## 6. Frontend Architecture Specification
+    
+    ### For EACH feature:
+    
+    #### 6.1 Component Structure
+    ```
+    Page Component:
+    File: admin-react/src/pages/FeaturePage.jsx
+    Purpose: Main page container for feature management
+    Props: None (gets data from URL params)
+    State:
+      - features: Array<Feature>
+      - isLoading: boolean
+      - error: string | null
+      - selectedFeature: Feature | null
+    Children:
+      - <FeatureList />
+      - <FeatureForm />
+      - <FeatureDetails />
+    
+    Child Component 1: FeatureList
+    File: admin-react/src/components/FeatureList.jsx
+    Purpose: Display paginated list of features
+    Props: {
+      features: Array<{ id, name, status, createdAt }>,
+      onSelect: (id) => void,
+      onDelete: (id) => void,
+      isLoading: boolean
+    }
+    MUI Components:
+      - <DataGrid /> for table
+      - <IconButton /> for actions
+      - <Chip /> for status
+    
+    Child Component 2: FeatureForm
+    File: admin-react/src/components/FeatureForm.jsx
+    Purpose: Create/edit feature form
+    Props: {
+      feature: Feature | null,  // null = create, object = edit
+      onSubmit: (data) => Promise<void>,
+      onCancel: () => void
+    }
+    MUI Components:
+      - <Dialog />
+      - <TextField />
+      - <Select />
+      - <Button />
+    Validation:
+      - name: required, maxLength 255
+      - status: required, oneOf ['active', 'inactive']
+    ```
+    
+    #### 6.2 API Integration
+    ```
+    Custom Hook: useFeatureData
+    File: admin-react/src/hooks/useFeatureData.js
+    
+    export function useFeatureData() {
+      const [features, setFeatures] = useState([]);
+      const [isLoading, setIsLoading] = useState(false);
+      const [error, setError] = useState(null);
+      
+      const fetchFeatures = async (page = 1) => {
+        setIsLoading(true);
+        try {
+          const response = await fetch(
+            `/wp-json/plugin/v1/features?page=${page}`,
+            {
+              headers: {
+                'X-WP-Nonce': wpApiSettings.nonce
+              }
+            }
+          );
+          const data = await response.json();
+          if (data.success) {
+            setFeatures(data.data);
+          } else {
+            setError(data.error.message);
+          }
+        } catch (err) {
+          setError(err.message);
+        } finally {
+          setIsLoading(false);
+        }
+      };
+      
+      const createFeature = async (featureData) => {
+        // ... similar pattern
+      };
+      
+      return { features, isLoading, error, fetchFeatures, createFeature };
+    }
+    ```
+    
+    #### 6.3 Routing Configuration
+    ```
+    Route: /admin.php?page=plugin-features#/features
+    Component: <FeaturePage />
+    
+    Nested Routes:
+    - /features -> List view
+    - /features/new -> Create form
+    - /features/:id -> Detail view
+    - /features/:id/edit -> Edit form
+    
+    Navigation:
+    - <Link to="/features">All Features</Link>
+    - <Link to="/features/new">Add New</Link>
+    ```
+    
+    ## 7. Data Contracts (TypeScript Interfaces)
+    
+    ```typescript
+    // Backend sends this
+    interface Feature {
+      id: number;
+      name: string;
+      config: Record<string, any>;
+      status: 'active' | 'inactive';
+      userId: number;
+      createdAt: string;  // ISO 8601
+      updatedAt: string;  // ISO 8601
+    }
+    
+    // Frontend sends this to create
+    interface CreateFeatureRequest {
+      name: string;
+      config?: Record<string, any>;
+      status?: 'active' | 'inactive';
+    }
+    
+    // Frontend sends this to update
+    interface UpdateFeatureRequest {
+      name?: string;
+      config?: Record<string, any>;
+      status?: 'active' | 'inactive';
+    }
+    
+    // API Response wrapper
+    interface ApiResponse<T> {
+      success: boolean;
+      data?: T;
+      error?: {
+        code: string;
+        message: string;
+        field?: string;
+      };
+      pagination?: {
+        total: number;
+        pages: number;
+        current: number;
+        perPage: number;
+      };
+    }
+    ```
+    
+    ## 8. File Structure Changes
+    
+    ### Backend Files to Create:
+    ```
+    includes/
+      class-feature-loader.php          # Autoloader/bootstrapper
+    
+    src/
+      admin/
+        class-feature-admin.php          # Admin UI registration
+        class-feature-settings.php       # Settings page
+      
+      api/
+        class-feature-controller.php     # REST API endpoints
+        class-api-response.php           # Response formatter
+      
+      models/
+        class-feature.php                # Feature data model
+        class-feature-repository.php     # Data access layer
+      
+      validators/
+        class-feature-validator.php      # Input validation
+    ```
+    
+    ### Frontend Files to Create:
+    ```
+    admin-react/src/
+      pages/
+        FeaturePage.jsx                  # Main page
+        
+      components/
+        features/
+          FeatureList.jsx                # List component
+          FeatureForm.jsx                # Form component
+          FeatureDetails.jsx             # Details view
+          FeatureListItem.jsx            # List item component
+          
+      hooks/
+        useFeatureData.js                # Data fetching
+        useFeatureForm.js                # Form logic
+        
+      utils/
+        featureApi.js                    # API client
+        featureValidation.js             # Client-side validation
+        
+      types/
+        feature.d.ts                     # TypeScript definitions
+    ```
+    
+    ## 9. Testing Requirements
+    
+    ### Backend Tests:
+    ```
+    tests/php/
+      test-class-feature.php             # Unit tests for Feature class
+      test-class-feature-repository.php  # Repository tests
+      test-class-feature-controller.php  # API endpoint tests
+      test-class-feature-validator.php   # Validation tests
+    
+    Test Coverage:
+    - CRUD operations
+    - Input validation (valid/invalid cases)
+    - Permission checks
+    - Error handling
+    - Database queries
+    ```
+    
+    ### Frontend Tests:
+    ```
+    admin-react/src/
+      components/features/
+        FeatureList.test.jsx             # Component tests
+        FeatureForm.test.jsx             # Form tests
+      hooks/
+        useFeatureData.test.js           # Hook tests
+    
+    Test Coverage:
+    - Component rendering
+    - User interactions (clicks, form input)
+    - API integration (mocked)
+    - Error states
+    - Loading states
+    ```
+    
+    ### E2E Tests:
+    ```
+    tests/e2e/
+      feature-crud.spec.js               # Full CRUD workflow
+      feature-validation.spec.js         # Validation scenarios
+      feature-permissions.spec.js        # Permission tests
+    
+    Test Scenarios:
+    - Create new feature (happy path)
+    - Edit existing feature
+    - Delete feature with confirmation
+    - Validation errors display correctly
+    - Unauthorized user cannot access
+    ```
+    
+    ## 10. Security Implementation
+    
+    ### Backend Security:
+    ```php
+    // Nonce validation
+    if (!wp_verify_nonce($_REQUEST['_wpnonce'], 'feature_action')) {
+      wp_die('Security check failed');
+    }
+    
+    // Capability check
+    if (!current_user_can('manage_options')) {
+      return new WP_Error('forbidden', 'Insufficient permissions');
+    }
+    
+    // Input sanitization
+    $name = sanitize_text_field($_POST['name']);
+    $config = wp_kses_post($_POST['config']);
+    
+    // Output escaping
+    echo '<h1>' . esc_html($feature->name) . '</h1>';
+    
+    // SQL injection prevention
+    $wpdb->prepare("SELECT * FROM {$wpdb->prefix}features WHERE id = %d", $id);
+    ```
+    
+    ### Frontend Security:
+    ```javascript
+    // XSS prevention - never use dangerouslySetInnerHTML
+    <div>{feature.name}</div>  // React escapes by default
+    
+    // Validate before submit
+    if (!name.trim()) {
+      setError('Name is required');
+      return;
+    }
+    
+    // Sanitize API data
+    const sanitizedData = {
+      ...data,
+      name: DOMPurify.sanitize(data.name)
+    };
+    ```
+    
+    ## 11. Developer Handoff
+    
+    ### Backend Developer Checklist:
+    ✅ Read sections 5 (Backend Architecture) and 7 (Data Contracts)
+    ✅ Create all PHP classes listed in section 8
+    ✅ Implement all REST API endpoints with exact specifications
+    ✅ Follow security guidelines in section 10
+    ✅ Write PHPUnit tests per section 9
+    ✅ Use skeleton's naming conventions and patterns
+    ✅ Commit to feature branch: `feature/milestone-{n}-backend`
+    
+    ### Frontend Developer Checklist:
+    ✅ Read sections 6 (Frontend Architecture) and 7 (Data Contracts)
+    ✅ Create all React components listed in section 8
+    ✅ Use exact API endpoints and request/response formats from section 5.4
+    ✅ Implement Material-UI components as specified
+    ✅ Follow security guidelines in section 10
+    ✅ Write Jest tests per section 9
+    ✅ Commit to feature branch: `feature/milestone-{n}-frontend`
+    
+    ### Integration Points:
+    - Backend provides: REST API endpoints at exact URLs with exact response formats
+    - Frontend consumes: API using fetch with nonce headers
+    - Contract: TypeScript interfaces in section 7 must match exactly
+    - Error handling: Both sides use same error response structure
+    
+    ## 12. Implementation Timeline
+    
+    Week 1:
+    - Backend: Database schema, models, repositories
+    - Frontend: Component structure, basic UI
+    
+    Week 2:
+    - Backend: REST API endpoints, validation
+    - Frontend: API integration, hooks
+    
+    Week 3:
+    - Backend: Security, error handling, tests
+    - Frontend: Form validation, error handling, tests
+    
+    Week 4:
+    - Integration testing
+    - E2E tests
+    - Code review
+    - QA validation
 
   agent: software_architect
+  output_file: 'outputs/architecture/milestone-{current_milestone}-architecture.md'
 
 implement_backend:
   description: >

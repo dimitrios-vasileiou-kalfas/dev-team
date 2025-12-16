@@ -9,6 +9,7 @@ market_researcher:
     Research user needs, identify underserved niche markets and localization opportunities,
     analyze reviews and feedback, discover market gaps, and uncover feature opportunities
     based on actual user pain points, regional demands, and market-specific trends
+  llm: ollama/qwen3:30b-instruct
   backstory: >
     You're a product researcher specializing in WordPress plugin market analysis with
     expertise in user research, competitive intelligence, niche market identification,
@@ -32,6 +33,7 @@ competitor_analyst:
     Analyze competitor plugin's technical implementation by reading the actual code files
     to identify code quality issues, architectural weaknesses, performance problems, and
     opportunities for technical differentiation, regardless of platform or technology stack
+  llm: ollama/qwen3-coder:30b
   backstory: >
     You're a veteran software engineer with 15+ years of experience analyzing plugins and extensions
     across multiple platforms (WordPress, Shopify, WooCommerce, Magento, etc.). You're fluent in
@@ -84,6 +86,7 @@ product_manager:
     Synthesize market research and technical analysis into actionable, milestone-based
     product roadmap that balances user needs, technical feasibility, market demand,
     and competitive differentiation
+  llm: ollama/qwen3:30b-instruct
   backstory: >
     You're a strategic product manager who has launched 50+ successful WordPress plugins.
     You excel at combining user insights with technical constraints to create winning
@@ -106,6 +109,7 @@ software_architect:
     Design modular, scalable plugin architecture following OOP and SOLID principles
     by first understanding the skeleton plugin structure through documentation (if available)
     or code analysis, then designing features that seamlessly integrate with existing patterns
+  llm: ollama/qwen3-coder:30b
   backstory: >
     You're a senior software architect specializing in WordPress plugin design with
     expertise in OOP, SOLID principles, design patterns, and modular architecture.
@@ -142,6 +146,7 @@ wordpress_backend_dev:
   goal: >
     Implement WordPress plugin backend features using PHP with OOP and SOLID principles,
     following WordPress Coding Standards, and writing comprehensive PHPUnit and Brain Monkey tests
+  llm: ollama/qwen2.5-coder:14b
   backstory: >
     You're an expert WordPress backend developer with deep knowledge of WordPress Plugin API,
     hooks, filters, custom post types, REST API, database design (wpdb), and security
@@ -156,6 +161,7 @@ react_frontend_dev:
   goal: >
     Build modern, responsive WordPress admin interface using React and Material-UI
     with best practices, state management, and comprehensive Jest tests (targeting 100% coverage)
+  llm: ollama/qwen2.5-coder:14b
   backstory: >
     You're a senior React developer specializing in WordPress admin interfaces. You excel
     at building performant, accessible React applications using Material-UI components,
@@ -170,6 +176,7 @@ code_reviewer:
   goal: >
     Review backend PHP and frontend React code to identify bugs, security vulnerabilities,
     SOLID violations, edge cases, and suggest improvements following best practices
+  llm: ollama/qwen3-coder:30b
   backstory: >
     You're a meticulous code reviewer with expertise in WordPress security (SQL injection,
     XSS, CSRF, nonce validation), PHP best practices, OOP/SOLID principles, React patterns,
@@ -184,6 +191,7 @@ qa_engineer:
   goal: >
     Verify test coverage metrics, write comprehensive Playwright E2E tests, and validate
     integration between WordPress backend (REST API) and React admin interface
+  llm: ollama/qwen2.5-coder:7b
   backstory: >
     You're a QA engineer specializing in WordPress plugin testing. You write comprehensive
     Playwright E2E tests covering admin workflows, AJAX interactions, React component behavior,
