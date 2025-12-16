@@ -1,17 +1,984 @@
-research_task:
-  description: >
-    Conduct a thorough research about {topic}
-    Make sure you find any interesting and relevant information given
-    the current year is {current_year}.
-  expected_output: >
-    A list with 10 bullet points of the most relevant information about {topic}
-  agent: researcher
+# ============================================================================
+# CREW 1 TASKS: STRATEGY & PLANNING
+# ============================================================================
 
-reporting_task:
+research_market:
   description: >
-    Review the context you got and expand each topic into a full section for a report.
-    Make sure the report is detailed and contains any and all relevant information.
+    Research the WordPress plugin market and user needs for plugins similar to the
+    competitor plugin at {competitor_plugin_path}.
+    
+    Your mission is to understand USERS, the MARKET, NICHE OPPORTUNITIES, and LOCALIZATION
+    needs - not technical implementation. Focus on business opportunities, user pain points,
+    feature demand, and especially UNDERSERVED MARKETS and REGIONAL OPPORTUNITIES.
+    
+    Research and analyze:
+    
+    1. **WordPress.org Plugin Directory Research**
+       - Find the competitor plugin on WordPress.org
+       - Read ALL user reviews (especially 1-3 star reviews for pain points)
+       - Analyze support forum topics and recurring issues
+       - Track feature requests in support threads
+       - Note what users love and what frustrates them
+       - Look for patterns in review languages (Greek, Spanish, etc.) indicating regional demand
+    
+    2. **Niche Market & Vertical Identification** 🎯 CRITICAL
+       - Identify SPECIFIC INDUSTRIES using this type of plugin:
+         * eCommerce stores (general, fashion, electronics, food, Greek eshops, etc.)
+         * Real estate agencies
+         * Healthcare providers
+         * Educational institutions
+         * Professional services (lawyers, accountants, consultants)
+         * Hospitality (hotels, restaurants, tourism)
+         * Non-profits and NGOs
+         * Media and publishing
+       
+       - For each industry, identify SPECIFIC NEEDS:
+         * Compliance requirements (GDPR, HIPAA, industry regulations)
+         * Workflow patterns unique to that industry
+         * Terminology and jargon specific to that field
+         * Reporting requirements
+         * Integration needs with industry-specific tools
+       
+       - Find UNDERSERVED NICHES:
+         * Industries with high demand but poor plugin support
+         * Verticals where competitors don't specialize
+         * Market segments competitors ignore
+    
+    3. **Localization & Regional Opportunities** 🌍 CRITICAL
+       - Analyze REGIONAL/COUNTRY-SPECIFIC NEEDS:
+         * Greek market: ELTA shipping, Piraeus Bank payment gateway, Greek tax system (FPA/ΦΠΑ),
+           AADE myDATA integration, Greek invoicing requirements, Efood/Wolt integrations
+         * German market: DHL, Deutsche Post, German tax rules, invoicing standards
+         * UK market: Royal Mail, UK VAT, Sage integration
+         * US market: USPS, UPS, FedEx, US sales tax, state-specific requirements
+         * EU market: GDPR compliance, EU VAT MOSS, cross-border shipping
+       
+       - Identify LOCALIZATION GAPS:
+         * Missing translations (not just UI, but documentation, support)
+         * Unsupported payment gateways (regional banks, local payment methods)
+         * Missing shipping providers (local couriers)
+         * Currency and number format issues
+         * Date/time format preferences
+         * Legal/compliance features for specific countries
+         * Cultural preferences (UI patterns, color meanings, business etiquette)
+       
+       - Find REGIONAL PAIN POINTS:
+         * "Plugin doesn't support [country-specific service]"
+         * "Translation is poor/incomplete"
+         * "Doesn't follow [country] tax rules"
+         * "Can't generate invoices for [country] regulations"
+    
+    4. **Competitive Landscape Analysis**
+       - Identify 5-10 competing plugins solving similar problems
+       - Compare feature sets across competitors
+       - Find gaps that NO competitor addresses well
+       - Identify competitors specializing in specific niches/regions
+       - Note which niches have NO specialized solutions
+       - Check if competitors support specific markets (Greek market, healthcare, etc.)
+       - Identify underserved user segments or use cases
+       - Note unique features competitors have
+    
+    5. **User Community Research** (if possible to access)
+       - Search WordPress forums for discussions about this plugin category
+       - Look for Reddit discussions (r/Wordpress, r/webdev) about similar plugins
+       - Check Facebook WordPress groups for user questions
+       - Find Twitter/X discussions and complaints
+       - Review YouTube comments on tutorial videos
+    
+    6. **Pain Point Identification**
+       - What problems do users complain about most?
+       - What workflows are broken or inefficient?
+       - What integrations are missing that users request?
+       - What learning curve issues do users face?
+       - What performance or reliability issues are mentioned?
+       - What regional/niche-specific problems exist?
+    
+    7. **Feature Demand Analysis**
+       - Most requested features across all sources
+       - Features users say would make them switch plugins
+       - "Wish list" items mentioned repeatedly
+       - Integration requests (other tools/services)
+       - Advanced features power users want
+       - Niche-specific features requested
+       - Localization features needed (country-specific integrations)
+    
+    8. **Market Trends & Opportunities**
+       - Emerging WordPress features (Full Site Editing, Blocks API)
+       - Industry trends affecting target users
+       - New use cases gaining popularity
+       - Shifts in user behavior or expectations
+       - Regulatory or compliance requirements (GDPR, accessibility)
+       - Regional market growth (e.g., Greek eCommerce boom, Eastern European expansion)
+
   expected_output: >
-    A fully fledged report with the main topics, each with a full section of information.
-    Formatted as markdown without '```'
-  agent: reporting_analyst
+    Comprehensive market research report saved to outputs/analysis/market-research.md:
+    
+    # Market Research Report - [Plugin Category]
+    
+    ## Executive Summary
+    - Target market size and growth
+    - Key user segments identified (beginners, professionals, agencies, etc.)
+    - **Identified niche markets and verticals**
+    - **Regional/localization opportunities**
+    - Top 5 unmet needs and opportunities
+    - Market positioning recommendation
+    
+    ## User Feedback Analysis
+    ### Competitor Plugin Reviews
+    - Review sentiment breakdown (positive vs negative themes)
+    - Common complaints with direct quotes from users
+    - Most praised features and why users love them
+    - Deal-breaker issues causing users to leave
+    
+    ### Support Forum Insights
+    - Top 10 most discussed issues/questions
+    - Recurring problems users face
+    - Feature requests mentioned multiple times
+    - Workarounds users have to implement
+    
+    ### Feature Request Patterns
+    - Most requested features (frequency count)
+    - Integrations users want
+    - UX improvements suggested
+    - Advanced capabilities requested
+    
+    ## Competitive Landscape
+    ### Direct Competitors
+    - List of 5-10 competing plugins with install counts
+    - Feature comparison matrix
+    - Pricing comparison (if applicable)
+    - User satisfaction scores
+    
+    ### Market Gaps
+    - Features NO competitor does well
+    - Underserved user segments
+    - Use cases poorly addressed
+    - Integration opportunities
+    
+    ### Competitive Advantages to Target
+    - Where competitors are weak
+    - What users wish competitors had
+    - Differentiation opportunities
+    
+    ## User Pain Points (Prioritized)
+    ### Critical Pain Points (affecting most users)
+    1. [Pain point with user quotes and frequency]
+    2. [Pain point with user quotes and frequency]
+    
+    ### Major Pain Points (affecting many users)
+    1. [Pain point description]
+    2. [Pain point description]
+    
+    ### Minor Pain Points (nice to solve)
+    1. [Pain point description]
+    
+    ## Identified Opportunities
+    ### High-Value Features (High Demand + Low Competition)
+    - Feature ideas that many users want but few competitors offer
+    - Estimated user impact for each
+    
+    ### Differentiation Opportunities
+    - Unique angles no competitor is pursuing
+    - Niche markets underserved
+    - Innovation possibilities
+    
+    ### Integration Opportunities
+    - Most requested integrations
+    - Strategic partnerships possible
+    - API connections needed
+    
+    ## Recommended Features by Priority
+    ### Must-Have (Table Stakes)
+    - Features every plugin in this category needs
+    - Features users expect as baseline
+    
+    ### High-Value Differentiators
+    - Features that would make users choose us over competitors
+    - Features with high demand but low availability
+    - Features that solve major pain points
+    
+    ### Nice-to-Have Enhancements
+    - Polish and quality-of-life improvements
+    - Advanced features for power users
+    
+    ### Innovation Opportunities
+    - Cutting-edge features no one else has
+    - Future-looking capabilities
+    
+    ## Target User Personas
+    - Description of 3-5 key user types
+    - Their specific needs and pain points
+    - Features most valuable to each persona
+    
+    ## Market Positioning Recommendation
+    - Recommended positioning statement
+    - Key differentiators to emphasize
+    - Target user segment to focus on first
+    
+    ## Niche Market Analysis 🎯 NEW SECTION
+    ### Industry Verticals Identified
+    - List of specific industries using this plugin type
+    - Market size and growth for each vertical
+    - Unique needs per vertical
+    
+    ### Underserved Niches
+    - Industries with high demand but poor support
+    - Specific pain points in each niche
+    - Opportunity size estimation
+    - Competitive gaps in niche markets
+    
+    ### Vertical-Specific Requirements
+    For each major niche:
+    - Industry-specific workflows
+    - Compliance and regulatory needs
+    - Required integrations (industry tools)
+    - Terminology and customization needs
+    
+    ## Localization & Regional Opportunities 🌍 NEW SECTION
+    ### Regional Market Analysis
+    For each significant region/country:
+    - Market size and growth potential
+    - Language and translation status
+    - Local competition landscape
+    - Regional pain points
+    
+    ### Country-Specific Requirements
+    **Greek Market** (if applicable):
+    - ELTA shipping integration needs
+    - Greek payment gateways (Piraeus, Alpha Bank, etc.)
+    - Greek tax system requirements (ΦΠΑ)
+    - AADE myDATA integration requirements
+    - Greek invoicing standards
+    - Local marketplace integrations (Efood, Wolt, Skroutz, etc.)
+    - Translation quality issues
+    
+    **Other Markets** (Germany, UK, US, etc.):
+    - Country-specific shipping providers
+    - Local payment gateways
+    - Tax and invoicing requirements
+    - Regulatory compliance needs
+    - Cultural considerations
+    
+    ### Localization Gaps
+    - Missing or poor translations
+    - Unsupported regional services
+    - Compliance gaps by country
+    - Cultural adaptation needs
+    
+    ### Regional Competitive Advantages
+    - Markets where competitors are weak
+    - Regions with no specialized solutions
+    - Localization opportunities for quick wins
+
+  agent: market_researcher
+  output_file: 'outputs/analysis/market-research.md'
+
+analyze_competitor:
+  description: >
+    Perform TECHNICAL analysis of the competitor WordPress plugin at {competitor_plugin_path}.
+    
+    Your mission is to analyze the CODE and TECHNICAL IMPLEMENTATION, not user feedback
+    or market positioning (that's handled by the Market Researcher).
+    
+    Focus on technical aspects:
+    1. Plugin structure and file organization (includes/, src/, admin interface)
+    2. Core features and functionality (what problems does it solve?)
+    3. UI/UX patterns in admin interface
+    4. Code quality and architecture (hooks, filters, database design)
+    5. React implementation (if any) and admin interface patterns
+    6. Database schema and data models
+    7. REST API endpoints and integration patterns
+    8. Security implementations (nonces, sanitization, capabilities)
+    9. Test coverage (PHPUnit, JavaScript tests)
+    
+    Identify:
+    - Weaknesses and limitations (technical debt, poor UX, missing features)
+    - Code quality issues and architectural problems
+    - Missing features that users need (check reviews, support forums)
+    - Opportunities for differentiation and competitive advantages
+    - Features that work well and should be matched or improved
+
+  expected_output: >
+    Detailed technical analysis report saved to outputs/analysis/technical-analysis.md containing:
+    
+    # Technical Analysis Report - Competitor Plugin
+    
+    ## Executive Summary
+    - Overall code quality score (1-10)
+    - Architecture assessment
+    - Key technical strengths
+    - Major technical weaknesses
+    - Technical differentiation opportunities
+    
+    ## Code Structure & Architecture
+    - File organization and structure
+    - Use of design patterns
+    - OOP implementation quality
+    - SOLID principles adherence
+    - Code modularity and reusability
+    
+    ## WordPress Integration
+    - Hook and filter implementation
+    - WordPress Coding Standards compliance
+    - Database design and queries
+    - REST API implementation
+    - Security implementations (nonces, sanitization, capability checks)
+    
+    ## Frontend Implementation (if applicable)
+    - React/JavaScript architecture
+    - Admin interface implementation
+    - Asset management and optimization
+    - UI/UX technical implementation
+    
+    ## Technical Debt & Issues
+    - Code quality problems
+    - Performance bottlenecks
+    - Security vulnerabilities
+    - Scalability concerns
+    - Maintenance challenges
+    
+    ## Testing & Quality Assurance
+    - Test coverage analysis
+    - Testing methodology used
+    - Quality assurance gaps
+    
+    ## Technical Opportunities
+    - Areas where our implementation can be superior
+    - Performance optimization opportunities
+    - Modern WordPress features we can leverage
+    - Better architectural approaches
+    - Technical innovations possible
+    
+    ## Implementation Recommendations
+    - Technical improvements to prioritize
+    - Architectural decisions to make differently
+    - Technologies/frameworks to use
+    - Best practices to follow
+
+  agent: competitor_analyst
+  output_file: 'outputs/analysis/technical-analysis.md'
+
+create_roadmap:
+  description: >
+    Create a comprehensive, milestone-based product roadmap by synthesizing insights from
+    BOTH the market research report and the technical analysis report.
+    
+    Your job is to balance:
+    - USER NEEDS (from market research): What users want and need
+    - TECHNICAL FEASIBILITY (from technical analysis): What's technically possible and how
+    - COMPETITIVE POSITIONING: How to differentiate from competitors
+    - BUSINESS VALUE: Maximum impact with reasonable effort
+    
+    Synthesis approach:
+    1. Review market research findings (user pain points, feature requests, market gaps)
+    2. Review technical analysis findings (technical opportunities, constraints, improvements)
+    3. Identify features that address BOTH user needs AND technical opportunities
+    4. Prioritize based on user impact × technical feasibility × competitive advantage
+    
+    Define 3 clear milestones:
+    
+    **Milestone 1 - MVP (Minimum Viable Product)**
+    - Core features needed for basic functionality
+    - Essential features users cannot live without
+    - Foundation architecture and database schema
+    - Basic admin interface (React/MUI)
+    
+    **Milestone 2 - Parity**
+    - Features to match competitor's core capabilities
+    - Improvements over competitor's weaknesses
+    - Enhanced UX based on competitor's limitations
+    - Complete REST API coverage
+    
+    **Milestone 3 - Differentiation**
+    - Unique features that set us apart from competitor
+    - Advanced functionality competitors lack
+    - Premium features for competitive advantage
+    - Innovation and market leadership features
+    
+    For each milestone, define:
+    - Feature list with clear descriptions
+    - Acceptance criteria (how we know it's done)
+    - Technical requirements and dependencies
+    - Estimated complexity (simple/medium/complex)
+    - Success metrics (how we measure success)
+
+  expected_output: >
+    Two files created:
+    
+    1. outputs/analysis/product-roadmap.md:
+    # Product Roadmap
+    
+    ## Overview
+    - Vision and goals
+    - Target users and use cases
+    - Success criteria
+    
+    ## Milestone Strategy
+    - Milestone 1: MVP features and timeline
+    - Milestone 2: Parity features and timeline
+    - Milestone 3: Differentiation features and timeline
+    
+    ## Feature Prioritization Matrix
+    - High impact + Low effort (do first)
+    - High impact + High effort (plan carefully)
+    - Low impact + Low effort (quick wins)
+    - Low impact + High effort (deprioritize)
+    
+    2. Separate milestone files in outputs/analysis/milestones/:
+    - milestone-1-mvp.md (detailed MVP feature specs)
+    - milestone-2-parity.md (detailed parity feature specs)
+    - milestone-3-differentiation.md (detailed differentiation feature specs)
+    
+    Each milestone file should include:
+    - Feature descriptions
+    - Acceptance criteria
+    - Technical requirements
+    - File structure changes needed
+    - Database schema changes
+    - REST API endpoints to create
+    - React components to build
+    - Testing requirements
+
+  agent: product_manager
+  output_file: 'outputs/analysis/product-roadmap.md'
+  context:
+    - research_market
+    - analyze_competitor
+
+# ============================================================================
+# CREW 2 TASKS: DEVELOPMENT & QA
+# ============================================================================
+
+design_architecture:
+  description: >
+    Design the technical architecture for Milestone {current_milestone} based on
+    approved product requirements and the existing skeleton plugin structure.
+    
+    The skeleton plugin has this structure:
+    ```
+    wp-skeleton-plugin/
+    ├── wp-skeleton-plugin.php       # Main plugin file (hooks, activation/deactivation)
+    ├── includes/                    # Core PHP functionality & WordPress hooks
+    ├── src/                         # Modern WordPress development structure
+    │   ├── admin/                   # Admin-specific PHP classes & logic
+    │   ├── frontend/                # Public-facing PHP functionality  
+    │   └── blocks/                  # Gutenberg blocks (can include React)
+    ├── admin-react/                 # React admin interface (DO NOT TOUCH - Frontend Dev's domain)
+    │   ├── src/                     # React components & pages
+    │   │   ├── components/          # Reusable React components
+    │   │   ├── pages/               # Admin page components
+    │   │   ├── hooks/               # Custom React hooks
+    │   │   └── utils/               # JavaScript utilities
+    │   ├── public/                  # Static assets
+    │   ├── build/                   # Built React app (gitignored)
+    │   └── package.json             # React dependencies
+    ├── assets/                      # Plugin assets (CSS, JS, images)
+    ├── tests/                       # PHPUnit and Jest tests
+    └── README.md
+    ```
+    
+    Design:
+    1. **Class Structure** (includes/ and src/ folders)
+       - Class hierarchy and responsibilities
+       - Interfaces and abstract classes
+       - Dependency injection patterns
+       - SOLID principle application
+    
+    2. **WordPress Integration**
+       - Hooks and filters to register
+       - Custom post types and taxonomies
+       - Database tables (if needed)
+       - Cron jobs and background processes
+    
+    3. **REST API Design**
+       - Endpoint definitions (routes, methods, parameters)
+       - Request/response schemas
+       - Authentication and permissions
+       - Error handling patterns
+    
+    4. **React Admin Interface Structure** (admin-react/ folder)
+       - Page components to create
+       - Reusable component library
+       - State management approach
+       - API integration patterns
+       - Routing structure
+    
+    5. **Data Flow**
+       - Backend → REST API → Frontend flow
+       - State management in React
+       - Data validation and sanitization points
+    
+    6. **File Organization**
+       - New PHP classes to create (with full paths)
+       - New React components to create (with full paths)
+       - Configuration files needed
+       - Asset organization
+
+  expected_output: >
+    Comprehensive technical specification document containing:
+    
+    # Technical Architecture - {current_milestone}
+    
+    ## Architecture Overview
+    - High-level system design
+    - Module responsibilities
+    - Data flow diagrams
+    
+    ## PHP Backend Structure (includes/ and src/)
+    - Class diagrams and hierarchy
+    - File structure with full paths
+    - WordPress hooks/filters to implement
+    - Database schema changes (if any)
+    - SOLID principles application examples
+    
+    ## REST API Specification
+    - Endpoint documentation (route, method, params, response)
+    - Authentication and authorization rules
+    - Error handling patterns
+    
+    ## React Frontend Structure (admin-react/)
+    - Component hierarchy and relationships
+    - Page routing structure
+    - State management approach
+    - API integration patterns
+    - MUI theming and styling approach
+    
+    ## Testing Strategy
+    - PHPUnit test structure for PHP
+    - Jest test structure for React
+    - E2E test scenarios for Playwright
+    
+    ## Implementation Guidelines
+    - Coding standards to follow
+    - Security considerations
+    - Performance optimization strategies
+
+  agent: software_architect
+
+implement_backend:
+  description: >
+    Implement the WordPress backend features for Milestone {current_milestone}
+    based on the architecture specification. Work ONLY in PHP files (includes/, src/).
+    DO NOT touch admin-react/ folder - that's the Frontend Developer's domain.
+    
+    The skeleton plugin structure you're working with:
+    - wp-skeleton-plugin.php: Main plugin file (register hooks, activation)
+    - includes/: Core WordPress functionality, hooks, filters
+    - src/admin/: Admin-specific PHP classes
+    - src/frontend/: Public-facing PHP functionality
+    - src/blocks/: Gutenberg blocks (PHP part)
+    
+    Implementation requirements:
+    1. **PHP Classes** (OOP + SOLID principles)
+       - Create classes in includes/ or src/ as per architecture
+       - Follow single responsibility principle
+       - Use dependency injection
+       - Implement interfaces where appropriate
+       - Use WordPress coding standards
+    
+    2. **WordPress Integration**
+       - Register hooks and filters properly
+       - Implement custom post types/taxonomies
+       - Create database tables (if needed)
+       - Set up cron jobs (if needed)
+    
+    3. **REST API Endpoints**
+       - Implement REST API routes
+       - Add authentication and permission checks
+       - Sanitize inputs and validate data
+       - Return proper error responses
+    
+    4. **Security**
+       - Use nonces for AJAX/REST requests
+       - Sanitize all inputs (sanitize_text_field, wp_kses, etc.)
+       - Escape all outputs (esc_html, esc_attr, esc_url)
+       - Check user capabilities properly
+    
+    5. **Testing**
+       - Write PHPUnit tests for each class/method
+       - Use Brain Monkey for WordPress function mocking
+       - Test edge cases and error conditions
+       - Aim for high test coverage
+
+  expected_output: >
+    Backend implementation saved to outputs/plugin/ maintaining the skeleton structure:
+    
+    outputs/plugin/
+    ├── wp-skeleton-plugin.php        # Updated main plugin file
+    ├── includes/                     # Core PHP classes
+    │   ├── class-plugin-name.php
+    │   ├── class-activator.php
+    │   └── ...new classes...
+    ├── src/
+    │   ├── admin/                    # Admin PHP classes
+    │   │   └── ...new admin classes...
+    │   ├── frontend/                 # Public PHP classes
+    │   │   └── ...new frontend classes...
+    │   └── blocks/                   # Gutenberg block PHP
+    │       └── ...block registration...
+    └── tests/php/                    # PHPUnit tests
+        ├── test-class-plugin-name.php
+        └── ...corresponding tests...
+    
+    Include documentation:
+    - Inline PHPDoc comments
+    - README sections for new features
+    - Hook/filter documentation
+
+  agent: wordpress_backend_dev
+  context:
+    - design_architecture
+
+implement_frontend:
+  description: >
+    Implement the React admin interface for Milestone {current_milestone} based on
+    the architecture specification. Work ONLY in admin-react/ folder.
+    DO NOT touch PHP files - that's the Backend Developer's domain.
+    
+    The admin-react/ structure you're working with:
+    ```
+    admin-react/
+    ├── src/
+    │   ├── components/          # Reusable React components
+    │   ├── pages/              # Admin page components
+    │   ├── hooks/              # Custom React hooks
+    │   ├── utils/              # JavaScript utilities
+    │   ├── App.jsx             # Main app component
+    │   └── index.jsx           # Entry point
+    ├── public/                 # Static assets
+    ├── build/                  # Build output (gitignored)
+    └── package.json
+    ```
+    
+    Implementation requirements:
+    1. **React Components** (Material-UI)
+       - Create reusable components in src/components/
+       - Build page components in src/pages/
+       - Follow React best practices (hooks, composition)
+       - Use Material-UI components (Button, TextField, Dialog, etc.)
+       - Apply MUI theming for consistent design
+    
+    2. **State Management**
+       - Use React Context for global state (if needed)
+       - Use custom hooks for data fetching
+       - Implement proper loading and error states
+    
+    3. **API Integration**
+       - Connect to WordPress REST API endpoints
+       - Handle authentication (nonces, cookies)
+       - Implement error handling and retry logic
+       - Show user feedback (success/error messages)
+    
+    4. **Routing**
+       - Set up React Router for admin pages
+       - Implement navigation between pages
+       - Handle deep linking properly
+    
+    5. **Accessibility & UX**
+       - Follow accessibility guidelines (ARIA labels, keyboard nav)
+       - Responsive design for all screen sizes
+       - Loading states and skeletons
+       - Error boundaries for graceful failures
+    
+    6. **Testing**
+       - Write Jest tests for all components
+       - Use React Testing Library
+       - Test user interactions and edge cases
+       - Target 100% code coverage
+
+  expected_output: >
+    Frontend implementation saved to outputs/plugin/admin-react/:
+    
+    outputs/plugin/admin-react/
+    ├── src/
+    │   ├── components/              # React components
+    │   │   ├── ComponentName.jsx
+    │   │   └── ComponentName.test.jsx
+    │   ├── pages/                   # Page components
+    │   │   ├── PageName.jsx
+    │   │   └── PageName.test.jsx
+    │   ├── hooks/                   # Custom hooks
+    │   │   ├── useCustomHook.js
+    │   │   └── useCustomHook.test.js
+    │   ├── utils/                   # Utilities
+    │   │   ├── api.js               # API client
+    │   │   └── helpers.js
+    │   ├── App.jsx                  # Updated main app
+    │   └── index.jsx
+    └── package.json                 # Updated dependencies
+    
+    Include documentation:
+    - Component prop documentation (JSDoc)
+    - README for setup and development
+    - Storybook stories (optional but recommended)
+
+  agent: react_frontend_dev
+  context:
+    - design_architecture
+
+review_code:
+  description: >
+    Perform comprehensive code review of both backend (PHP) and frontend (React)
+    implementations for Milestone {current_milestone}.
+    
+    Review backend PHP code (includes/, src/) for:
+    1. **Security Vulnerabilities**
+       - SQL injection risks (check wpdb usage)
+       - XSS vulnerabilities (check escaping)
+       - CSRF protection (nonce validation)
+       - Capability checks (current_user_can)
+       - Input sanitization completeness
+    
+    2. **SOLID Principles**
+       - Single Responsibility violations
+       - Open/Closed principle adherence
+       - Liskov Substitution correctness
+       - Interface Segregation appropriateness
+       - Dependency Inversion implementation
+    
+    3. **WordPress Best Practices**
+       - Coding standards compliance (PHPCS)
+       - Hook/filter usage correctness
+       - Database query optimization
+       - Proper use of WordPress functions
+       - Internationalization (i18n) implementation
+    
+    4. **Code Quality**
+       - Code duplication (DRY violations)
+       - Complex functions (cyclomatic complexity)
+       - Missing error handling
+       - Inadequate validation
+       - Poor naming conventions
+    
+    Review frontend React code (admin-react/) for:
+    1. **React Anti-Patterns**
+       - Unnecessary re-renders
+       - Missing dependency arrays
+       - Prop drilling issues
+       - Key prop misuse
+       - State management problems
+    
+    2. **Material-UI Best Practices**
+       - Proper theme usage
+       - Component composition
+       - Responsive design implementation
+       - Accessibility compliance
+    
+    3. **Performance Issues**
+       - Unnecessary API calls
+       - Missing memoization
+       - Large bundle sizes
+       - Unoptimized images
+    
+    4. **Testing Coverage**
+       - Missing test cases
+       - Untested edge cases
+       - Mock implementation issues
+       - Assertion completeness
+
+  expected_output: >
+    Detailed code review report:
+    
+    # Code Review Report - {current_milestone}
+    
+    ## Executive Summary
+    - Overall code quality score (1-10)
+    - Critical issues count
+    - Major issues count
+    - Minor issues count
+    - Approval status (Approved / Needs Revisions / Rejected)
+    
+    ## Backend Review (PHP)
+    ### Security Issues
+    - [CRITICAL/MAJOR/MINOR] Issue description with file:line
+    - Recommended fix
+    
+    ### SOLID Principle Violations
+    - Violation description with code examples
+    - Refactoring suggestions
+    
+    ### WordPress Best Practices
+    - Issues found with recommendations
+    
+    ### Code Quality Issues
+    - Complexity issues
+    - DRY violations
+    - Naming problems
+    
+    ## Frontend Review (React)
+    ### React Anti-Patterns
+    - Pattern violations with file:line
+    - Better alternatives
+    
+    ### Performance Issues
+    - Performance bottlenecks identified
+    - Optimization suggestions
+    
+    ### Accessibility Issues
+    - A11y violations
+    - ARIA improvements needed
+    
+    ## Testing Review
+    ### Backend Tests (PHPUnit)
+    - Coverage analysis
+    - Missing test cases
+    - Edge cases not covered
+    
+    ### Frontend Tests (Jest)
+    - Coverage analysis
+    - Component test completeness
+    - Integration test gaps
+    
+    ## Recommendations
+    - Priority 1 (Must Fix): Critical issues
+    - Priority 2 (Should Fix): Major issues
+    - Priority 3 (Nice to Fix): Minor improvements
+    
+    ## Edge Cases Identified
+    - List of edge cases not handled
+    - Suggested handling approaches
+
+  agent: code_reviewer
+  context:
+    - implement_backend
+    - implement_frontend
+
+run_qa_tests:
+  description: >
+    Perform comprehensive quality assurance testing for Milestone {current_milestone}.
+    
+    1. **Test Coverage Analysis**
+       - Run PHPUnit tests and generate coverage report
+       - Run Jest tests and generate coverage report
+       - Identify uncovered code paths
+       - Verify coverage meets minimum thresholds (80%+ target)
+    
+    2. **End-to-End Testing** (Playwright)
+       Write and execute E2E tests covering:
+       - Admin page navigation and workflows
+       - Form submissions and validations
+       - AJAX/REST API interactions
+       - React component interactions
+       - Error state handling
+       - Loading state behaviors
+       - Multi-step workflows
+       - User permissions and access control
+    
+    3. **Integration Testing**
+       - Backend REST API → Frontend integration
+       - Database operations → API responses
+       - WordPress hooks → Plugin behavior
+       - Authentication flows
+       - Data persistence across page reloads
+    
+    4. **Cross-Browser Testing**
+       - Chrome
+       - Firefox
+       - Safari
+       - Edge
+    
+    5. **Responsive Design Testing**
+       - Desktop (1920x1080)
+       - Tablet (768x1024)
+       - Mobile (375x667)
+    
+    6. **Performance Testing**
+       - Page load times
+       - API response times
+       - Bundle size analysis
+       - Database query performance
+    
+    7. **Accessibility Testing**
+       - Keyboard navigation
+       - Screen reader compatibility
+       - Color contrast ratios
+       - ARIA label presence
+
+  expected_output: >
+    Comprehensive QA report:
+    
+    # QA Test Report - {current_milestone}
+    
+    ## Test Summary
+    - Total tests executed: X
+    - Passed: X
+    - Failed: X
+    - Skipped: X
+    - Overall status: PASS/FAIL
+    
+    ## Coverage Analysis
+    ### Backend (PHPUnit)
+    - Line coverage: X%
+    - Function coverage: X%
+    - Class coverage: X%
+    - Uncovered files/functions list
+    
+    ### Frontend (Jest)
+    - Statement coverage: X%
+    - Branch coverage: X%
+    - Function coverage: X%
+    - Line coverage: X%
+    - Uncovered components list
+    
+    ## E2E Test Results (Playwright)
+    ### Admin Workflows
+    - Test scenario descriptions with PASS/FAIL status
+    - Screenshots of failures
+    - Error logs
+    
+    ### API Integration Tests
+    - Endpoint test results
+    - Response validation results
+    
+    ### User Journey Tests
+    - Multi-step workflow results
+    - Edge case scenario results
+    
+    ## Cross-Browser Results
+    - Chrome: PASS/FAIL (issues found)
+    - Firefox: PASS/FAIL (issues found)
+    - Safari: PASS/FAIL (issues found)
+    - Edge: PASS/FAIL (issues found)
+    
+    ## Responsive Design Results
+    - Desktop: PASS/FAIL
+    - Tablet: PASS/FAIL
+    - Mobile: PASS/FAIL
+    
+    ## Performance Metrics
+    - Average page load time: Xms
+    - API response times: Xms
+    - Bundle size: XKB
+    - Database queries per request: X
+    
+    ## Accessibility Audit
+    - Keyboard navigation: PASS/FAIL
+    - Screen reader: PASS/FAIL
+    - Color contrast: PASS/FAIL
+    - ARIA compliance: PASS/FAIL
+    
+    ## Issues Found
+    ### Critical Issues (Block Release)
+    - Issue description with reproduction steps
+    
+    ### Major Issues (Fix Before Release)
+    - Issue description with reproduction steps
+    
+    ### Minor Issues (Fix if Time Permits)
+    - Issue description
+    
+    ## Test Artifacts
+    - Location of test recordings
+    - Location of screenshots
+    - Location of coverage reports
+    
+    ## Recommendation
+    - APPROVED FOR RELEASE
+    - NEEDS FIXES BEFORE RELEASE
+    - BLOCKED (critical issues)
+
+  agent: qa_engineer
+  context:
+    - implement_backend
+    - implement_frontend
+    - review_code
