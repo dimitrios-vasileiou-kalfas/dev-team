@@ -110,13 +110,45 @@ outputs/analysis/milestones/*.md
 outputs/plugin/
 
 # Project Specific - Input Plugins (symlinked folders)
-# Each developer creates their own symlinks to local plugin folders
+# NOTE: These folders are symlinks to actual plugin directories on your local machine.
+# Structure: inputs/competitor-plugin -> /path/to/your/competitor-plugin/
+#            inputs/skeleton-plugin -> /path/to/your/skeleton-plugin/
+#
+# Setup commands (run from project root):
+#   ln -s /absolute/path/to/competitor-plugin inputs/competitor-plugin
+#   ln -s /absolute/path/to/skeleton-plugin inputs/skeleton-plugin
+#
+# Example:
+#   ln -s ~/Projects/my-projects/other-plugins/elta-courier-voucher-for-woocommerce inputs/competitor-plugin
+#   ln -s ~/Projects/my-skeleton-plugin inputs/skeleton-plugin
+#
+# Remove and recreate symlinks (if needed):
+#   rm inputs/competitor-plugin
+#   rm inputs/skeleton-plugin
+#   ln -s ~/Projects/my-projects/other-plugins/elta-courier-voucher-for-woocommerce inputs/competitor-plugin
+#   ln -s ~/Projects/my-skeleton-plugin inputs/skeleton-plugin
+#
+# Verify symlinks are working:
+#   ls -la inputs/
+#   # Should show: competitor-plugin -> /path/to/plugin
+#   #              skeleton-plugin -> /path/to/plugin
+#
+#   ls inputs/competitor-plugin/
+#   # Should show plugin files directly (e.g., plugin-name.php, includes/, etc.)
+#
+#   ls inputs/skeleton-plugin/
+#   # Should show skeleton plugin files directly
+#
+# The symlink itself replaces the entire folder, so we ignore these directories
+# and only keep .gitkeep files to preserve the folder structure in Git.
 inputs/competitor-plugin
 inputs/skeleton-plugin
 
 # Keep the folders in git with .gitkeep files
 !inputs/competitor-plugin/.gitkeep
 !inputs/skeleton-plugin/.gitkeep
+
+# Setup documentation: docs/COMPETITOR_PLUGIN_SETUP.md and docs/SKELETON_PLUGIN_SETUP.md
 
 # Temporary files
 tmp/

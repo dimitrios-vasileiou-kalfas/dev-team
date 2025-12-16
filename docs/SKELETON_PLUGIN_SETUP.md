@@ -217,11 +217,24 @@ rm inputs/skeleton-plugin
 ln -s /correct/path/to/skeleton inputs/skeleton-plugin
 ```
 
+**Seeing nested folder structure?**
+If you see `inputs/skeleton-plugin/plugin-name/files` instead of `inputs/skeleton-plugin/files`:
+```bash
+# This means you symlinked to a parent folder, not the plugin folder itself
+# Fix it:
+rm inputs/skeleton-plugin
+ln -s /path/to/actual/skeleton-folder inputs/skeleton-plugin
+
+# Verify files are now at the top level:
+ls inputs/skeleton-plugin/
+# Should show: wp-skeleton-plugin.php, includes/, src/ (not another folder)
+```
+
 **Want to update your skeleton?**
 - With symlink: Just update the original, changes reflect immediately
 - With copy: Copy again to refresh
 
-**Testing skeleton structure?**
+**Testing skeleton structure:**
 ```bash
 # Check main file exists
 cat inputs/skeleton-plugin/wp-skeleton-plugin.php | head -n 20
@@ -230,6 +243,13 @@ cat inputs/skeleton-plugin/wp-skeleton-plugin.php | head -n 20
 cat inputs/skeleton-plugin/admin-react/package.json
 
 # Check folder structure
-tree -L 2 inputs/skeleton-plugin
+ls -R inputs/skeleton-plugin/ | head -50
+```
+
+**Verify agents can read ARCHITECTURE.md (if you added it):**
+```bash
+# If you created ARCHITECTURE.md in your skeleton:
+cat inputs/skeleton-plugin/ARCHITECTURE.md
+# Agents will read this first to understand your structure
 ```
 

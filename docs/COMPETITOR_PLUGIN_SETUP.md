@@ -10,10 +10,10 @@ Create a symlink to your local WordPress plugin installation:
 
 ```bash
 # From project root
-ln -s /absolute/path/to/wordpress/wp-content/plugins/competitor-plugin inputs/competitor-plugin
+ln -s /absolute/path/to/competitor-plugin inputs/competitor-plugin
 
 # Example:
-ln -s ~/Sites/wordpress/wp-content/plugins/woocommerce-shipping inputs/competitor-plugin
+ln -s ~/Projects/my-projects/other-plugins/elta-courier-voucher-for-woocommerce inputs/competitor-plugin
 ```
 
 **Benefits:**
@@ -22,9 +22,28 @@ ln -s ~/Sites/wordpress/wp-content/plugins/woocommerce-shipping inputs/competito
 - ✅ Changes reflect immediately
 - ✅ Perfect for active development
 
-**Verify symlink:**
+**Remove and recreate symlink (if needed):**
 ```bash
-ls -la inputs/competitor-plugin  # Should show -> /path/to/plugin
+# Remove old symlink
+rm inputs/competitor-plugin
+
+# Create new symlink
+ln -s ~/Projects/my-projects/other-plugins/elta-courier-voucher-for-woocommerce inputs/competitor-plugin
+```
+
+**Verify symlink is working:**
+```bash
+# Check symlink exists and points to correct location
+ls -la inputs/
+# Should show: competitor-plugin -> /path/to/your/competitor-plugin
+
+# Verify plugin files are accessible directly
+ls inputs/competitor-plugin/
+# Should show: plugin-name.php, includes/, assets/, etc.
+
+# Check you can read the main plugin file
+head -20 inputs/competitor-plugin/*.php
+# Should show the WordPress plugin header
 ```
 
 ### Option 2: Copy Plugin Files (Fallback)
@@ -100,6 +119,19 @@ The AI agents will automatically adapt to whatever structure your competitor use
 - Ensure the target plugin exists
 - Use `ls -la inputs/competitor-plugin` to verify
 
+**Seeing nested folder structure?**
+If you see `inputs/competitor-plugin/plugin-name/files` instead of `inputs/competitor-plugin/files`:
+```bash
+# This means you symlinked to a parent folder, not the plugin folder itself
+# Fix it:
+rm inputs/competitor-plugin
+ln -s /path/to/actual/plugin-folder inputs/competitor-plugin
+
+# Verify files are now at the top level:
+ls inputs/competitor-plugin/
+# Should show: plugin-name.php (not another folder)
+```
+
 **Permission issues?**
 ```bash
 # Give read permissions
@@ -113,5 +145,12 @@ rm inputs/competitor-plugin
 
 # Create new symlink
 ln -s /path/to/new-plugin inputs/competitor-plugin
+```
+
+**Test the symlink works for AI agents:**
+```bash
+# The agents will read files like this:
+cat inputs/competitor-plugin/*.php | head -30
+# Should show the plugin code directly
 ```
 
