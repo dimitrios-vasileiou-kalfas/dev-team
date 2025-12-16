@@ -17,8 +17,8 @@ class DevelopmentCrew:
     Output: Working plugin code in outputs/plugin/
     """
 
-    agents_config = 'config/agents.yaml'
-    tasks_config = 'config/tasks.yaml'
+    agents_config = '../config/agents.yaml'
+    tasks_config = '../config/development_tasks.yaml'
 
     @agent
     def software_architect(self) -> Agent:

@@ -15,8 +15,8 @@ class StrategyCrew:
     Output: Analysis reports and product roadmap in outputs/analysis/
     """
 
-    agents_config = 'config/agents.yaml'
-    tasks_config = 'config/tasks.yaml'
+    agents_config = '../config/agents.yaml'
+    tasks_config = '../config/strategy_tasks.yaml'
 
     @agent
     def market_researcher(self) -> Agent:
