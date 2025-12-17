@@ -1,0 +1,1379 @@
+# ============================================================================
+# CREW 1 TASKS: STRATEGY & PLANNING
+# ============================================================================
+
+research_market:
+  description: >
+    Research the market for THIS SPECIFIC PRODUCT based on the competitor analysis.
+    
+    **IMPORTANT:** You will receive the Competitor Analyst's report first. It describes:
+    - What the product does (e.g., "ELTA voucher creation for Greek WooCommerce")
+    - Target users (e.g., "Greek eCommerce store owners")
+    - Core features (e.g., "Online voucher creation, 2 languages, webservice integration")
+    - Market/niche served (e.g., "Greek market, ELTA courier shipping users")
+    
+    **YOUR MISSION:** Research THE SPECIFIC MARKET for this product - not generic market research.
+    
+    **STEP 1: Understand What You're Researching**
+    
+    Read the Competitor Analysis report to understand:
+    - Product purpose: What problem does it solve?
+    - Target market: Greek eshops? Healthcare? Real estate?
+    - Geographic focus: Greece only? EU? Global?
+    - Core features: What does it currently offer?
+    
+    Example: "This is an ELTA courier voucher plugin for Greek WooCommerce stores"
+    → Research the Greek WooCommerce + ELTA shipping market specifically
+    
+    **STEP 2: Evaluate Current Features (Product-Specific)**
+    
+    For EACH feature the competitor has, evaluate its market fit:
+    
+    Example - ELTA Voucher Creation feature:
+    - ✅ Works well: "Saves store owners time vs manual ELTA website"
+    - ❌ Missing: "No bulk creation for multiple orders at once"
+    - ❌ User complaints: "Fails for international shipments"
+    - 💡 Opportunity: "Add batch processing - users often ship 50+ orders/day"
+    
+    Example - Language Support (Greek + English):
+    - ✅ Works: "Covers most Greek market"
+    - ❌ Gap: "Cyprus stores need Turkish language (+2,000 potential users)"
+    - 💡 Opportunity: "Add Turkish, capture Cyprus eCommerce market"
+    
+    **STEP 3: Identify Market-Specific Feature Gaps (WITHIN SCOPE)**
+    
+    **CRITICAL:** Identify gaps WITHIN THE PLUGIN'S CORE SCOPE ONLY.
+    Don't list features that belong to different plugins.
+    
+    Example - If "WooCommerce ELTA Shipping Plugin":
+    
+    ✅ **Valid In-Scope Gaps** (shipping features):
+    - "No ELTA tracking number auto-sync"
+    - "Missing Cash-on-Delivery voucher support (very common in Greece)"
+    - "Can't handle ELTA island shipping (different rates/rules)"
+    - "No bulk voucher printing for multiple orders"
+    - "No automatic address validation with ELTA API"
+    - "No return/reverse shipment voucher creation"
+    - "Missing ELTA express/same-day delivery options"
+    
+    ❌ **Invalid - Out of Scope** (different plugin domains):
+    - "No Skroutz marketplace integration" → This is a separate eCommerce platform integration
+    - "No AADE myDATA integration" → This is tax/invoicing, not shipping
+    - "No payment gateway support" → This is payments, not shipping
+    
+    Example - If "Healthcare Appointment Plugin":
+    
+    ✅ **Valid In-Scope Gaps** (appointment features):
+    - "No recurring appointment booking"
+    - "Missing GDPR-compliant patient data handling"
+    - "No SMS reminders in Greek"
+    - "Can't block time slots for emergencies"
+    
+    ❌ **Invalid - Out of Scope**:
+    - "No EOPYY insurance integration" → This is billing/insurance, not appointments
+    - "No patient medical records" → This is EMR system, different scope
+    
+    **STEP 3B: Identify Adjacent Market Opportunities (Separate Products)**
+    
+    If you find valuable opportunities in RELATED but SEPARATE domains, list them here:
+    
+    Example for ELTA Shipping Plugin:
+    
+    **Adjacent Opportunities** (would be separate plugins):
+    - "Greek Tax Compliance Plugin" with AADE myDATA integration for invoices
+    - "Skroutz Marketplace Connector" for WooCommerce
+    - "Greek Payment Gateways Pack" (Piraeus, Alpha Bank, etc.)
+    - "Greek eShop Bundle" - package of all 3 plugins together
+    
+    **Why separate:** Different technical domains, different user needs, could be sold individually
+    or as bundle. Don't conflate shipping features with tax/marketplace/payment features.
+    
+    **BE SPECIFIC TO THE ACTUAL PRODUCT'S CORE FUNCTION**
+    
+    **STEP 4: Target Market Analysis**
+    
+    For the SPECIFIC market this product serves:
+    
+    Size & Opportunity:
+    - Market size: "~5,000 active Greek WooCommerce stores"
+    - ELTA users: "~2,000 use ELTA as primary courier"
+    - Growth: "Greek eCommerce growing 15%/year"
+    - Willingness to pay: "€50-150/year for shipping automation"
+    
+    User Characteristics:
+    - Technical level: "Non-technical store owners"
+    - Pain point: "Spend 1-2 hours/day on shipping tasks"
+    - Current solution: "Manual ELTA website + spreadsheets"
+    
+    **STEP 5: Niche & Regional Opportunities (Product-Specific)**
+    
+    Expansion opportunities for THIS product:
+    
+    If ELTA plugin:
+    - **Geographic**: "Cyprus market (uses ELTA, needs Turkish language)"
+    - **Vertical**: "Food delivery (needs ELTA cold chain service support)"
+    - **Regional**: "Greek islands (special boat shipping rates)"
+    - **Integration**: "Efood/Wolt restaurant delivery integration"
+    
+    **STEP 6: Competitive Positioning**
+    
+    How to differentiate in THIS SPECIFIC MARKET:
+    
+    Competitor landscape for ELTA plugin:
+    - **Generic shipping plugins**: Don't understand Greek/ELTA specifics
+    - **Manual process**: No automation, time-consuming
+    - **Our angle**: "ONLY plugin built specifically for Greek ELTA shipping
+      with full automation, Greek tax compliance, and marketplace integration"
+    
+    Pricing opportunity:
+    - Generic plugins: €30-50/year (low price, low specialization)
+    - Our specialized plugin: €100-150/year (premium for niche expertise)
+    
+    **STEP 7: User Pain Points & Needs**
+    
+    **NOTE:** Without internet access to real reviews, infer likely pain points based on:
+    - Technical limitations seen in competitor code
+    - Common issues in this product category
+    - Market knowledge from training data
+    
+    State clearly: "Based on code analysis and market patterns (not live reviews)..."
+    
+    Likely pain points for ELTA plugin users:
+    - "Creating vouchers one-by-one is slow when shipping 50+ orders"
+    - "ELTA API errors aren't explained clearly - just fails"
+    - "No way to handle returns/reverse logistics"
+    - "Can't generate proper Greek tax invoices with shipments"
+    
+    1. **WordPress.org Plugin Directory Research**
+       - Find the competitor plugin on WordPress.org
+       - Read ALL user reviews (especially 1-3 star reviews for pain points)
+       - Analyze support forum topics and recurring issues
+       - Track feature requests in support threads
+       - Note what users love and what frustrates them
+       - Look for patterns in review languages (Greek, Spanish, etc.) indicating regional demand
+    
+    2. **Niche Market & Vertical Identification** 🎯 CRITICAL
+       - Identify SPECIFIC INDUSTRIES using this type of plugin:
+         * eCommerce stores (general, fashion, electronics, food, Greek eshops, etc.)
+         * Real estate agencies
+         * Healthcare providers
+         * Educational institutions
+         * Professional services (lawyers, accountants, consultants)
+         * Hospitality (hotels, restaurants, tourism)
+         * Non-profits and NGOs
+         * Media and publishing
+       
+       - For each industry, identify SPECIFIC NEEDS:
+         * Compliance requirements (GDPR, HIPAA, industry regulations)
+         * Workflow patterns unique to that industry
+         * Terminology and jargon specific to that field
+         * Reporting requirements
+         * Integration needs with industry-specific tools
+       
+       - Find UNDERSERVED NICHES:
+         * Industries with high demand but poor plugin support
+         * Verticals where competitors don't specialize
+         * Market segments competitors ignore
+    
+    3. **Localization & Regional Opportunities** 🌍 CRITICAL
+       - Analyze REGIONAL/COUNTRY-SPECIFIC NEEDS:
+         * Greek market: ELTA shipping, Piraeus Bank payment gateway, Greek tax system (FPA/ΦΠΑ),
+           AADE myDATA integration, Greek invoicing requirements, Efood/Wolt integrations
+         * German market: DHL, Deutsche Post, German tax rules, invoicing standards
+         * UK market: Royal Mail, UK VAT, Sage integration
+         * US market: USPS, UPS, FedEx, US sales tax, state-specific requirements
+         * EU market: GDPR compliance, EU VAT MOSS, cross-border shipping
+       
+       - Identify LOCALIZATION GAPS:
+         * Missing translations (not just UI, but documentation, support)
+         * Unsupported payment gateways (regional banks, local payment methods)
+         * Missing shipping providers (local couriers)
+         * Currency and number format issues
+         * Date/time format preferences
+         * Legal/compliance features for specific countries
+         * Cultural preferences (UI patterns, color meanings, business etiquette)
+       
+       - Find REGIONAL PAIN POINTS:
+         * "Plugin doesn't support [country-specific service]"
+         * "Translation is poor/incomplete"
+         * "Doesn't follow [country] tax rules"
+         * "Can't generate invoices for [country] regulations"
+    
+    4. **Competitive Landscape Analysis**
+       - Identify 5-10 competing plugins solving similar problems
+       - Compare feature sets across competitors
+       - Find gaps that NO competitor addresses well
+       - Identify competitors specializing in specific niches/regions
+       - Note which niches have NO specialized solutions
+       - Check if competitors support specific markets (Greek market, healthcare, etc.)
+       - Identify underserved user segments or use cases
+       - Note unique features competitors have
+    
+    5. **User Community Research** (if possible to access)
+       - Search WordPress forums for discussions about this plugin category
+       - Look for Reddit discussions (r/Wordpress, r/webdev) about similar plugins
+       - Check Facebook WordPress groups for user questions
+       - Find Twitter/X discussions and complaints
+       - Review YouTube comments on tutorial videos
+    
+    6. **Pain Point Identification**
+       - What problems do users complain about most?
+       - What workflows are broken or inefficient?
+       - What integrations are missing that users request?
+       - What learning curve issues do users face?
+       - What performance or reliability issues are mentioned?
+       - What regional/niche-specific problems exist?
+    
+    7. **Feature Demand Analysis**
+       - Most requested features across all sources
+       - Features users say would make them switch plugins
+       - "Wish list" items mentioned repeatedly
+       - Integration requests (other tools/services)
+       - Advanced features power users want
+       - Niche-specific features requested
+       - Localization features needed (country-specific integrations)
+    
+    8. **Market Trends & Opportunities**
+       - Emerging WordPress features (Full Site Editing, Blocks API)
+       - Industry trends affecting target users
+       - New use cases gaining popularity
+       - Shifts in user behavior or expectations
+       - Regulatory or compliance requirements (GDPR, accessibility)
+       - Regional market growth (e.g., Greek eCommerce boom, Eastern European expansion)
+
+  expected_output: >
+    Comprehensive market research report saved to outputs/analysis/market-research.md:
+    
+    # Market Research Report - [Plugin Category]
+    
+    ## Executive Summary
+    - Target market size and growth
+    - Key user segments identified (beginners, professionals, agencies, etc.)
+    - **Identified niche markets and verticals**
+    - **Regional/localization opportunities**
+    - Top 5 unmet needs and opportunities
+    - Market positioning recommendation
+    
+    ## User Feedback Analysis
+    ### Competitor Plugin Reviews
+    - Review sentiment breakdown (positive vs negative themes)
+    - Common complaints with direct quotes from users
+    - Most praised features and why users love them
+    - Deal-breaker issues causing users to leave
+    
+    ### Support Forum Insights
+    - Top 10 most discussed issues/questions
+    - Recurring problems users face
+    - Feature requests mentioned multiple times
+    - Workarounds users have to implement
+    
+    ### Feature Request Patterns
+    - Most requested features (frequency count)
+    - Integrations users want
+    - UX improvements suggested
+    - Advanced capabilities requested
+    
+    ## Competitive Landscape
+    ### Direct Competitors
+    - List of 5-10 competing plugins with install counts
+    - Feature comparison matrix
+    - Pricing comparison (if applicable)
+    - User satisfaction scores
+    
+    ### Market Gaps (Within Product Scope)
+    - Features NO competitor does well (within the plugin's core domain)
+    - Underserved user segments using this type of plugin
+    - Use cases poorly addressed in this product category
+    - Integration opportunities (within the same domain)
+    
+    Example for Shipping Plugin:
+    - "No bulk voucher printing (most competitors require one-by-one)"
+    - "Poor error handling when courier API fails"
+    - "No return shipment support (customers request this often)"
+    
+    ### Adjacent Market Opportunities (Separate Products)
+    - Related problems that require separate plugins
+    - Bundling opportunities (package multiple plugins)
+    - Cross-sell possibilities
+    
+    Example for ELTA Shipping Plugin:
+    - "Greek Tax Compliance Plugin" (AADE myDATA) - separate domain
+    - "Skroutz Marketplace Integration" - different platform
+    - "Greek Payment Gateways Pack" - different domain
+    - Bundle: "Complete Greek eShop Pack" with all 3 plugins
+    
+    ### Competitive Advantages to Target
+    - Where competitors are weak
+    - What users wish competitors had
+    - Differentiation opportunities
+    
+    ## User Pain Points (Prioritized)
+    ### Critical Pain Points (affecting most users)
+    1. [Pain point with user quotes and frequency]
+    2. [Pain point with user quotes and frequency]
+    
+    ### Major Pain Points (affecting many users)
+    1. [Pain point description]
+    2. [Pain point description]
+    
+    ### Minor Pain Points (nice to solve)
+    1. [Pain point description]
+    
+    ## Identified Opportunities
+    ### High-Value Features (High Demand + Low Competition)
+    - Feature ideas that many users want but few competitors offer
+    - Estimated user impact for each
+    
+    ### Differentiation Opportunities
+    - Unique angles no competitor is pursuing
+    - Niche markets underserved
+    - Innovation possibilities
+    
+    ### Integration Opportunities
+    - Most requested integrations
+    - Strategic partnerships possible
+    - API connections needed
+    
+    ## Recommended Features by Priority
+    
+    **NOTE:** All features listed here should be WITHIN the plugin's core scope.
+    Adjacent opportunities (different domains) are listed separately.
+    
+    ### Must-Have (Table Stakes)
+    - Features every plugin in this category needs
+    - Features users expect as baseline
+    - Core functionality that must work reliably
+    
+    Example for Shipping Plugin:
+    - "Automatic voucher creation on order placement"
+    - "Print shipping labels"
+    - "Basic tracking information"
+    
+    ### High-Value Differentiators (Within Scope)
+    - Features that would make users choose us over competitors
+    - Features with high demand but low availability
+    - Features that solve major pain points
+    - Still within the plugin's core domain
+    
+    Example for Shipping Plugin:
+    - "Bulk voucher printing for 50+ orders at once"
+    - "Smart retry logic when courier API fails"
+    - "Return shipment voucher automation"
+    
+    ### Nice-to-Have Enhancements
+    - Polish and quality-of-life improvements
+    - Advanced features for power users
+    - Optional functionality that adds value
+    
+    ### Innovation Opportunities (Within Scope)
+    - Cutting-edge features no one else has (but still shipping-related)
+    - Future-looking capabilities
+    - AI/ML opportunities (e.g., "Smart address validation using ML")
+    
+    ## Target User Personas
+    - Description of 3-5 key user types
+    - Their specific needs and pain points
+    - Features most valuable to each persona
+    
+    ## Market Positioning Recommendation
+    - Recommended positioning statement
+    - Key differentiators to emphasize
+    - Target user segment to focus on first
+    
+    ## Niche Market Analysis 🎯 NEW SECTION
+    ### Industry Verticals Identified
+    - List of specific industries using this plugin type
+    - Market size and growth for each vertical
+    - Unique needs per vertical
+    
+    ### Underserved Niches
+    - Industries with high demand but poor support
+    - Specific pain points in each niche
+    - Opportunity size estimation
+    - Competitive gaps in niche markets
+    
+    ### Vertical-Specific Requirements
+    For each major niche:
+    - Industry-specific workflows
+    - Compliance and regulatory needs
+    - Required integrations (industry tools)
+    - Terminology and customization needs
+    
+    ## Localization & Regional Opportunities 🌍 NEW SECTION
+    ### Regional Market Analysis
+    For each significant region/country:
+    - Market size and growth potential
+    - Language and translation status
+    - Local competition landscape
+    - Regional pain points
+    
+    ### Country-Specific Requirements
+    **Greek Market** (if applicable):
+    - ELTA shipping integration needs
+    - Greek payment gateways (Piraeus, Alpha Bank, etc.)
+    - Greek tax system requirements (ΦΠΑ)
+    - AADE myDATA integration requirements
+    - Greek invoicing standards
+    - Local marketplace integrations (Efood, Wolt, Skroutz, etc.)
+    - Translation quality issues
+    
+    **Other Markets** (Germany, UK, US, etc.):
+    - Country-specific shipping providers
+    - Local payment gateways
+    - Tax and invoicing requirements
+    - Regulatory compliance needs
+    - Cultural considerations
+    
+    ### Localization Gaps
+    - Missing or poor translations
+    - Unsupported regional services
+    - Compliance gaps by country
+    - Cultural adaptation needs
+    
+    ### Regional Competitive Advantages
+    - Markets where competitors are weak
+    - Regions with no specialized solutions
+    - Localization opportunities for quick wins
+
+  agent: market_researcher
+  output_file: '../../../outputs/strategy/market-research.md'
+
+analyze_competitor:
+  description: >
+    Analyze the competitor plugin/extension at {competitor_plugin_path} in THREE PHASES.
+    You are a GENERALIST technical analyst - work with any platform/technology.
+    
+    🎯 MISSION: Understand WHAT it does, HOW it's built, and WHAT'S wrong with it.
+    
+    ⚠️ YOU MUST USE TOOLS: Start with list_directory, then read_file for each important file
+    ⚠️ Take your time: You have 50 iterations to thoroughly read files
+    ⚠️ Be specific: Quote code with file:line, no generic advice
+    
+    ═══════════════════════════════════════════════════════════════════════
+    📋 PHASE 1: FEATURE EXTRACTION (What does this plugin do?)
+    ═══════════════════════════════════════════════════════════════════════
+    
+    **ACTION 1.1:** Use list_directory tool
+    ```
+    list_directory(directory_path="{competitor_plugin_path}", recursive=False)
+    ```
+    Note the folder structure (admin/, includes/, webservice/, etc.)
+    
+    **ACTION 1.2:** Read documentation files
+    ```
+    read_file(file_path="{competitor_plugin_path}/readme.txt")  # or README.md
+    read_file(file_path="{competitor_plugin_path}/[main-file].php")  # first 50 lines for header
+    ```
+    
+    **EXTRACT from readme.txt:**
+    - Plugin name (exact)
+    - Description (1-2 sentences)
+    - Key features listed (bullet points)
+    - Changelog (recent features added)
+    - Languages mentioned (Greek text = Greek market!)
+    - Requirements (WooCommerce, PHP version, etc.)
+    
+    **EXTRACT from main plugin file header:**
+    ```php
+    /**
+     * Plugin Name: [EXTRACT THIS]
+     * Description: [EXTRACT THIS]
+     * Version: [EXTRACT THIS]
+     * Requires: [WordPress/WooCommerce versions]
+     * Text Domain: [Language identifier]
+     */
+    ```
+    
+    **OUTPUT FOR PHASE 1:**
+    Write a feature summary:
+    
+    "**Product:** [Name] v[Version]
+    **Purpose:** [What problem it solves in 1 sentence]
+    **Target Users:** [Who uses this - be specific]
+    **Market/Niche:** [Geographic or industry niche]
+    
+    **Key Features:**
+    1. [Feature 1 - e.g., "Supports 2 languages: Greek & English"]
+    2. [Feature 2 - e.g., "Creates ELTA courier vouchers automatically"]
+    3. [Feature 3 - e.g., "Prints A4/A6 labels"]
+    4. [Feature 4 - e.g., "Tracks shipment status"]
+    5. [Feature 5 - e.g., "API integration with ELTA webservice"]
+    [... list all features found in README]"
+    
+    ═══════════════════════════════════════════════════════════════════════
+    🔧 PHASE 2: TECHNICAL IMPLEMENTATION (How is it built?)
+    ═══════════════════════════════════════════════════════════════════════
+    
+    **ACTION 2.1:** Map the codebase
+    ```
+    find_files(directory_path="{competitor_plugin_path}", pattern="*.php")
+    ```
+    
+    This will give you a complete list of ALL PHP files. 
+    Count them and note the total: "Found [X] PHP files"
+    
+    Categorize them:
+    - Main bootstrap file: [name]
+    - Core classes in includes/: [list all]
+    - Admin classes in admin/: [list all]
+    - Public classes in public/: [list all]
+    - API/Integration files: [list all]
+    - Other files: [list all]
+    
+    **ACTION 2.2:** Read core files COMPLETELY (use read_file for each)
+    
+    ⚠️ CRITICAL: Read ALL PHP files you found, not just 8-10 examples!
+    ⚠️ CRITICAL: Read FULL files, not just first 100-300 lines!
+    ⚠️ CRITICAL: List ALL instances found, not just 2-3 examples!
+    
+    **Priority order for reading:**
+    
+    **MUST READ COMPLETELY (in order):**
+    1. Main plugin file (ENTIRE file, not just header)
+    2. includes/class-[main-class].php (ENTIRE core class)
+    3. includes/class-*-loader.php (if exists)
+    4. includes/class-*-cron.php (if exists)
+    5. admin/class-*-admin.php (ENTIRE admin class - even if 800+ lines)
+    6. public/class-*-public.php (ENTIRE public class)
+    7. includes/class-*-i18n.php (if exists)
+    8. includes/class-*-activator.php (if exists)
+    9. includes/class-*-deactivator.php (if exists)
+    
+    **THEN READ ALL REMAINING FILES:**
+    - Any files in includes/ not yet read
+    - Any files in admin/partials/
+    - Any files in public/
+    - Any integration/API files
+    - Any settings files
+    
+    **For large files (500+ lines):**
+    Read in chunks if needed, but cover the ENTIRE file:
+    ```
+    read_file(file_path="admin/class-admin.php")  # Try full file first
+    # If truncated at 50K chars, read in sections:
+    # Section 1: lines 1-400
+    # Section 2: lines 401-847
+    ```
+    
+    **Goal: Read EVERY single PHP file to understand the complete implementation.**
+    
+    **For EACH file you read, document:**
+    
+    ```
+    File: [path]
+    Purpose: [What this class does]
+    Key Methods: [List method names you see]
+    Hooks Registered: [add_action, add_filter calls]
+    External Calls: [API endpoints, SOAP, wp_remote_post]
+    Database: [$wpdb usage, custom tables, CPTs]
+    ```
+    
+    **ANALYZE Technology Stack:**
+    
+    1. **Platform Detection:**
+       - WordPress version required?
+       - WooCommerce dependency?
+       - Other plugin dependencies?
+    
+    2. **API Integrations:**
+       - Look for: SoapClient, wp_remote_post, curl, HTTP requests
+       - Check webservice/ or api/ folders for WSDL files
+       - Extract: API endpoints, authentication method, data format
+    
+    3. **Database Usage:**
+       - Custom tables? (search for "CREATE TABLE" or "$wpdb->prefix")
+       - Custom post types? (search for "register_post_type")
+       - Post meta usage? (get_post_meta, update_post_meta)
+    
+    4. **AJAX/REST Endpoints:**
+       - Search for: "wp_ajax_", "add_action.*ajax"
+       - List each endpoint found with file location
+    
+    5. **Cron Jobs:**
+       - Search for: "wp_schedule", "cron"
+       - What runs periodically?
+    
+    6. **Assets (JS/CSS):**
+       - Frontend framework? (React, Vue, vanilla JS?)
+       - Admin UI approach?
+    
+    **OUTPUT FOR PHASE 2:**
+    
+    "**Technical Stack:**
+    - Platform: WordPress [version] + WooCommerce [version]
+    - PHP: [version requirement]
+    - Frontend: [jQuery/React/Vue/etc.]
+    
+    **External Integrations:**
+    - [API Name]: [Purpose, file location, how it works]
+    - [Example: "ELTA Courier SOAP API: Creates vouchers via 6 WSDL files in webservice/"]
+    
+    **Database:**
+    - Custom Tables: [list with purpose]
+    - Custom Post Types: [list with purpose]
+    - Key Meta Fields: [list important ones]
+    
+    **AJAX Endpoints:** ⚠️ LIST ALL - NOT JUST 2-3 EXAMPLES!
+    
+    Count them first, then list EVERY SINGLE ONE:
+    "Found [X] AJAX endpoints:"
+    
+    1. wp_ajax_[name1]: [file:line] - [purpose] - Nonce: ✅/❌ - Capability: ✅/❌
+    2. wp_ajax_[name2]: [file:line] - [purpose] - Nonce: ✅/❌ - Capability: ✅/❌
+    3. wp_ajax_[name3]: [file:line] - [purpose] - Nonce: ✅/❌ - Capability: ✅/❌
+    ... [CONTINUE UNTIL ALL ARE LISTED]
+    
+    Don't write "... and others" - LIST THEM ALL!
+    
+    **Shortcodes:** List ALL shortcodes registered
+    - [shortcode_name]: [file:line] - [purpose]
+    - [shortcode_name]: [file:line] - [purpose]
+    
+    **WooCommerce Hooks:** List key WooCommerce integrations
+    - woocommerce_order_status_[status]: [what it does]
+    - ... [list all found]
+    
+    **Cron Jobs:**
+    - [job name]: Runs [frequency] - [purpose] - [file:line]
+    
+    **Architecture:**
+    - Class Structure: [OOP with namespaces? Or procedural?]
+    - Design Patterns: [Any patterns used?]
+    - Code Organization: [Well organized? Or messy?]"
+    
+    ═══════════════════════════════════════════════════════════════════════
+    🔍 PHASE 3: GAP ANALYSIS (What's missing or broken?)
+    ═══════════════════════════════════════════════════════════════════════
+    
+    Now that you know WHAT it does and HOW it's built, identify problems.
+    
+    **3.1 SECURITY ISSUES** (CRITICAL)
+    
+    Check each AJAX endpoint:
+    ```php
+    // GOOD (has nonce):
+    if (!wp_verify_nonce($_POST['nonce'], 'action_name')) die();
+    
+    // BAD (missing nonce):
+    add_action('wp_ajax_delete_item', 'delete_item');  // ⚠️ CSRF risk!
+    ```
+    
+    Check credential storage:
+    ```php
+    // BAD:
+    $api_key = get_option('api_key');  // Plain text!
+    
+    // BETTER (if encrypted):
+    $api_key = decrypt(get_option('api_key_encrypted'));
+    ```
+    
+    **List security issues found:**
+    - [Issue]: [file:line] - [code quote] - [risk explanation]
+    
+    **3.2 PERFORMANCE ISSUES**
+    
+    Look for:
+    - Synchronous blocking calls (SOAP, HTTP without async)
+    - Missing caching (no transients, no object cache)
+    - N+1 database queries (loops with queries inside)
+    - Assets loaded everywhere (not conditional)
+    
+    **List performance issues:**
+    - [Issue]: [file:line] - [what's slow] - [impact]
+    
+    **3.3 CODE QUALITY ISSUES**
+    
+    Check:
+    - God objects (files over 500 lines)
+    - No namespaces (old underscore class names)
+    - Code duplication
+    - Mixed procedural and OOP
+    - Poor separation of concerns
+    
+    **List code quality issues:**
+    - [Issue]: [file] - [problem description]
+    
+    **3.4 MISSING FEATURES**
+    
+    Compare what exists vs modern best practices:
+    - REST API endpoints? (or only legacy admin-ajax?)
+    - Gutenberg blocks? (for WordPress)
+    - CLI commands?
+    - Webhooks?
+    - Comprehensive tests?
+    
+    **List missing features:**
+    - ❌ [Feature]: [why it matters]
+    
+    **3.5 TECHNICAL DEBT**
+    
+    - Deprecated functions used?
+    - Old WordPress patterns?
+    - Hard dependencies on specific versions?
+    - Lack of abstraction layers?
+    
+    **OUTPUT FOR PHASE 3:**
+    
+    "**Security Vulnerabilities:** [count] found
+    1. [Severity: HIGH/MEDIUM/LOW] [Issue name]
+       File: [path:line]
+       Problem: [description]
+       Code: [quote the problematic code]
+       Risk: [what could happen]
+       Fix: [how to fix it]
+    
+    **Performance Bottlenecks:** [count] found
+    1. [Issue name]
+       File: [path:line]
+       Problem: [what's slow]
+       Impact: [how much slower]
+       Fix: [solution]
+    
+    **Code Quality Issues:** [count] found
+    1. [Issue name]
+       File: [path]
+       Problem: [what's wrong]
+       Example: [code quote or description]
+    
+    **Missing Modern Features:**
+    - ❌ [Feature]: [explanation]
+    - ❌ [Feature]: [explanation]
+    
+    **Technical Debt:**
+    - [Issue]: [impact]"
+    
+    ═══════════════════════════════════════════════════════════════════════
+    ✅ FINAL OUTPUT REQUIREMENTS
+    ═══════════════════════════════════════════════════════════════════════
+    
+    Your report MUST include ALL THREE PHASES above:
+    
+    ✅ Phase 1: Feature list (what it does)
+    ✅ Phase 2: Technical implementation (how it's built)  
+    ✅ Phase 3: Gap analysis (what's wrong)
+    
+    ✅ List ALL PHP files found (from find_files results)
+    ✅ List ALL PHP files you actually read (should be all or nearly all)
+    ✅ At least 10 code quotes with file:line references from different files
+    ✅ ALL AJAX endpoints listed (not just 2-3 examples)
+    ✅ ALL shortcodes listed
+    ✅ ALL WooCommerce hooks listed
+    ✅ Specific findings only (no generic advice like "add logging")
+    ✅ Mark findings as [VERIFIED] or [INFERRED]
+    ✅ NO invented code examples
+    
+    **VERIFICATION CHECKLIST:**
+    
+    Before finishing, verify COMPLETENESS:
+    
+    **Tool Usage:**
+    - [ ] Did I use list_directory to see the structure?
+    - [ ] Did I read readme.txt or README.md COMPLETELY?
+    - [ ] Did I read the main plugin file COMPLETELY (not just header)?
+    - [ ] Did I use find_files to discover ALL PHP files?
+    - [ ] Did I read ALL critical PHP files found (includes/, admin/, public/)?
+    - [ ] Did I read files COMPLETELY (not just first 300 lines)?
+    
+    **Findings Completeness:**
+    - [ ] Did I list ALL AJAX endpoints found (counted them: admin + public)?
+    - [ ] Did I list ALL shortcodes found (not just 1-2)?
+    - [ ] Did I list ALL WooCommerce hooks found?
+    - [ ] Did I list ALL WSDL files by name (if webservice/ folder exists)?
+    - [ ] Did I identify ALL cron jobs?
+    - [ ] Did I check for bulk actions?
+    - [ ] Did I check for public-facing AJAX (wp_ajax_nopriv_)?
+    
+    **Evidence Quality:**
+    - [ ] Did I provide actual code quotes (not made-up examples)?
+    - [ ] Did I include file paths for ALL findings?
+    - [ ] Did I avoid generic advice like "add nonces" without specifics?
+    - [ ] Did I separate VERIFIED findings from INFERRED patterns?
+    
+    **Double-Check These Common Misses:**
+    - [ ] Auto-voucher/auto-issue features (woocommerce_order_status_* hooks)?
+    - [ ] Companion plugin dependencies?
+    - [ ] External library dependencies (vendor/, external classes)?
+    - [ ] License/update checker systems?
+    - [ ] Settings/options management files?
+    
+    If any answer is NO, go back and complete that step!
+    
+    ═══════════════════════════════════════════════════════════════════════
+    🔍 POST-ANALYSIS REVIEW (Prevent Hallucinations)
+    ═══════════════════════════════════════════════════════════════════════
+    
+    Before finalizing, review each finding and mark its confidence level:
+    
+    **[VERIFIED]** = I read the actual code and can quote it exactly
+    **[INFERRED]** = Reasonable assumption based on code patterns I saw
+    **[ASSUMED]** = Industry best practice, didn't verify in this codebase
+    
+    Example - VERIFIED Finding:
+    ```
+    [VERIFIED] AJAX Endpoint: wp_ajax_elta_courier_create_voucher
+    File: includes/class-main.php:157
+    Code: $this->loader->add_action("wp_ajax_elta_courier_create_voucher", $plugin_admin, "elta_courier_create_voucher");
+    Source: Read from includes/class-main.php lines 150-170
+    ```
+    
+    Example - INFERRED Finding:
+    ```
+    [INFERRED] Performance: SOAP calls likely block requests
+    Reasoning: SoapClient is synchronous by default in PHP
+    Note: Saw WSDL files and SOAP registration but didn't read actual API call implementation
+    ```
+    
+    Example - What NOT to do:
+    ```
+    ❌ File: admin/class-admin.php:245  [Precise line but didn't read line 245]
+    ❌ Code: public function delete() { wp_delete_post($_POST['id']); }  [Made up this exact code]
+    ```
+    
+    **Rules:**
+    - If you didn't read lines 245-260, don't say "File:245-260"
+    - If you didn't see the exact code, don't quote it
+    - Use "approximate location" if unsure: "File: admin-class.php (AJAX section)"
+    - Be honest: "Pattern suggests X, but didn't verify implementation"
+    
+    If any answer is NO, go back and complete that step!
+    
+    Read these files first:
+    - Main plugin file header (plugin name, description, tags, version)
+    - README.md or readme.txt (product description, features list)
+    - CHANGELOG or version history (what features were added)
+    - Documentation files (docs/, user guides)
+    
+    Answer these questions:
+    1. **What problem does this plugin solve?**
+       Example: "Automates ELTA courier voucher creation for WooCommerce orders"
+    
+    2. **Who is the target user?**
+       Example: "Greek eCommerce store owners who ship with ELTA courier"
+    
+    3. **What is the core functionality?**
+       Example: "Connects to ELTA webservice, creates shipping vouchers, prints labels"
+    
+    4. **What market/niche does it serve?**
+       Example: "Greek WooCommerce market, specifically ELTA shipping users (~2,000 stores)"
+    
+    5. **What are the key features?**
+       Example:
+       - Online voucher creation via ELTA webservice
+       - Supports 2 languages (Greek, English)
+       - Prints shipping labels
+       - Tracks shipments
+       - Cash on Delivery support
+    
+    6. **Geographic focus?**
+       Example: "Greece only" or "Global with Greek localization" or "EU-wide"
+    
+    Write a clear product summary (2-3 sentences):
+    "This plugin is designed for [TARGET USERS] to solve [PROBLEM] by providing [CORE FUNCTIONALITY].
+    It serves the [MARKET/NICHE] market with [KEY DIFFERENTIATORS]."
+    
+    Example:
+    "This plugin is designed for Greek WooCommerce store owners to solve ELTA courier integration
+    by providing automated voucher creation through ELTA's webservice API. It serves the Greek
+    eCommerce market with Greek/English language support and local payment method integration."
+    
+    **STEP 1: Identify Platform & Technology Stack**
+    
+    First, determine what you're analyzing:
+    - **Platform**: WordPress, Shopify, WooCommerce, Magento, custom platform?
+    - **Backend language**: PHP, Ruby, Python, Node.js, Go?
+    - **Frontend**: React, Vue, Liquid templates, Twig, vanilla JS?
+    - **Framework**: Laravel, Rails, Express, Django?
+    - **Package manager**: Composer, npm, Bundler, pip?
+    
+    Look for clues:
+    - WordPress: `wp-content/plugins/`, PHP files with WordPress headers, `functions.php`
+    - Shopify: `liquid` templates, `theme.liquid`, Shopify API calls
+    - Node.js: `package.json`, `node_modules/`
+    - Ruby: `Gemfile`, `.rb` files
+    - Python: `requirements.txt`, `.py` files
+    
+    **STEP 2: Read the Actual Plugin Code**
+    
+    Navigate to {competitor_plugin_path} and read the actual files (adapt to platform):
+    
+    For ANY platform:
+    - Main entry file (plugin initialization)
+    - Configuration files (package.json, composer.json, Gemfile, requirements.txt)
+    - README, CHANGELOG, documentation
+    
+    For Backend code:
+    - Class/module files (OOP structure, business logic)
+    - Database models or schema files
+    - API integration files
+    - Background job/webhook handlers
+    - Authentication/authorization logic
+    
+    For Frontend code:
+    - Templates (Liquid, Twig, Blade, JSX, Vue)
+    - JavaScript files (components, state management)
+    - Stylesheets (CSS, SCSS, Tailwind)
+    - Asset build configuration
+    
+    For Testing:
+    - Unit test files (PHPUnit, RSpec, Jest, pytest)
+    - Integration tests
+    - E2E tests (Cypress, Playwright, Selenium)
+    
+    **STEP 3: Analyze Technical Implementation (Platform-Specific)**
+    
+    Adapt your analysis to the platform:
+    
+    ### For WordPress Plugins:
+    - Hook and filter usage
+    - Custom post types and taxonomies
+    - Database schema (custom tables)
+    - REST API or GraphQL endpoints
+    - Gutenberg block implementation
+    - Admin interface (React, vanilla JS)
+    
+    ### For Shopify Apps:
+    - Liquid template usage
+    - Shopify API integration (REST, GraphQL)
+    - Webhook handling
+    - App bridge implementation
+    - Metafields usage
+    - Theme app extensions
+    
+    ### For Any Platform:
+    1. **Code Architecture**
+       - OOP/functional patterns
+       - Design patterns used
+       - SOLID principles adherence
+       - Separation of concerns
+       - Code organization
+    
+    2. **Code Quality**
+       - Coding standards compliance
+       - Code complexity and readability
+       - Documentation quality
+       - Error handling
+       - Type safety (TypeScript, PHP types, etc.)
+    
+    3. **Security**
+       - Input validation and sanitization
+       - Output escaping
+       - Authentication/authorization
+       - API key/secret handling
+       - CSRF/XSS protection
+       - Injection prevention
+    
+    4. **Performance**
+       - Database query optimization
+       - API call efficiency
+       - Caching strategies
+       - Asset optimization (minification, lazy loading)
+       - Background job usage
+    
+    5. **Integration Quality**
+       - Platform API usage (correct methods, best practices)
+       - Webhook reliability
+       - Error handling for external services
+       - Rate limiting handling
+    
+    6. **Testing**
+       - Test coverage
+       - Test quality and completeness
+       - CI/CD setup
+    
+    **STEP 4: Identify Opportunities**
+    
+    Based on what you found:
+    - Technical debt and code smells
+    - Architectural weaknesses
+    - Platform-specific features not being used
+    - Security vulnerabilities
+    - Performance bottlenecks
+    - Missing tests
+    - Poor error handling
+    - Outdated dependencies
+    - Better implementation approaches
+    
+    Your mission is to analyze the CODE and TECHNICAL IMPLEMENTATION, not user feedback
+    or market positioning (that's handled by the Market Researcher).
+
+  expected_output: >
+    Detailed technical analysis report saved to outputs/analysis/technical-analysis.md containing:
+    
+    # Technical Analysis Report - [Plugin Name]
+    
+    ## Product Identification (REQUIRED)
+    
+    **Plugin Name:** [Exact name from header]
+    **Version:** [Version number]
+    **Author:** [Author name]
+    **Purpose:** [2-3 sentence summary of what it does, for whom, and what problem it solves]
+    **Target Market:** [Geographic/niche market identification]
+    **Core Technology:** [Platform: WordPress, WooCommerce, etc. + key technologies]
+    
+    Example:
+    "ELTA Courier Voucher for WooCommerce v1.0.45 by Web Expert. Automates ELTA courier
+    shipping voucher creation for Greek WooCommerce stores via SOAP webservice integration.
+    Target: Greek eCommerce market (~2,000 ELTA shipping users). Premium plugin with
+    license validation."
+    
+    ## Files Analyzed (REQUIRED - List at least 8 files)
+    
+    1. readme.txt - Product description and changelog
+    2. elta-courier-voucher-for-woocommerce.php - Main bootstrap (1-100)
+    3. includes/class-elta-courier-voucher-for-woocommerce.php - Core class (full)
+    4. admin/class-elta-courier-voucher-for-woocommerce-admin.php - Admin UI (1-300)
+    5. [List additional files read with line ranges]
+    
+    ## Directory Structure
+    
+    ```
+    plugin-name/
+    ├── admin/           [Admin UI classes]
+    ├── includes/        [Core classes]
+    ├── public/          [Frontend classes]
+    ├── webservice/      [API integration - 6 WSDL files found!]
+    ├── languages/       [i18n files]
+    └── assets/          [CSS/JS]
+    ```
+    
+    ## External Integrations (CRITICAL SECTION)
+    
+    ### Integration 1: [API Name]
+    - **What:** [e.g., "ELTA Courier SOAP API"]
+    - **Purpose:** [e.g., "Create shipping vouchers, track packages"]
+    - **Evidence:** [e.g., "6 WSDL files in webservice/ folder"]
+    - **Files:** [List files: webservice/CREATEAWB.wsdl, etc.]
+    - **Code Location:** [File:line where API calls happen]
+    - **Authentication:** [How credentials stored - security concern if plain text!]
+    - **Error Handling:** [try/catch present? Or none?]
+    - **Performance:** [Synchronous blocking? Asynchronous? Cached?]
+    
+    [Repeat for each integration found]
+    
+    ## Database Schema
+    
+    ### Custom Tables
+    - **Table:** wp_[table_name]
+    - **Purpose:** [What data stored]
+    - **Schema:** [Column list with types]
+    - **Indexes:** [Present or missing?]
+    - **Evidence:** [File:line where created]
+    
+    ### Custom Post Types
+    - **CPT:** [post type name]
+    - **Purpose:** [What it represents]
+    - **Registration:** [File:line]
+    - **Columns:** [Custom admin columns]
+    
+    ## AJAX Endpoints (SECURITY CRITICAL)
+    
+    For each endpoint found:
+    
+    ### Endpoint: [action_name]
+    - **Action:** wp_ajax_[action_name]
+    - **File:** [path:line]
+    - **Purpose:** [What it does]
+    - **Nonce Validated:** ✅ YES / ❌ NO [SECURITY ISSUE IF NO]
+    - **Capability Check:** ✅ YES / ❌ NO [SECURITY ISSUE IF NO]
+    - **Input Sanitized:** ✅ YES / ❌ NO [SECURITY ISSUE IF NO]
+    - **Code Quote:**
+      ```php
+      // File: admin/class-admin.php:245
+      add_action('wp_ajax_delete_voucher', [$this, 'delete_voucher']);
+      // NO nonce check found in delete_voucher() method!
+      ```
+    
+    ## Cron Jobs
+    
+    ### Job: [cron_name]
+    - **Schedule:** [hourly, daily, etc.]
+    - **Purpose:** [What it does]
+    - **File:** [path:line]
+    - **Performance Impact:** [Queries all records? Batched?]
+    
+    ## Security Vulnerabilities (SPECIFIC FINDINGS REQUIRED)
+    
+    ### Vulnerability 1: [Issue Name]
+    - **Severity:** Critical / High / Medium / Low
+    - **File:** [path:line]
+    - **Issue:** [Specific description]
+    - **Code:**
+      ```php
+      // Actual code with the vulnerability
+      ```
+    - **Risk:** [What could go wrong]
+    - **Fix:** [How to fix it]
+    
+    Example:
+    "Vulnerability: Missing Nonce on AJAX Delete
+    Severity: HIGH
+    File: admin/class-admin.php:245-260
+    Issue: wp_ajax_elta_courier_cancel_voucher has no nonce validation
+    Code:
+    add_action('wp_ajax_elta_courier_cancel_voucher', [$this,'cancel_voucher']);
+    public function cancel_voucher() {
+        $voucher_id = $_POST['voucher_id']; // No nonce check!
+        wp_delete_post($voucher_id);
+    }
+    Risk: CSRF attack - any logged-in user can delete vouchers via malicious link
+    Fix: Add wp_verify_nonce($_POST['nonce'], 'cancel_voucher_action')"
+    
+    [Repeat for each vulnerability]
+    
+    ## Code Quality Issues (SPECIFIC FINDINGS)
+    
+    ### Issue 1: [Issue Name]
+    - **File:** [path]
+    - **Lines:** [start-end] or [file size]
+    - **Problem:** [Specific issue]
+    - **Evidence:** [Quote or describe]
+    
+    Example:
+    "Issue: God Object Pattern
+    File: admin/class-elta-courier-voucher-for-woocommerce-admin.php
+    Lines: 1-847 (847 lines!)
+    Problem: Single class handles UI, AJAX, cron, hooks, API calls
+    Evidence: 23 methods including: enqueue_styles, jobs_ctp, elta_courier_create_voucher,
+              elta_courier_print_voucher, run_hourly_event, webexpert_elta_track_status
+    Violates: Single Responsibility Principle"
+    
+    ## Architecture Analysis
+    
+    ### Patterns Used
+    - ✅ Hook/Loader pattern (for WordPress hooks)
+    - ❌ No namespaces (old underscore-based classes)
+    - ❌ No dependency injection (tight coupling)
+    - ❌ No abstraction layer for API calls
+    
+    ### Coupling Issues
+    - Direct get_option() calls throughout (no settings abstraction)
+    - SOAP client instantiated inline (no service class)
+    - Hard dependency on companion plugin (Web Expert Order Tracking)
+    
+    ## Performance Issues (SPECIFIC FINDINGS)
+    
+    ### Issue 1: [Performance Problem]
+    - **File:** [path:line]
+    - **Problem:** [What's slow]
+    - **Impact:** [How much impact]
+    - **Code:**
+      ```php
+      // Actual problematic code
+      ```
+    
+    Example:
+    "Issue: Synchronous Blocking SOAP Calls
+    File: admin/class-admin.php:180-195
+    Problem: SOAP voucher creation blocks request
+    Impact: 3-5 second delay on admin page load when creating vouchers
+    Code:
+    $client = new SoapClient($wsdl);
+    $response = $client->CreateVoucher($data); // Blocks here!
+    Fix: Queue voucher creation, process asynchronously"
+    
+    ## Testing Infrastructure
+    
+    - **Unit Tests:** ✅ Found / ❌ None found
+    - **Integration Tests:** ✅ Found / ❌ None found
+    - **E2E Tests:** ✅ Found / ❌ None found
+    - **CI/CD:** ✅ Found / ❌ None found
+    - **Evidence:** [test/ folder? .github/workflows?]
+    
+    ## Modern Features Analysis
+    
+    ✅ Present:
+    - [List features that exist]
+    
+    ❌ Missing:
+    - No REST API (uses legacy admin-ajax.php)
+    - No Gutenberg blocks
+    - No WP-CLI commands
+    - No webhooks for status updates
+    - Using deprecated functions: [list with file:line]
+    
+    ## Technical Differentiation Opportunities
+    
+    Based on the above analysis, we can build a superior product by:
+    
+    1. **Better API Architecture**
+       - Create abstraction layer for courier API
+       - Async processing with job queue
+       - Retry logic with exponential backoff
+       - Response caching
+    
+    2. **Modern WordPress Features**
+       - REST API endpoints (not just admin-ajax)
+       - Gutenberg block for tracking display
+       - WP-CLI commands for bulk operations
+       - Webhook support for real-time updates
+    
+    3. **Security Improvements**
+       - Nonce validation on ALL AJAX endpoints
+       - Encrypted credential storage
+       - Rate limiting on API calls
+       - Audit logging
+    
+    4. **Better Architecture**
+       - PSR-4 namespaces
+       - Dependency injection
+       - Service classes for API interaction
+       - Repository pattern for data access
+       - Comprehensive test coverage
+    
+    ## Summary & Recommendations
+    
+    **Competitor Strengths:**
+    - [What they do well]
+    
+    **Competitor Weaknesses:**
+    - [Specific problems we can fix]
+    
+    **Our Advantages:**
+    - [How we can be technically superior]
+    
+    **Must-Have Features to Match:**
+    - [Core features we need]
+    
+    **Differentiating Features:**
+    - [How we'll be better]
+
+  agent: competitor_analyst
+  output_file: '../../../outputs/strategy/technical-analysis.md'
+
+create_roadmap:
+  description: >
+    Create a comprehensive, milestone-based product roadmap by synthesizing insights from
+    BOTH the market research report and the technical analysis report.
+    
+    **IMPORTANT:** This task must also define the NEW PLUGIN'S NAME, SLUG, and NAMESPACE.
+    
+    Your job is to balance:
+    - USER NEEDS (from market research): What users want and need
+    - TECHNICAL FEASIBILITY (from technical analysis): What's technically possible and how
+    - COMPETITIVE POSITIONING: How to differentiate from competitors
+    - BUSINESS VALUE: Maximum impact with reasonable effort
+    
+    Synthesis approach:
+    1. Review market research findings (user pain points, feature requests, market gaps)
+    2. Review technical analysis findings (technical opportunities, constraints, improvements)
+    3. Identify features that address BOTH user needs AND technical opportunities
+    4. Prioritize based on user impact × technical feasibility × competitive advantage
+    5. **DEFINE PLUGIN NAMING** based on target market and positioning
+    
+    **STEP: Define Plugin Naming**
+    
+    Based on market research and competitive analysis, create a plugin name that:
+    - Clearly communicates the value proposition
+    - Targets the specific market (e.g., "Greek", "ELTA", "Secure")
+    - Differentiates from competitors
+    - Is memorable and professional
+    
+    Generate:
+    - **Plugin Name:** Full, human-readable name (e.g., "Secure ELTA Shipping Manager")
+    - **Plugin Slug:** URL-safe identifier (e.g., "secure-elta-shipping")
+    - **Namespace:** PHP namespace for classes (e.g., "SecureELTA")
+    - **Text Domain:** i18n domain (same as slug)
+    - **Version:** Start with "1.0.0"
+    - **Author:** Team/company name
+    - **Description:** One-sentence plugin description
+    
+    Define 3 clear milestones:
+    
+    **Milestone 1 - MVP (Minimum Viable Product)**
+    - Core features needed for basic functionality
+    - Essential features users cannot live without
+    - Foundation architecture and database schema
+    - Basic admin interface (React/MUI)
+    
+    **Milestone 2 - Parity**
+    - Features to match competitor's core capabilities
+    - Improvements over competitor's weaknesses
+    - Enhanced UX based on competitor's limitations
+    - Complete REST API coverage
+    
+    **Milestone 3 - Differentiation**
+    - Unique features that set us apart from competitor
+    - Advanced functionality competitors lack
+    - Premium features for competitive advantage
+    - Innovation and market leadership features
+    
+    For each milestone, define:
+    - Feature list with clear descriptions
+    - Acceptance criteria (how we know it's done)
+    - Technical requirements and dependencies
+    - Estimated complexity (simple/medium/complex)
+    - Success metrics (how we measure success)
+    
+    **CRITICAL:** You MUST create THREE outputs:
+    1. **FIRST**: outputs/plugin-metadata.json (valid JSON with plugin naming)
+    2. **SECOND**: outputs/product-roadmap.md (comprehensive roadmap)
+    3. **THIRD**: outputs/milestones/*.md (individual milestone files)
+
+  expected_output: >
+    Three files created:
+    
+    1. outputs/plugin-metadata.json, e.g.: 
+    ```json
+    {
+      "name": "Secure ELTA Shipping Manager",
+      "slug": "secure-elta-shipping",
+      "namespace": "SecureELTA",
+      "version": "1.0.0",
+      "author": "Your Development Team",
+      "description": "Modern, secure ELTA courier shipping integration for WooCommerce",
+      "text_domain": "secure-elta-shipping",
+      "requires_wp": "5.8",
+      "requires_php": "7.4",
+      "woocommerce": "5.0"
+    }
+    ```
+    
+    2. outputs/product-roadmap.md:
+    # Product Roadmap - {Plugin Name from metadata}
+    
+    ## Plugin Identity
+    - Name: {name}
+    - Slug: {slug}
+    - Namespace: {namespace}
+    
+    ## Overview
+    - Vision and goals
+    - Target users and use cases
+    - Success criteria
+    
+    ## Milestone Strategy
+    - Milestone 1: MVP features and timeline
+    - Milestone 2: Parity features and timeline
+    - Milestone 3: Differentiation features and timeline
+    
+    ## Feature Prioritization Matrix
+    - High impact + Low effort (do first)
+    - High impact + High effort (plan carefully)
+    - Low impact + Low effort (quick wins)
+    - Low impact + High effort (deprioritize)
+    
+    3. Separate milestone files in outputs/milestones/:
+    - milestone-1-mvp.md (detailed MVP feature specs)
+    - milestone-2-parity.md (detailed parity feature specs)
+    - milestone-3-differentiation.md (detailed differentiation feature specs)
+    
+    Each milestone file should include:
+    - Feature descriptions
+    - Acceptance criteria
+    - Technical requirements
+    - File structure changes needed
+    - Database schema changes
+    - REST API endpoints to create
+    - React components to build
+    - Testing requirements
+
+  agent: product_manager
+  output_file: '../../../outputs/strategy/product-roadmap.md'
+  context:
+    - research_market
+    - analyze_competitor
+
+# ============================================================================
+# CREW 2 TASKS: DEVELOPMENT & QA
+# ============================================================================
+

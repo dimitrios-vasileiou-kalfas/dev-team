@@ -1,0 +1,2 @@
+**  
+**Do not use this plugin on your real website. It has serious security flaws that could lead to data theft, financial loss, or website takeover. Wait for a fix or switch to a safer, trusted alternative.**

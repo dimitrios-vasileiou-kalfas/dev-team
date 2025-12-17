@@ -1,0 +1,750 @@
+# ============================================================================
+# ARCHITECTURE CREW TASKS
+# ============================================================================
+
+read_strategy_outputs:
+  description: >
+    Read and synthesize all strategy outputs to understand requirements.
+    
+    **STEP 1: Read Plugin Metadata**
+    
+    Read: {strategy_outputs_path}/plugin-metadata.json
+    
+    Extract:
+    - Plugin name (from metadata file)
+    - Plugin slug (from metadata file)  
+    - Namespace (from metadata file)
+    - Version (e.g., "1.0.0")
+    - Author
+    
+    This metadata will be used throughout all architecture documents.
+    
+    **STEP 2: Read Technical Analysis**
+    
+    Read: {strategy_outputs_path}/technical-analysis.md
+    
+    Extract:
+    - Competitor's folder structure
+    - AJAX endpoints (count and purposes)
+    - Database schema
+    - Security vulnerabilities found
+    - WSDL files / API integrations
+    - Code quality issues
+    - Architecture problems
+    
+    Identify what to IMPROVE in our design.
+    
+    **STEP 3: Read Market Research**
+    
+    Read: {strategy_outputs_path}/market-research.md
+    
+    Extract:
+    - Target users and pain points
+    - Feature gaps to address
+    - Niche opportunities
+    - Integration requirements
+    
+    Identify features to prioritize in architecture.
+    
+    **STEP 4: Read Product Roadmap**
+    
+    Read: {strategy_outputs_path}/product-roadmap.md
+    
+    Extract:
+    - Milestone 1 (MVP) features
+    - Milestone 2 (Parity) features
+    - Milestone 3 (Differentiation) features
+    - Technical requirements
+    - Acceptance criteria
+    
+    **Focus ONLY on Milestone 1 (MVP)** for initial architecture.
+    
+    **STEP 5: Synthesize Requirements**
+    
+    Create a clear summary of:
+    - What we're building (plugin purpose)
+    - Who it's for (target users)
+    - Core features for MVP
+    - Technical constraints
+    - Security requirements
+    - Integration points (ELTA API, WooCommerce)
+
+  expected_output: >
+    Comprehensive summary document saved to outputs/strategy-summary.md:
+    
+    # Strategy Summary - [Plugin Name]
+    
+    ## Plugin Metadata
+    - Name: [name from plugin-metadata.json]
+    - Slug: [slug from plugin-metadata.json]
+    - Namespace: [namespace from plugin-metadata.json]
+    - Version: [version from plugin-metadata.json]
+    
+    ## Target Users
+    - [List from market research]
+    
+    ## Core Problem to Solve
+    - [From technical analysis and market research]
+    
+    ## Milestone 1 (MVP) Features
+    1. [Feature 1]
+    2. [Feature 2]
+    3. [Feature 3]
+    
+    ## Technical Requirements
+    - WordPress version
+    - PHP version
+    - WooCommerce dependency
+    - ELTA API integration (SOAP)
+    - Database: Custom table for vouchers
+    - Admin UI: React-based
+    
+    ## Security Requirements
+    - Nonce validation on all AJAX endpoints
+    - Input sanitization
+    - Output escaping
+    - Encrypted API credential storage
+    - Capability checks
+    
+    ## Integrations
+    - ELTA SOAP API (6 WSDL files)
+    - WooCommerce orders
+    - WooCommerce admin UI
+    
+    ## Improvements Over Competitor
+    - Modern architecture (namespaces, SOLID)
+    - Proper security (nonces, sanitization)
+    - Test coverage (PHPUnit, Jest)
+    - REST API endpoints
+    - Better error handling
+
+  agent: software_architect
+  output_file: '../../../outputs/architecture/strategy-summary.md'
+
+design_high_level_architecture:
+  description: >
+    Design the high-level system architecture for the WordPress plugin.
+    
+    **STEP 1: Analyze Skeleton Plugin Structure**
+    
+    Read skeleton plugin documentation:
+    - Check for inputs/skeleton-plugin/docs/PROPOSED-PLUGIN-STRUCTURE.md
+    - Check for inputs/skeleton-plugin/docs/*
+    
+    If documentation exists, extract:
+    - Folder organization (includes/, admin/, public/, admin-react/)
+    - Naming conventions (namespace, prefixes)
+    - Architectural patterns (DI, service layer, repositories)
+    - Hook naming conventions
+    - Database table prefix conventions
+    
+    If no documentation, analyze the code:
+    - Use list_directory to see folder structure
+    - Use find_files to locate main files
+    - Read bootstrap file and core classes
+    - Identify patterns and conventions
+    
+    **STEP 2: Design System Components**
+    
+    Define major components:
+    
+    1. **Core Component** (Initialization)
+       - Bootstrap plugin
+       - Load dependencies
+       - Register hooks
+    
+    2. **Admin Component** (WordPress Admin UI)
+       - Menu registration
+       - Settings pages
+       - AJAX handlers
+       - React app integration
+    
+    3. **API Component** (External Integration)
+       - SOAP client wrapper
+       - ELTA API calls
+       - Error handling
+       - Response caching
+    
+    4. **Voucher Component** (Business Logic)
+       - Voucher CRUD operations
+       - Database access
+       - WooCommerce integration
+    
+    5. **Frontend Component** (React Admin UI)
+       - Voucher creation form
+       - Tracking display
+       - Settings interface
+    
+    6. **Database Component**
+       - Table creation/migration
+       - Query builders
+       - Data models
+    
+    **STEP 3: Define Data Flow**
+    
+    Map the user journey:
+    
+    ```
+    User Action (Admin UI)
+      ↓
+    React Component (VoucherForm)
+      ↓
+    REST API Endpoint (/wp-json/secure-elta/v1/vouchers)
+      ↓
+    AJAX Handler (with nonce validation)
+      ↓
+    Voucher Manager (business logic)
+      ↓
+    SOAP Client (ELTA API call)
+      ↓
+    Database (save voucher record)
+      ↓
+    Response back to UI
+    ```
+    
+    **STEP 4: Design Security Architecture**
+    
+    Define security layers:
+    
+    1. **Input Layer**
+       - Nonce validation on all AJAX/REST endpoints
+       - Capability checks (manage_woocommerce)
+       - Input sanitization (sanitize_text_field, absint)
+    
+    2. **Business Logic Layer**
+       - Validation before API calls
+       - Error handling with WP_Error
+       - Logging security events
+    
+    3. **Data Layer**
+       - Prepared statements (wpdb->prepare)
+       - Output escaping (esc_html, esc_attr)
+       - Encrypted credential storage
+    
+    **STEP 5: Design Integration Points**
+    
+    WooCommerce Hooks:
+    - `woocommerce_order_status_completed` → Auto-create voucher
+    - `woocommerce_admin_order_data_after_shipping_address` → Show voucher info
+    - `woocommerce_order_actions` → Add "Create Voucher" action
+    
+    WordPress Hooks:
+    - `admin_menu` → Register admin pages
+    - `rest_api_init` → Register REST endpoints
+    - `admin_enqueue_scripts` → Load React app
+    
+    **STEP 6: Plan Error Handling**
+    
+    Define error handling strategy:
+    - Use WP_Error for all error returns
+    - Log errors with WP_DEBUG_LOG
+    - Show user-friendly error messages
+    - Implement retry logic for API failures
+    - Add admin notices for critical errors
+
+  expected_output: >
+    Comprehensive architecture document saved to outputs/high-level-architecture.md:
+    
+    # High-Level Architecture - [Plugin Name]
+    
+    ## System Overview
+    [Diagram or description of components]
+    
+    ## Component Architecture
+    
+    ### 1. Core Component
+    - Bootstrap: [plugin-slug].php
+    - Core Class: includes/class-core.php
+    - Loader: includes/class-loader.php
+    
+    ### 2. Admin Component
+    - Menu: admin/class-menu.php
+    - AJAX: admin/class-ajax-handler.php
+    - Settings: admin/class-settings.php
+    
+    ### 3. API Component  
+    - SOAP Client: includes/class-soap-client.php
+    - API Wrapper: includes/class-elta-api.php
+    
+    ### 4. Voucher Component
+    - Manager: includes/class-voucher-manager.php
+    - Repository: includes/class-voucher-repository.php
+    
+    ### 5. Frontend Component
+    - React App: admin-react/src/App.jsx
+    - Components: admin-react/src/components/
+    
+    ### 6. Database Component
+    - Schema: includes/class-database.php
+    - Tables: [prefix]_elta_vouchers
+    
+    ## Data Flow
+    [Detailed flow diagrams]
+    
+    ## Security Architecture
+    [Security layers and validation points]
+    
+    ## Integration Points
+    [WooCommerce and WordPress hooks]
+    
+    ## Error Handling Strategy
+    [How errors are caught, logged, and displayed]
+    
+    ## Technology Stack
+    - PHP 7.4+
+    - WordPress 5.8+
+    - WooCommerce 5.0+
+    - React 18
+    - SOAP API integration
+    
+    ## Folder Structure Overview
+    [Brief overview, detailed in folder-structure.json]
+
+  agent: software_architect
+  output_file: '../../../outputs/architecture/high-level-architecture.md'
+  context:
+    - read_strategy_outputs
+
+define_folder_structure:
+  description: >
+    Create the complete folder and file structure in JSON format.
+    
+    **STEP 1: Base Structure on Skeleton Plugin**
+    
+    Use skeleton plugin's structure as foundation:
+    - Respect existing folder organization
+    - Follow naming conventions
+    - Match file naming patterns
+    
+    **STEP 2: Define Plugin Root**
+    
+    Plugin root folder name = slug from plugin-metadata.json
+    Example: "secure-elta-shipping"
+    
+    **STEP 3: List All Folders**
+    
+    Create folders array with:
+    - includes/ (core PHP classes)
+    - admin/ (admin PHP classes)
+    - public/ (frontend PHP classes)
+    - admin-react/ (React admin UI)
+    - admin-react/src/
+    - admin-react/src/components/
+    - admin-react/src/services/
+    - admin-react/src/utils/
+    - tests/ (PHPUnit tests)
+    - tests/unit/
+    - tests/integration/
+    - assets/
+    - assets/css/
+    - assets/js/
+    - languages/
+    - webservice/ (WSDL files if needed)
+    
+    **STEP 4: List All Files**
+    
+    For EACH file, specify:
+    - path: Relative path from plugin root
+    - type: bootstrap | php-class | react-component | asset | config | test
+    - purpose: Brief description of what it does
+    - spec_file: Path to specification document (if applicable)
+    
+    Example files to include:
+    
+    Bootstrap:
+    - [plugin-slug].php (main plugin file)
+    - uninstall.php
+    - readme.txt
+    
+    Core Classes (includes/):
+    - class-core.php
+    - class-loader.php
+    - class-activator.php
+    - class-deactivator.php
+    - class-i18n.php
+    - class-database.php
+    - class-soap-client.php
+    - class-elta-api.php
+    - class-voucher-manager.php
+    - class-voucher-repository.php
+    
+    Admin Classes (admin/):
+    - class-menu.php
+    - class-ajax-handler.php
+    - class-settings.php
+    - class-rest-api.php
+    
+    Public Classes (public/):
+    - class-public.php
+    - class-shortcodes.php
+    
+    React Components (admin-react/src/components/):
+    - VoucherForm.jsx
+    - VoucherList.jsx
+    - TrackingDisplay.jsx
+    - SettingsPage.jsx
+    
+    Tests (tests/):
+    - test-voucher-manager.php
+    - test-soap-client.php
+    - test-ajax-handler.php
+    
+    **STEP 5: Map Specs to Files**
+    
+    For each PHP class and React component, reference its spec file:
+    - PHP class → specs/backend/class-name.md
+    - React component → specs/frontend/component-name.md
+    
+    **STEP 6: Generate Valid JSON**
+    
+    Ensure JSON is:
+    - Valid (parseable)
+    - Complete (all files listed)
+    - Accurate (follows skeleton conventions)
+    - Actionable (Development Crew can use directly)
+
+  expected_output: >
+    Complete folder structure in JSON format saved to outputs/folder-structure.json:
+    
+    ```json
+    {
+      "plugin_root": "secure-elta-shipping",
+      "plugin_metadata": {
+        "name": "Secure ELTA Shipping Manager",
+        "slug": "secure-elta-shipping",
+        "namespace": "SecureELTA",
+        "version": "1.0.0",
+        "text_domain": "secure-elta-shipping",
+        "requires_wp": "5.8",
+        "requires_php": "7.4",
+        "woocommerce": "5.0"
+      },
+      "folders": [
+        "includes/",
+        "admin/",
+        "public/",
+        "admin-react/",
+        "admin-react/src/",
+        "admin-react/src/components/",
+        "tests/",
+        "assets/css/",
+        "assets/js/",
+        "languages/"
+      ],
+      "files": [
+        {
+          "path": "secure-elta-shipping.php",
+          "type": "bootstrap",
+          "purpose": "Main plugin file, loads core class",
+          "spec_file": null
+        },
+        {
+          "path": "includes/class-core.php",
+          "type": "php-class",
+          "purpose": "Core plugin initialization and dependency management",
+          "spec_file": "specs/backend/class-core.md"
+        },
+        {
+          "path": "includes/class-voucher-manager.php",
+          "type": "php-class",
+          "purpose": "Voucher CRUD operations and business logic",
+          "spec_file": "specs/backend/class-voucher-manager.md"
+        },
+        {
+          "path": "admin-react/src/components/VoucherForm.jsx",
+          "type": "react-component",
+          "purpose": "Voucher creation form with validation",
+          "spec_file": "specs/frontend/component-voucher-form.md"
+        }
+      ]
+    }
+    ```
+    
+    Validate JSON structure before saving.
+
+  agent: software_architect
+  output_file: '../../../outputs/architecture/folder-structure.json'
+  context:
+    - read_strategy_outputs
+    - design_high_level_architecture
+
+create_backend_specs:
+  description: >
+    Create detailed specifications for each PHP class.
+    
+    **STEP 1: Read folder-structure.json**
+    
+    Extract all files where type = "php-class"
+    
+    For each PHP class file, create a specification document.
+    
+    **STEP 2: For Each PHP Class, Create Spec**
+    
+    Specification template:
+    
+    ```markdown
+    # Class: ClassName
+    
+    **File:** `path/to/class-name.php`
+    **Namespace:** `[Namespace]\Folder`
+    **Purpose:** [Brief description]
+    
+    ## Dependencies
+    - [List other classes, WordPress functions, external libraries]
+    
+    ## Properties
+    ```php
+    private Type $property_name;
+    ```
+    
+    ## Methods
+    
+    ### `methodName(Type $param): ReturnType`
+    **Purpose:** [What it does]
+    **Parameters:**
+    - `$param` (Type): Description
+    
+    **Returns:**
+    - `ReturnType`: Description
+    
+    **Logic:**
+    1. Step 1
+    2. Step 2
+    3. Step 3
+    
+    **Security:**
+    - Input validation requirements
+    - Capability checks
+    - Sanitization needs
+    
+    **Error Handling:**
+    - What errors can occur
+    - How to handle them
+    
+    ## Database Interactions
+    - Tables used
+    - Queries performed
+    - Prepared statements required
+    
+    ## Hooks & Filters
+    - Hooks registered: add_action(...), add_filter(...)
+    - Custom hooks provided: do_action(...), apply_filters(...)
+    
+    ## Security Requirements
+    1. Nonce validation (if AJAX handler)
+    2. Capability checks
+    3. Input sanitization
+    4. Output escaping
+    5. SQL injection prevention
+    
+    ## Testing Requirements
+    - PHPUnit test cases needed
+    - Mock objects required
+    - Edge cases to test
+    
+    ## Example Usage
+    ```php
+    // Example code
+    ```
+    
+    ## Future Enhancements
+    - Potential improvements
+    ```
+    
+    **STEP 3: Priority Classes**
+    
+    Create specs in this order:
+    1. class-core.php (main initialization)
+    2. class-loader.php (hook management)
+    3. class-database.php (schema)
+    4. class-soap-client.php (API integration)
+    5. class-voucher-manager.php (business logic)
+    6. class-ajax-handler.php (AJAX endpoints)
+    7. class-rest-api.php (REST endpoints)
+    8. Other classes as needed
+    
+    **STEP 4: Ensure Consistency**
+    
+    All specs should:
+    - Use same namespace prefix
+    - Follow same security patterns
+    - Use same error handling approach
+    - Reference skeleton plugin conventions
+    - Include comprehensive test requirements
+
+  expected_output: >
+    Multiple specification files in outputs/specs/backend/:
+    
+    - class-core.md
+    - class-loader.md  
+    - class-database.md
+    - class-soap-client.md
+    - class-elta-api.md
+    - class-voucher-manager.md
+    - class-voucher-repository.md
+    - class-ajax-handler.md
+    - class-rest-api.md
+    - class-menu.md
+    - class-settings.md
+    
+    Each file follows the specification template with:
+    - Complete method signatures
+    - Detailed implementation logic
+    - Security requirements
+    - Testing requirements
+    - Code examples
+    
+    Minimum 8-12 backend class specifications created.
+
+  agent: software_architect
+  output_file: 'outputs/specs/backend/'
+  context:
+    - read_strategy_outputs
+    - design_high_level_architecture
+    - define_folder_structure
+
+create_frontend_specs:
+  description: >
+    Create detailed specifications for each React component.
+    
+    **STEP 1: Read folder-structure.json**
+    
+    Extract all files where type = "react-component"
+    
+    For each React component, create a specification document.
+    
+    **STEP 2: For Each React Component, Create Spec**
+    
+    Specification template:
+    
+    ```markdown
+    # Component: ComponentName
+    
+    **File:** `admin-react/src/components/ComponentName.jsx`
+    **Purpose:** [Brief description]
+    
+    ## Props
+    ```typescript
+    interface ComponentNameProps {
+      propName: PropType;
+    }
+    ```
+    
+    ## State
+    ```typescript
+    const [stateName, setStateName] = useState<Type>(initialValue);
+    ```
+    
+    ## Hooks
+    
+    ### useEffect
+    - When it runs
+    - What it does
+    - Dependencies
+    
+    ### Custom Hooks
+    - useFetch, useForm, etc.
+    
+    ## API Integration
+    
+    **Endpoint:** `POST /wp-json/secure-elta/v1/endpoint`
+    
+    **Request:**
+    ```json
+    {
+      "field": "value"
+    }
+    ```
+    
+    **Response:**
+    ```json
+    {
+      "data": {}
+    }
+    ```
+    
+    ## UI Components
+    - WordPress components used (@wordpress/components)
+    - Material-UI components
+    - Custom components
+    
+    ## Validation
+    - Form validation rules
+    - Error messages
+    
+    ## Error Handling
+    - API errors
+    - Network errors
+    - User feedback
+    
+    ## Styling
+    - CSS approach (CSS modules, styled-components)
+    - Responsive design
+    - WordPress admin theme integration
+    
+    ## Accessibility
+    - ARIA labels
+    - Keyboard navigation
+    - Screen reader support
+    
+    ## Testing Requirements
+    - Jest unit tests
+    - React Testing Library tests
+    - User interaction tests
+    - API mocking
+    
+    ## Example Usage
+    ```jsx
+    <ComponentName propName="value" />
+    ```
+    
+    ## Future Enhancements
+    - Potential improvements
+    ```
+    
+    **STEP 3: Priority Components**
+    
+    Create specs in this order:
+    1. App.jsx (main app wrapper)
+    2. VoucherForm.jsx (voucher creation)
+    3. VoucherList.jsx (voucher management)
+    4. TrackingDisplay.jsx (tracking info)
+    5. SettingsPage.jsx (plugin settings)
+    6. Other components as needed
+    
+    **STEP 4: Ensure Consistency**
+    
+    All specs should:
+    - Use WordPress components where possible
+    - Follow React best practices
+    - Include proper TypeScript types
+    - Have comprehensive test requirements
+    - Include accessibility considerations
+
+  expected_output: >
+    Multiple specification files in outputs/specs/frontend/:
+    
+    - component-app.md
+    - component-data-form.md
+    - component-data-list.md
+    - component-details-display.md
+    - component-settings-page.md
+    
+    Each file follows the specification template with:
+    - Complete prop definitions
+    - State management approach
+    - API integration details
+    - Validation rules
+    - Testing requirements
+    - Code examples
+    
+    Minimum 5-8 frontend component specifications created.
+
+  agent: software_architect
+  output_file: 'outputs/specs/frontend/'
+  context:
+    - read_strategy_outputs
+    - design_high_level_architecture
+    - define_folder_structure
+    - create_backend_specs
+

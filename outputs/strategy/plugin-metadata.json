@@ -1,0 +1,13 @@
+{
+  "name": "Secure ELTA Shipping Manager",
+  "slug": "secure-elta-shipping",
+  "namespace": "SecureELTA",
+  "version": "1.0.0",
+  "author": "Your Development Team",
+  "description": "Modern, secure ELTA courier shipping integration for WooCommerce with improved architecture and security",
+  "text_domain": "secure-elta-shipping",
+  "requires_wp": "5.8",
+  "requires_php": "7.4",
+  "woocommerce": "5.0"
+}
+
