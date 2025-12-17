@@ -14,6 +14,7 @@ run_crew = "dev_team.main:run"
 train = "dev_team.main:train"
 replay = "dev_team.main:replay"
 test = "dev_team.main:test"
+full_analysis = "run_full_analysis:main"
 
 [build-system]
 requires = ["hatchling"]

@@ -1,593 +1,18 @@
-# ============================================================================
-# CREW 1 TASKS: STRATEGY & PLANNING
-# ============================================================================
-
-research_market:
-  description: >
-    Research the WordPress plugin market and user needs for plugins similar to the
-    competitor plugin at {competitor_plugin_path}.
-    
-    Your mission is to understand USERS, the MARKET, NICHE OPPORTUNITIES, and LOCALIZATION
-    needs - not technical implementation. Focus on business opportunities, user pain points,
-    feature demand, and especially UNDERSERVED MARKETS and REGIONAL OPPORTUNITIES.
-    
-    Research and analyze:
-    
-    1. **WordPress.org Plugin Directory Research**
-       - Find the competitor plugin on WordPress.org
-       - Read ALL user reviews (especially 1-3 star reviews for pain points)
-       - Analyze support forum topics and recurring issues
-       - Track feature requests in support threads
-       - Note what users love and what frustrates them
-       - Look for patterns in review languages (Greek, Spanish, etc.) indicating regional demand
-    
-    2. **Niche Market & Vertical Identification** 🎯 CRITICAL
-       - Identify SPECIFIC INDUSTRIES using this type of plugin:
-         * eCommerce stores (general, fashion, electronics, food, Greek eshops, etc.)
-         * Real estate agencies
-         * Healthcare providers
-         * Educational institutions
-         * Professional services (lawyers, accountants, consultants)
-         * Hospitality (hotels, restaurants, tourism)
-         * Non-profits and NGOs
-         * Media and publishing
-       
-       - For each industry, identify SPECIFIC NEEDS:
-         * Compliance requirements (GDPR, HIPAA, industry regulations)
-         * Workflow patterns unique to that industry
-         * Terminology and jargon specific to that field
-         * Reporting requirements
-         * Integration needs with industry-specific tools
-       
-       - Find UNDERSERVED NICHES:
-         * Industries with high demand but poor plugin support
-         * Verticals where competitors don't specialize
-         * Market segments competitors ignore
-    
-    3. **Localization & Regional Opportunities** 🌍 CRITICAL
-       - Analyze REGIONAL/COUNTRY-SPECIFIC NEEDS:
-         * Greek market: ELTA shipping, Piraeus Bank payment gateway, Greek tax system (FPA/ΦΠΑ),
-           AADE myDATA integration, Greek invoicing requirements, Efood/Wolt integrations
-         * German market: DHL, Deutsche Post, German tax rules, invoicing standards
-         * UK market: Royal Mail, UK VAT, Sage integration
-         * US market: USPS, UPS, FedEx, US sales tax, state-specific requirements
-         * EU market: GDPR compliance, EU VAT MOSS, cross-border shipping
-       
-       - Identify LOCALIZATION GAPS:
-         * Missing translations (not just UI, but documentation, support)
-         * Unsupported payment gateways (regional banks, local payment methods)
-         * Missing shipping providers (local couriers)
-         * Currency and number format issues
-         * Date/time format preferences
-         * Legal/compliance features for specific countries
-         * Cultural preferences (UI patterns, color meanings, business etiquette)
-       
-       - Find REGIONAL PAIN POINTS:
-         * "Plugin doesn't support [country-specific service]"
-         * "Translation is poor/incomplete"
-         * "Doesn't follow [country] tax rules"
-         * "Can't generate invoices for [country] regulations"
-    
-    4. **Competitive Landscape Analysis**
-       - Identify 5-10 competing plugins solving similar problems
-       - Compare feature sets across competitors
-       - Find gaps that NO competitor addresses well
-       - Identify competitors specializing in specific niches/regions
-       - Note which niches have NO specialized solutions
-       - Check if competitors support specific markets (Greek market, healthcare, etc.)
-       - Identify underserved user segments or use cases
-       - Note unique features competitors have
-    
-    5. **User Community Research** (if possible to access)
-       - Search WordPress forums for discussions about this plugin category
-       - Look for Reddit discussions (r/Wordpress, r/webdev) about similar plugins
-       - Check Facebook WordPress groups for user questions
-       - Find Twitter/X discussions and complaints
-       - Review YouTube comments on tutorial videos
-    
-    6. **Pain Point Identification**
-       - What problems do users complain about most?
-       - What workflows are broken or inefficient?
-       - What integrations are missing that users request?
-       - What learning curve issues do users face?
-       - What performance or reliability issues are mentioned?
-       - What regional/niche-specific problems exist?
-    
-    7. **Feature Demand Analysis**
-       - Most requested features across all sources
-       - Features users say would make them switch plugins
-       - "Wish list" items mentioned repeatedly
-       - Integration requests (other tools/services)
-       - Advanced features power users want
-       - Niche-specific features requested
-       - Localization features needed (country-specific integrations)
-    
-    8. **Market Trends & Opportunities**
-       - Emerging WordPress features (Full Site Editing, Blocks API)
-       - Industry trends affecting target users
-       - New use cases gaining popularity
-       - Shifts in user behavior or expectations
-       - Regulatory or compliance requirements (GDPR, accessibility)
-       - Regional market growth (e.g., Greek eCommerce boom, Eastern European expansion)
-
-  expected_output: >
-    Comprehensive market research report saved to outputs/analysis/market-research.md:
-    
-    # Market Research Report - [Plugin Category]
-    
-    ## Executive Summary
-    - Target market size and growth
-    - Key user segments identified (beginners, professionals, agencies, etc.)
-    - **Identified niche markets and verticals**
-    - **Regional/localization opportunities**
-    - Top 5 unmet needs and opportunities
-    - Market positioning recommendation
-    
-    ## User Feedback Analysis
-    ### Competitor Plugin Reviews
-    - Review sentiment breakdown (positive vs negative themes)
-    - Common complaints with direct quotes from users
-    - Most praised features and why users love them
-    - Deal-breaker issues causing users to leave
-    
-    ### Support Forum Insights
-    - Top 10 most discussed issues/questions
-    - Recurring problems users face
-    - Feature requests mentioned multiple times
-    - Workarounds users have to implement
-    
-    ### Feature Request Patterns
-    - Most requested features (frequency count)
-    - Integrations users want
-    - UX improvements suggested
-    - Advanced capabilities requested
-    
-    ## Competitive Landscape
-    ### Direct Competitors
-    - List of 5-10 competing plugins with install counts
-    - Feature comparison matrix
-    - Pricing comparison (if applicable)
-    - User satisfaction scores
-    
-    ### Market Gaps
-    - Features NO competitor does well
-    - Underserved user segments
-    - Use cases poorly addressed
-    - Integration opportunities
-    
-    ### Competitive Advantages to Target
-    - Where competitors are weak
-    - What users wish competitors had
-    - Differentiation opportunities
-    
-    ## User Pain Points (Prioritized)
-    ### Critical Pain Points (affecting most users)
-    1. [Pain point with user quotes and frequency]
-    2. [Pain point with user quotes and frequency]
-    
-    ### Major Pain Points (affecting many users)
-    1. [Pain point description]
-    2. [Pain point description]
-    
-    ### Minor Pain Points (nice to solve)
-    1. [Pain point description]
-    
-    ## Identified Opportunities
-    ### High-Value Features (High Demand + Low Competition)
-    - Feature ideas that many users want but few competitors offer
-    - Estimated user impact for each
-    
-    ### Differentiation Opportunities
-    - Unique angles no competitor is pursuing
-    - Niche markets underserved
-    - Innovation possibilities
-    
-    ### Integration Opportunities
-    - Most requested integrations
-    - Strategic partnerships possible
-    - API connections needed
-    
-    ## Recommended Features by Priority
-    ### Must-Have (Table Stakes)
-    - Features every plugin in this category needs
-    - Features users expect as baseline
-    
-    ### High-Value Differentiators
-    - Features that would make users choose us over competitors
-    - Features with high demand but low availability
-    - Features that solve major pain points
-    
-    ### Nice-to-Have Enhancements
-    - Polish and quality-of-life improvements
-    - Advanced features for power users
-    
-    ### Innovation Opportunities
-    - Cutting-edge features no one else has
-    - Future-looking capabilities
-    
-    ## Target User Personas
-    - Description of 3-5 key user types
-    - Their specific needs and pain points
-    - Features most valuable to each persona
-    
-    ## Market Positioning Recommendation
-    - Recommended positioning statement
-    - Key differentiators to emphasize
-    - Target user segment to focus on first
-    
-    ## Niche Market Analysis 🎯 NEW SECTION
-    ### Industry Verticals Identified
-    - List of specific industries using this plugin type
-    - Market size and growth for each vertical
-    - Unique needs per vertical
-    
-    ### Underserved Niches
-    - Industries with high demand but poor support
-    - Specific pain points in each niche
-    - Opportunity size estimation
-    - Competitive gaps in niche markets
-    
-    ### Vertical-Specific Requirements
-    For each major niche:
-    - Industry-specific workflows
-    - Compliance and regulatory needs
-    - Required integrations (industry tools)
-    - Terminology and customization needs
-    
-    ## Localization & Regional Opportunities 🌍 NEW SECTION
-    ### Regional Market Analysis
-    For each significant region/country:
-    - Market size and growth potential
-    - Language and translation status
-    - Local competition landscape
-    - Regional pain points
-    
-    ### Country-Specific Requirements
-    **Greek Market** (if applicable):
-    - ELTA shipping integration needs
-    - Greek payment gateways (Piraeus, Alpha Bank, etc.)
-    - Greek tax system requirements (ΦΠΑ)
-    - AADE myDATA integration requirements
-    - Greek invoicing standards
-    - Local marketplace integrations (Efood, Wolt, Skroutz, etc.)
-    - Translation quality issues
-    
-    **Other Markets** (Germany, UK, US, etc.):
-    - Country-specific shipping providers
-    - Local payment gateways
-    - Tax and invoicing requirements
-    - Regulatory compliance needs
-    - Cultural considerations
-    
-    ### Localization Gaps
-    - Missing or poor translations
-    - Unsupported regional services
-    - Compliance gaps by country
-    - Cultural adaptation needs
-    
-    ### Regional Competitive Advantages
-    - Markets where competitors are weak
-    - Regions with no specialized solutions
-    - Localization opportunities for quick wins
-
-  agent: market_researcher
-  output_file: 'outputs/analysis/market-research.md'
-
-analyze_competitor:
-  description: >
-    Perform TECHNICAL analysis of the competitor plugin/extension at {competitor_plugin_path}.
-
-    **THIS TASK RUNS FIRST** - Your analysis will inform the Market Researcher about what this
-    product actually does and what problems it solves.
-
-    **STEP 1: Understand the Product Purpose**
-
-    Before diving into code, understand:
-    - What problem does this plugin solve?
-    - Who is the target user? (Greek eCommerce stores, Real estate agents, etc.)
-    - What is the core functionality? (e.g., "Creates ELTA courier vouchers for WooCommerce orders")
-    - What market/niche does it serve? (e.g., "Greek WooCommerce stores shipping with ELTA")
-
-    Read:
-    - Main plugin file header (plugin description, tags, author)
-    - README.md or readme.txt
-    - Any documentation files
-
-    Write a clear summary:
-    "This plugin is designed for [TARGET USERS] to solve [PROBLEM] by providing [CORE FUNCTIONALITY].
-    It serves the [MARKET/NICHE] market."
-
-    Example:
-    "This plugin is designed for Greek WooCommerce store owners to solve ELTA shipping integration
-    by providing automated voucher creation through ELTA's webservice. It serves the Greek eCommerce
-    market, specifically stores using ELTA courier service."
-
-    **STEP 2: Identify Platform & Technology Stack**
-
-    First, determine what you're analyzing:
-    - **Platform**: WordPress, Shopify, WooCommerce, Magento, custom platform?
-    - **Backend language**: PHP, Ruby, Python, Node.js, Go?
-    - **Frontend**: React, Vue, Liquid templates, Twig, vanilla JS?
-    - **Framework**: Laravel, Rails, Express, Django?
-    - **Package manager**: Composer, npm, Bundler, pip?
-
-    Look for clues:
-    - WordPress: `wp-content/plugins/`, PHP files with WordPress headers, `functions.php`
-    - Shopify: `liquid` templates, `theme.liquid`, Shopify API calls
-    - Node.js: `package.json`, `node_modules/`
-    - Ruby: `Gemfile`, `.rb` files
-    - Python: `requirements.txt`, `.py` files
-
-    **STEP 2: Read the Actual Plugin Code**
-
-    Navigate to {competitor_plugin_path} and read the actual files (adapt to platform):
-
-    For ANY platform:
-    - Main entry file (plugin initialization)
-    - Configuration files (package.json, composer.json, Gemfile, requirements.txt)
-    - README, CHANGELOG, documentation
-
-    For Backend code:
-    - Class/module files (OOP structure, business logic)
-    - Database models or schema files
-    - API integration files
-    - Background job/webhook handlers
-    - Authentication/authorization logic
-
-    For Frontend code:
-    - Templates (Liquid, Twig, Blade, JSX, Vue)
-    - JavaScript files (components, state management)
-    - Stylesheets (CSS, SCSS, Tailwind)
-    - Asset build configuration
-
-    For Testing:
-    - Unit test files (PHPUnit, RSpec, Jest, pytest)
-    - Integration tests
-    - E2E tests (Cypress, Playwright, Selenium)
-
-    **STEP 3: Analyze Technical Implementation (Platform-Specific)**
-
-    Adapt your analysis to the platform:
-
-    ### For WordPress Plugins:
-    - Hook and filter usage
-    - Custom post types and taxonomies
-    - Database schema (custom tables)
-    - REST API or GraphQL endpoints
-    - Gutenberg block implementation
-    - Admin interface (React, vanilla JS)
-
-    ### For Shopify Apps:
-    - Liquid template usage
-    - Shopify API integration (REST, GraphQL)
-    - Webhook handling
-    - App bridge implementation
-    - Metafields usage
-    - Theme app extensions
-
-    ### For Any Platform:
-    1. **Code Architecture**
-       - OOP/functional patterns
-       - Design patterns used
-       - SOLID principles adherence
-       - Separation of concerns
-       - Code organization
-
-    2. **Code Quality**
-       - Coding standards compliance
-       - Code complexity and readability
-       - Documentation quality
-       - Error handling
-       - Type safety (TypeScript, PHP types, etc.)
-
-    3. **Security**
-       - Input validation and sanitization
-       - Output escaping
-       - Authentication/authorization
-       - API key/secret handling
-       - CSRF/XSS protection
-       - Injection prevention
-
-    4. **Performance**
-       - Database query optimization
-       - API call efficiency
-       - Caching strategies
-       - Asset optimization (minification, lazy loading)
-       - Background job usage
-
-    5. **Integration Quality**
-       - Platform API usage (correct methods, best practices)
-       - Webhook reliability
-       - Error handling for external services
-       - Rate limiting handling
-
-    6. **Testing**
-       - Test coverage
-       - Test quality and completeness
-       - CI/CD setup
-
-    **STEP 4: Identify Opportunities**
-
-    Based on what you found:
-    - Technical debt and code smells
-    - Architectural weaknesses
-    - Platform-specific features not being used
-    - Security vulnerabilities
-    - Performance bottlenecks
-    - Missing tests
-    - Poor error handling
-    - Outdated dependencies
-    - Better implementation approaches
-    
-    Your mission is to analyze the CODE and TECHNICAL IMPLEMENTATION, not user feedback
-    or market positioning (that's handled by the Market Researcher).
-
-  expected_output: >
-    Detailed technical analysis report saved to outputs/analysis/technical-analysis.md containing:
-    
-    # Technical Analysis Report - Competitor Plugin
-    
-    ## Executive Summary
-    - Overall code quality score (1-10)
-    - Architecture assessment
-    - Key technical strengths
-    - Major technical weaknesses
-    - Technical differentiation opportunities
-    
-    ## Code Structure & Architecture
-    - File organization and structure
-    - Use of design patterns
-    - OOP implementation quality
-    - SOLID principles adherence
-    - Code modularity and reusability
-    
-    ## WordPress Integration
-    - Hook and filter implementation
-    - WordPress Coding Standards compliance
-    - Database design and queries
-    - REST API implementation
-    - Security implementations (nonces, sanitization, capability checks)
-    
-    ## Frontend Implementation (if applicable)
-    - React/JavaScript architecture
-    - Admin interface implementation
-    - Asset management and optimization
-    - UI/UX technical implementation
-    
-    ## Technical Debt & Issues
-    - Code quality problems
-    - Performance bottlenecks
-    - Security vulnerabilities
-    - Scalability concerns
-    - Maintenance challenges
-    
-    ## Testing & Quality Assurance
-    - Test coverage analysis
-    - Testing methodology used
-    - Quality assurance gaps
-    
-    ## Technical Opportunities
-    - Areas where our implementation can be superior
-    - Performance optimization opportunities
-    - Modern WordPress features we can leverage
-    - Better architectural approaches
-    - Technical innovations possible
-    
-    ## Implementation Recommendations
-    - Technical improvements to prioritize
-    - Architectural decisions to make differently
-    - Technologies/frameworks to use
-    - Best practices to follow
-
-  agent: competitor_analyst
-  output_file: 'outputs/analysis/technical-analysis.md'
-
-create_roadmap:
-  description: >
-    Create a comprehensive, milestone-based product roadmap by synthesizing insights from
-    BOTH the market research report and the technical analysis report.
-    
-    Your job is to balance:
-    - USER NEEDS (from market research): What users want and need
-    - TECHNICAL FEASIBILITY (from technical analysis): What's technically possible and how
-    - COMPETITIVE POSITIONING: How to differentiate from competitors
-    - BUSINESS VALUE: Maximum impact with reasonable effort
-    
-    Synthesis approach:
-    1. Review market research findings (user pain points, feature requests, market gaps)
-    2. Review technical analysis findings (technical opportunities, constraints, improvements)
-    3. Identify features that address BOTH user needs AND technical opportunities
-    4. Prioritize based on user impact × technical feasibility × competitive advantage
-    
-    Define 3 clear milestones:
-    
-    **Milestone 1 - MVP (Minimum Viable Product)**
-    - Core features needed for basic functionality
-    - Essential features users cannot live without
-    - Foundation architecture and database schema
-    - Basic admin interface (React/MUI)
-    
-    **Milestone 2 - Parity**
-    - Features to match competitor's core capabilities
-    - Improvements over competitor's weaknesses
-    - Enhanced UX based on competitor's limitations
-    - Complete REST API coverage
-    
-    **Milestone 3 - Differentiation**
-    - Unique features that set us apart from competitor
-    - Advanced functionality competitors lack
-    - Premium features for competitive advantage
-    - Innovation and market leadership features
-    
-    For each milestone, define:
-    - Feature list with clear descriptions
-    - Acceptance criteria (how we know it's done)
-    - Technical requirements and dependencies
-    - Estimated complexity (simple/medium/complex)
-    - Success metrics (how we measure success)
-
-  expected_output: >
-    Two files created:
-    
-    1. outputs/analysis/product-roadmap.md:
-    # Product Roadmap
-    
-    ## Overview
-    - Vision and goals
-    - Target users and use cases
-    - Success criteria
-    
-    ## Milestone Strategy
-    - Milestone 1: MVP features and timeline
-    - Milestone 2: Parity features and timeline
-    - Milestone 3: Differentiation features and timeline
-    
-    ## Feature Prioritization Matrix
-    - High impact + Low effort (do first)
-    - High impact + High effort (plan carefully)
-    - Low impact + Low effort (quick wins)
-    - Low impact + High effort (deprioritize)
-    
-    2. Separate milestone files in outputs/analysis/milestones/:
-    - milestone-1-mvp.md (detailed MVP feature specs)
-    - milestone-2-parity.md (detailed parity feature specs)
-    - milestone-3-differentiation.md (detailed differentiation feature specs)
-    
-    Each milestone file should include:
-    - Feature descriptions
-    - Acceptance criteria
-    - Technical requirements
-    - File structure changes needed
-    - Database schema changes
-    - REST API endpoints to create
-    - React components to build
-    - Testing requirements
-
-  agent: product_manager
-  output_file: 'outputs/analysis/product-roadmap.md'
-  context:
-    - research_market
-    - analyze_competitor
-
-# ============================================================================
-# CREW 2 TASKS: DEVELOPMENT & QA
-# ============================================================================
-
 design_architecture:
   description: >
     Design the comprehensive technical architecture for Milestone {current_milestone} by:
     1. Reading the approved Product Roadmap (from Product Manager)
     2. Understanding the skeleton plugin structure (from {skeleton_plugin_path})
     3. Creating a detailed technical specification that bridges business requirements with implementation
-
+    
     **YOUR MISSION:** Create a complete architectural blueprint that allows Backend and Frontend
     developers to work independently while building a cohesive system. This specification is the
     "contract" between PM's vision and developers' implementation.
-
+    
     **STEP 1: Review Product Roadmap & Requirements**
-
+    
     Read the approved milestone file: `outputs/analysis/milestones/milestone-{current_milestone}.md`
-
+    
     Extract:
     - Feature list and descriptions
     - Acceptance criteria
@@ -601,28 +26,28 @@ design_architecture:
        - {skeleton_plugin_path}/ARCHITECTURE.md
        - {skeleton_plugin_path}/README.md
        - {skeleton_plugin_path}/docs/
-
+    
     B. If no docs, analyze the code:
        - Folder structure (includes/, src/, admin-react/)
        - Existing PHP classes and patterns
        - React component organization
        - Naming conventions (namespaces, prefixes)
        - Current patterns (DI, hooks, state management)
-
+    
     **STEP 3: Design the Complete Architecture**
-
+    
     Create a detailed technical specification that includes:
-
+    
     ### A. System Architecture Overview
     - High-level component diagram
     - Data flow: User → Frontend → REST API → Backend → Database
     - Module responsibilities and boundaries
     - Integration points between components
-
+    
     ### B. Backend Architecture (PHP)
-
+    
     **For EACH feature in the milestone, specify:**
-
+    
     1. **PHP Class Structure**
        - Exact file path: `src/admin/class-{feature-name}.php`
        - Class name, namespace, extends/implements
@@ -635,13 +60,13 @@ design_architecture:
        - Filters to implement: `add_filter('filter_name', [$this, 'method'])`
        - Custom post types: `register_post_type('cpt_name', $args)`
        - Taxonomies: `register_taxonomy('tax_name', $post_type, $args)`
-
+    
     3. **Database Schema** (if needed)
        - Table name: `{wpdb->prefix}plugin_table_name`
        - Columns with types: `id INT(11) AUTO_INCREMENT, name VARCHAR(255), ...`
        - Indexes and foreign keys
        - Migration strategy
-
+    
     4. **REST API Endpoints**
        - Route: `/wp-json/plugin-namespace/v1/resource`
        - Method: GET, POST, PUT, DELETE
@@ -649,38 +74,38 @@ design_architecture:
        - Response structure: `{ success: bool, data: {...}, error: string }`
        - Permission callback: `current_user_can('capability')`
        - Nonce validation requirements
-
+    
     ### C. Frontend Architecture (React)
-
+    
     **For EACH feature, specify:**
-
+    
     1. **Component Structure**
        - Page component: `admin-react/src/pages/FeatureName.jsx`
        - Child components: `admin-react/src/components/FeatureComponent.jsx`
        - Component props interface: `{ propName: PropType, ... }`
        - State needed: `useState<Type>(initialValue)`
-
+    
     2. **API Integration**
        - Custom hook: `admin-react/src/hooks/useFeatureData.js`
        - API calls: `fetch('/wp-json/plugin/v1/endpoint', { method, body })`
        - Error handling: try/catch with user feedback
        - Loading states: `isLoading`, `isError`, `isSuccess`
-
+    
     3. **Material-UI Components**
        - Which MUI components to use: `Button, TextField, Dialog, DataGrid, etc.`
        - Layout structure: `<Container><Grid><Paper>...`
        - Form handling: `useForm()` or controlled components
        - Validation: client-side validation rules
-
+    
     4. **Routing**
        - Route path: `/admin.php?page=plugin-page#/feature`
        - Navigation: `<Link to="/feature">Feature</Link>`
        - Route guards: permission checks
-
+    
     ### D. Data Flow & Contracts
-
+    
     **Define the "contract" between BE and FE:**
-
+    
     1. **API Data Structures**
        ```typescript
        // What Backend sends
@@ -690,14 +115,14 @@ design_architecture:
          status: 'active' | 'inactive';
          createdAt: string;  // ISO format
        }
-
+       
        // What Frontend sends
        interface FeatureRequest {
          name: string;
          config: { key: value };
        }
        ```
-
+    
     2. **Error Response Format**
        ```json
        {
@@ -709,14 +134,14 @@ design_architecture:
          }
        }
        ```
-
+    
     3. **State Management**
        - Where data lives (Context, local state, URL params)
        - When to refetch data
        - Cache invalidation strategy
-
+    
     ### E. File Structure Changes
-
+    
     **Backend Files to Create:**
     ```
     includes/
@@ -730,7 +155,7 @@ design_architecture:
       models/
         class-{feature}.php               # Data model
     ```
-
+    
     **Frontend Files to Create:**
     ```
     admin-react/src/
@@ -746,23 +171,23 @@ design_architecture:
       utils/
         {feature}Api.js                   # API client
     ```
-
+    
     ### F. Testing Requirements
-
+    
     **Backend Tests:**
     - `tests/php/test-class-{feature}.php` - Unit tests for each class
     - Test scenarios: CRUD operations, validation, permissions
     - Mock WordPress functions with Brain Monkey
-
+    
     **Frontend Tests:**
     - `{Component}.test.jsx` co-located with components
     - Test rendering, user interactions, API integration
     - Mock API calls with MSW or jest.mock
-
+    
     **E2E Tests:**
     - `tests/e2e/{feature}.spec.js` - User workflow tests
     - Test happy path and error scenarios
-
+    
     ### G. Security Considerations
     
     **Backend:**
@@ -788,7 +213,7 @@ design_architecture:
     ✅ REST API endpoint specifications
     ✅ Data validation rules
     ✅ Permission requirements
-
+    
     **Frontend Developer needs:**
     ✅ Component names and file paths
     ✅ Props interfaces for each component
@@ -797,7 +222,7 @@ design_architecture:
     ✅ MUI components to use
     ✅ Routing configuration
     ✅ Error handling patterns
-
+    
     **Both developers need:**
     ✅ Data structure contracts (TypeScript interfaces)
     ✅ API request/response formats
@@ -806,7 +231,7 @@ design_architecture:
 
   expected_output: >
     Comprehensive Technical Specification saved to outputs/architecture/milestone-{current_milestone}-architecture.md:
-
+    
     # Technical Architecture Specification
     ## Milestone: {current_milestone}
     
@@ -821,23 +246,23 @@ design_architecture:
     - User stories and acceptance criteria
     - Success metrics
     - Business rules
-
+    
     ## 3. Skeleton Plugin Analysis
     - Current architecture patterns identified
     - Folder structure being followed
     - Naming conventions to use
     - Existing patterns to respect (DI, hooks, state management)
-
+    
     ## 4. System Architecture Overview
     - High-level component diagram (ASCII or description)
     - Data flow: User → React → REST API → PHP → Database
     - Module responsibilities
     - Integration points
-
+    
     ## 5. Backend Architecture Specification
-
+    
     ### For EACH feature:
-
+    
     #### 5.1 PHP Class Structure
     ```
     File: src/admin/class-{feature-name}.php
@@ -845,34 +270,34 @@ design_architecture:
     Class: Feature_Name
     Extends: Base_Class (if any)
     Implements: Interface_Name (if any)
-
+    
     Dependencies:
     - Feature_Repository
     - Settings_Manager
-
+    
     Public Methods:
     - __construct(Feature_Repository $repo, Settings_Manager $settings)
     - register_hooks(): void
     - handle_action($data): bool|WP_Error
     - validate_input($data): array
     - get_feature_data($id): array|WP_Error
-
+    
     SOLID Application:
     - Single Responsibility: Only handles feature admin logic
     - Open/Closed: Extends base, uses interfaces
     - Dependency Injection: Constructor injection
     ```
-
+    
     #### 5.2 WordPress Integration
     ```
     Hooks to Register:
     - add_action('admin_init', [$this, 'register_settings'], 10)
     - add_action('admin_menu', [$this, 'add_menu_page'], 20)
     - add_action('wp_ajax_feature_action', [$this, 'handle_ajax'])
-
+    
     Filters:
     - add_filter('plugin_feature_data', [$this, 'filter_data'], 10, 2)
-
+    
     Custom Post Types:
     - register_post_type('plugin_feature', [
         'labels' => [...],
@@ -881,7 +306,7 @@ design_architecture:
         'supports' => ['title', 'editor']
       ])
     ```
-
+    
     #### 5.3 Database Schema (if needed)
     ```sql
     CREATE TABLE {wpdb->prefix}plugin_features (
@@ -897,13 +322,13 @@ design_architecture:
       FOREIGN KEY (user_id) REFERENCES {wpdb->prefix}users(ID)
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
     ```
-
+    
     #### 5.4 REST API Endpoints
     ```
     Endpoint 1: Get All Features
     - Route: /wp-json/plugin-namespace/v1/features
     - Method: GET
-    - Parameters:
+    - Parameters: 
       * page (int, optional, default=1)
       * per_page (int, optional, default=10)
       * status (string, optional, 'active'|'inactive')
@@ -920,7 +345,7 @@ design_architecture:
       }
     - Permission: current_user_can('manage_options')
     - Nonce: Required in X-WP-Nonce header
-
+    
     Endpoint 2: Create Feature
     - Route: /wp-json/plugin-namespace/v1/features
     - Method: POST
@@ -948,14 +373,14 @@ design_architecture:
       }
     - Permission: current_user_can('manage_options')
     - Nonce: Required
-
+    
     [... similar specs for UPDATE, DELETE endpoints ...]
     ```
-
+    
     ## 6. Frontend Architecture Specification
-
+    
     ### For EACH feature:
-
+    
     #### 6.1 Component Structure
     ```
     Page Component:
@@ -971,7 +396,7 @@ design_architecture:
       - <FeatureList />
       - <FeatureForm />
       - <FeatureDetails />
-
+    
     Child Component 1: FeatureList
     File: admin-react/src/components/FeatureList.jsx
     Purpose: Display paginated list of features
@@ -985,7 +410,7 @@ design_architecture:
       - <DataGrid /> for table
       - <IconButton /> for actions
       - <Chip /> for status
-
+    
     Child Component 2: FeatureForm
     File: admin-react/src/components/FeatureForm.jsx
     Purpose: Create/edit feature form
@@ -1003,17 +428,17 @@ design_architecture:
       - name: required, maxLength 255
       - status: required, oneOf ['active', 'inactive']
     ```
-
+    
     #### 6.2 API Integration
     ```
     Custom Hook: useFeatureData
     File: admin-react/src/hooks/useFeatureData.js
-
+    
     export function useFeatureData() {
       const [features, setFeatures] = useState([]);
       const [isLoading, setIsLoading] = useState(false);
       const [error, setError] = useState(null);
-
+      
       const fetchFeatures = async (page = 1) => {
         setIsLoading(true);
         try {
@@ -1037,33 +462,33 @@ design_architecture:
           setIsLoading(false);
         }
       };
-
+      
       const createFeature = async (featureData) => {
         // ... similar pattern
       };
-
+      
       return { features, isLoading, error, fetchFeatures, createFeature };
     }
     ```
-
+    
     #### 6.3 Routing Configuration
     ```
     Route: /admin.php?page=plugin-features#/features
     Component: <FeaturePage />
-
+    
     Nested Routes:
     - /features -> List view
     - /features/new -> Create form
     - /features/:id -> Detail view
     - /features/:id/edit -> Edit form
-
+    
     Navigation:
     - <Link to="/features">All Features</Link>
     - <Link to="/features/new">Add New</Link>
     ```
-
+    
     ## 7. Data Contracts (TypeScript Interfaces)
-
+    
     ```typescript
     // Backend sends this
     interface Feature {
@@ -1075,21 +500,21 @@ design_architecture:
       createdAt: string;  // ISO 8601
       updatedAt: string;  // ISO 8601
     }
-
+    
     // Frontend sends this to create
     interface CreateFeatureRequest {
       name: string;
       config?: Record<string, any>;
       status?: 'active' | 'inactive';
     }
-
+    
     // Frontend sends this to update
     interface UpdateFeatureRequest {
       name?: string;
       config?: Record<string, any>;
       status?: 'active' | 'inactive';
     }
-
+    
     // API Response wrapper
     interface ApiResponse<T> {
       success: boolean;
@@ -1107,58 +532,58 @@ design_architecture:
       };
     }
     ```
-
+    
     ## 8. File Structure Changes
-
+    
     ### Backend Files to Create:
     ```
     includes/
       class-feature-loader.php          # Autoloader/bootstrapper
-
+    
     src/
       admin/
         class-feature-admin.php          # Admin UI registration
         class-feature-settings.php       # Settings page
-
+      
       api/
         class-feature-controller.php     # REST API endpoints
         class-api-response.php           # Response formatter
-
+      
       models/
         class-feature.php                # Feature data model
         class-feature-repository.php     # Data access layer
-
+      
       validators/
         class-feature-validator.php      # Input validation
     ```
-
+    
     ### Frontend Files to Create:
     ```
     admin-react/src/
       pages/
         FeaturePage.jsx                  # Main page
-
+        
       components/
         features/
           FeatureList.jsx                # List component
           FeatureForm.jsx                # Form component
           FeatureDetails.jsx             # Details view
           FeatureListItem.jsx            # List item component
-
+          
       hooks/
         useFeatureData.js                # Data fetching
         useFeatureForm.js                # Form logic
-
+        
       utils/
         featureApi.js                    # API client
         featureValidation.js             # Client-side validation
-
+        
       types/
         feature.d.ts                     # TypeScript definitions
     ```
-
+    
     ## 9. Testing Requirements
-
+    
     ### Backend Tests:
     ```
     tests/php/
@@ -1166,7 +591,7 @@ design_architecture:
       test-class-feature-repository.php  # Repository tests
       test-class-feature-controller.php  # API endpoint tests
       test-class-feature-validator.php   # Validation tests
-
+    
     Test Coverage:
     - CRUD operations
     - Input validation (valid/invalid cases)
@@ -1174,7 +599,7 @@ design_architecture:
     - Error handling
     - Database queries
     ```
-
+    
     ### Frontend Tests:
     ```
     admin-react/src/
@@ -1215,43 +640,43 @@ design_architecture:
     if (!wp_verify_nonce($_REQUEST['_wpnonce'], 'feature_action')) {
       wp_die('Security check failed');
     }
-
+    
     // Capability check
     if (!current_user_can('manage_options')) {
       return new WP_Error('forbidden', 'Insufficient permissions');
     }
-
+    
     // Input sanitization
     $name = sanitize_text_field($_POST['name']);
     $config = wp_kses_post($_POST['config']);
-
+    
     // Output escaping
     echo '<h1>' . esc_html($feature->name) . '</h1>';
-
+    
     // SQL injection prevention
     $wpdb->prepare("SELECT * FROM {$wpdb->prefix}features WHERE id = %d", $id);
     ```
-
+    
     ### Frontend Security:
     ```javascript
     // XSS prevention - never use dangerouslySetInnerHTML
     <div>{feature.name}</div>  // React escapes by default
-
+    
     // Validate before submit
     if (!name.trim()) {
       setError('Name is required');
       return;
     }
-
+    
     // Sanitize API data
     const sanitizedData = {
       ...data,
       name: DOMPurify.sanitize(data.name)
     };
     ```
-
+    
     ## 11. Developer Handoff
-
+    
     ### Backend Developer Checklist:
     ✅ Read sections 5 (Backend Architecture) and 7 (Data Contracts)
     ✅ Create all PHP classes listed in section 8
@@ -1260,7 +685,7 @@ design_architecture:
     ✅ Write PHPUnit tests per section 9
     ✅ Use skeleton's naming conventions and patterns
     ✅ Commit to feature branch: `feature/milestone-{n}-backend`
-
+    
     ### Frontend Developer Checklist:
     ✅ Read sections 6 (Frontend Architecture) and 7 (Data Contracts)
     ✅ Create all React components listed in section 8
@@ -1269,27 +694,27 @@ design_architecture:
     ✅ Follow security guidelines in section 10
     ✅ Write Jest tests per section 9
     ✅ Commit to feature branch: `feature/milestone-{n}-frontend`
-
+    
     ### Integration Points:
     - Backend provides: REST API endpoints at exact URLs with exact response formats
     - Frontend consumes: API using fetch with nonce headers
     - Contract: TypeScript interfaces in section 7 must match exactly
     - Error handling: Both sides use same error response structure
-
+    
     ## 12. Implementation Timeline
-
+    
     Week 1:
     - Backend: Database schema, models, repositories
     - Frontend: Component structure, basic UI
-
+    
     Week 2:
     - Backend: REST API endpoints, validation
     - Frontend: API integration, hooks
-
+    
     Week 3:
     - Backend: Security, error handling, tests
     - Frontend: Form validation, error handling, tests
-
+    
     Week 4:
     - Integration testing
     - E2E tests
@@ -1311,7 +736,7 @@ implement_backend:
     - Existing hook registration patterns
     - Database schema patterns (if any)
     - Testing setup and patterns
-
+    
     Follow the skeleton's existing patterns and conventions. If the skeleton uses namespaces,
     use namespaces. If it uses class prefixes, use the same prefixes. Match the coding style.
     
@@ -1392,7 +817,7 @@ implement_frontend:
     - Routing setup (React Router configuration)
     - Build configuration (webpack, vite, etc.)
     - Testing patterns (Jest setup, test file naming)
-
+    
     Follow the skeleton's existing React patterns, MUI theme, and component structure.
     Use the same dependencies and coding style as the skeleton.
     
