@@ -2,6 +2,25 @@
 
 This is the **Architecture Crew** - the second of three crews in the plugin development pipeline. It takes strategy outputs and creates detailed system architecture and specifications.
 
+## Quick Start
+
+### First Time Setup
+
+```bash
+cd architecture_crew
+./setup_symlinks.sh    # Creates symlink to shared outputs
+uv run crewai run
+```
+
+### Regular Usage
+
+```bash
+cd architecture_crew
+uv run crewai run
+```
+
+⚠️ **Important:** Always run from the `architecture_crew` directory!
+
 ## Purpose
 
 The Architecture Crew transforms strategy into actionable design by creating:

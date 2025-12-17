@@ -1,7 +1,8 @@
 from pathlib import Path
 from crewai import Agent, Crew, Process, Task
 from crewai.project import CrewBase, agent, crew, task
-from architecture_crew.tools.custom_tool import FileReaderTool, DirectoryListTool, FindFilesTool
+from architecture_crew.tools.custom_tool import FileReaderTool, DirectoryListTool, FindFilesTool, FileWriterTool
+
 
 
 @CrewBase
@@ -30,11 +31,10 @@ class ArchitectureCrew:
 
     def __init__(self):
         super().__init__()
-        # Compute project root dynamically based on this file's location
-        # crew.py is at: architecture_crew/src/architecture_crew/crew.py
-        # Go up 3 levels to reach dev-team root
-        self.project_root = Path(__file__).parent.parent.parent.parent
-        self.outputs_dir = self.project_root / "outputs" / "architecture"
+        # Use local symlink to shared outputs (no path traversal)
+        # architecture_crew/outputs -> ../outputs/architecture (symlink)
+        # This avoids Pydantic's path traversal validation errors
+        self.outputs_dir = Path("outputs")
 
     @agent
     def software_architect(self) -> Agent:
@@ -43,7 +43,8 @@ class ArchitectureCrew:
             tools=[
                 FileReaderTool(),
                 DirectoryListTool(),
-                FindFilesTool()
+                FindFilesTool(),
+                FileWriterTool()
             ],
             verbose=True
         )
@@ -75,16 +76,16 @@ class ArchitectureCrew:
     def create_backend_specs(self) -> Task:
         return Task(
             config=self.tasks_config['create_backend_specs'],
-            context=[self.read_strategy_outputs(), self.design_high_level_architecture(), self.define_folder_structure()],
-            output_file=str(self.outputs_dir / "specs" / "backend")
+            context=[self.read_strategy_outputs(), self.design_high_level_architecture(), self.define_folder_structure()]
+            # Note: output_file removed - this task creates multiple files via write_file tool
         )
 
     @task
     def create_frontend_specs(self) -> Task:
         return Task(
             config=self.tasks_config['create_frontend_specs'],
-            context=[self.read_strategy_outputs(), self.design_high_level_architecture(), self.define_folder_structure(), self.create_backend_specs()],
-            output_file=str(self.outputs_dir / "specs" / "frontend")
+            context=[self.read_strategy_outputs(), self.design_high_level_architecture(), self.define_folder_structure(), self.create_backend_specs()]
+            # Note: output_file removed - this task creates multiple files in specs/frontend/
         )
 
     @crew

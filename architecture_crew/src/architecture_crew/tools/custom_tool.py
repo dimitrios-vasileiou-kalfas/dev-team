@@ -91,6 +91,41 @@ class DirectoryListTool(BaseTool):
             return f"Error listing directory: {str(e)}"
 
 
+class FileWriterInput(BaseModel):
+    """Input schema for FileWriterTool."""
+    file_path: str = Field(..., description="Relative path where to write the file (e.g., 'outputs/specs/backend/class-core.md')")
+    content: str = Field(..., description="Content to write to the file")
+
+
+class FileWriterTool(BaseTool):
+    name: str = "write_file"
+    description: str = (
+        "Writes content to a file. Use this to create specification documents, "
+        "architecture files, and other output files. The file path should be relative "
+        "to the crew's working directory (e.g., 'outputs/specs/backend/class-core.md')."
+    )
+    args_schema: Type[BaseModel] = FileWriterInput
+
+    def _run(self, file_path: str, content: str) -> str:
+        try:
+            # Handle relative paths from crew working directory
+            if not os.path.isabs(file_path):
+                file_path = os.path.join(os.getcwd(), file_path)
+
+            # Create parent directories if they don't exist
+            parent_dir = os.path.dirname(file_path)
+            if parent_dir and not os.path.exists(parent_dir):
+                os.makedirs(parent_dir, exist_ok=True)
+
+            # Write the file
+            with open(file_path, 'w', encoding='utf-8') as f:
+                f.write(content)
+
+            return f"Successfully wrote {len(content)} characters to {file_path}"
+        except Exception as e:
+            return f"Error writing file: {str(e)}"
+
+
 class FindFilesInput(BaseModel):
     """Input schema for FindFilesTool."""
     directory_path: str = Field(..., description="Directory to search in")

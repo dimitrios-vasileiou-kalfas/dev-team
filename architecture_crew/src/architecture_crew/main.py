@@ -39,6 +39,16 @@ def run():
     # Go up 3 levels to reach dev-team root
     project_root = Path(__file__).parent.parent.parent.parent
 
+    # Check if outputs symlink exists
+    outputs_symlink = project_root / "architecture_crew" / "outputs"
+    if not outputs_symlink.exists():
+        print("\n⚠️  ERROR: outputs symlink not found!")
+        print("   Please run the setup script first:")
+        print(f"   cd {project_root}/architecture_crew")
+        print("   ./setup_symlinks.sh")
+        print()
+        return
+
     # Verify strategy outputs exist (in shared folder)
     strategy_outputs_path = project_root / "outputs" / "strategy"
     if not strategy_outputs_path.exists():

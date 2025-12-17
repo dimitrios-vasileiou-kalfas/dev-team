@@ -1,0 +1,101 @@
+```
+{
+  "plugin_root": "secure-elta-shipping",
+  "plugin_metadata": {
+    "name": "Secure ELTA Shipping Manager",
+    "slug": "secure-elta-shipping",
+    "namespace": "SecureELTA",
+    "version": "1.0.0",
+    "text_domain": "secure-elta-shipping",
+    "requires_wp": "5.8",
+    "requires_php": "7.4",
+    "woocommerce": "5.0"
+  },
+  "folders": [
+    "includes/",
+    "admin/",
+    "public/",
+    "admin-react/",
+    "admin-react/src/",
+    "admin-react/src/components/",
+    "tests/",
+    "assets/css/",
+    "assets/js/",
+    "languages/"
+  ],
+  "files": [
+    {
+      "path": "secure-elta-shipping.php",
+      "type": "bootstrap",
+      "purpose": "Main plugin file, loads core class",
+      "spec_file": null
+    },
+    {
+      "path": "includes/class-core.php",
+      "type": "php-class",
+      "purpose": "Core plugin initialization and dependency management",
+      "spec_file": "outputs/specs/backend/class-core.md"
+    },
+    {
+      "path": "includes/class-loader.php",
+      "type": "php-class",
+      "purpose": "Manages WordPress hooks and plugin lifecycle",
+      "spec_file": "outputs/specs/backend/class-loader.md"
+    },
+    {
+      "path": "includes/class-database.php",
+      "type": "php-class",
+      "purpose": "Handles database schema creation and updates",
+      "spec_file": "outputs/specs/backend/class-database.md"
+    },
+    {
+      "path": "includes/class-soap-client.php",
+      "type": "php-class",
+      "purpose": "Manages communication with ELTA SOAP API",
+      "spec_file": "outputs/specs/backend/class-soap-client.md"
+    },
+    {
+      "path": "includes/class-elta-api.php",
+      "type": "php-class",
+      "purpose": "Provides high-level interface to ELTA API services",
+      "spec_file": "outputs/specs/backend/class-elta-api.md"
+    },
+    {
+      "path": "includes/class-voucher-manager.php",
+      "type": "php-class",
+      "purpose": "Voucher CRUD operations and business logic",
+      "spec_file": "outputs/specs/backend/class-voucher-manager.md"
+    },
+    {
+      "path": "includes/class-voucher-repository.php",
+      "type": "php-class",
+      "purpose": "Data access layer for voucher records",
+      "spec_file": "outputs/specs/backend/class-voucher-repository.md"
+    },
+    {
+      "path": "admin/class-ajax-handler.php",
+      "type": "php-class",
+      "purpose": "Handles AJAX requests from admin UI",
+      "spec_file": "outputs/specs/backend/class-ajax-handler.md"
+    },
+    {
+      "path": "admin/class-rest-api.php",
+      "type": "php-class",
+      "purpose": "Registers REST API endpoints for plugin features",
+      "spec_file": "outputs/specs/backend/class-rest-api.md"
+    },
+    {
+      "path": "admin/class-menu.php",
+      "type": "php-class",
+      "purpose": "Creates admin menu items and pages",
+      "spec_file": "outputs/specs/backend/class-menu.md"
+    },
+    {
+      "path": "admin/class-settings.php",
+      "type": "php-class",
+      "purpose": "Manages plugin settings page and options",
+      "spec_file": "outputs/specs/backend/class-settings.md"
+    }
+  ]
+}
+```

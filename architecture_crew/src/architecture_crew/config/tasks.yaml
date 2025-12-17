@@ -119,7 +119,7 @@ read_strategy_outputs:
     - Better error handling
 
   agent: software_architect
-  output_file: '../../../outputs/architecture/strategy-summary.md'
+  output_file: 'outputs/architecture/strategy-summary.md'
 
 design_high_level_architecture:
   description: >
@@ -301,7 +301,7 @@ design_high_level_architecture:
     [Brief overview, detailed in folder-structure.json]
 
   agent: software_architect
-  output_file: '../../../outputs/architecture/high-level-architecture.md'
+  output_file: 'outputs/architecture/high-level-architecture.md'
   context:
     - read_strategy_outputs
 
@@ -463,7 +463,7 @@ define_folder_structure:
     Validate JSON structure before saving.
 
   agent: software_architect
-  output_file: '../../../outputs/architecture/folder-structure.json'
+  output_file: 'outputs/architecture/folder-structure.json'
   context:
     - read_strategy_outputs
     - design_high_level_architecture
@@ -571,6 +571,14 @@ create_backend_specs:
     - Use same error handling approach
     - Reference skeleton plugin conventions
     - Include comprehensive test requirements
+    
+    **STEP 5: Write Each Spec File**
+    
+    Use the write_file tool to create each specification file:
+    - File path: outputs/specs/backend/class-name.md
+    - Content: The complete specification document
+    
+    Create one file for each backend class identified.
 
   expected_output: >
     Multiple specification files in outputs/specs/backend/:
@@ -595,9 +603,10 @@ create_backend_specs:
     - Code examples
     
     Minimum 8-12 backend class specifications created.
+    
+    Use write_file tool to create each specification file in outputs/specs/backend/ directory.
 
   agent: software_architect
-  output_file: 'outputs/specs/backend/'
   context:
     - read_strategy_outputs
     - design_high_level_architecture
@@ -720,6 +729,14 @@ create_frontend_specs:
     - Include proper TypeScript types
     - Have comprehensive test requirements
     - Include accessibility considerations
+    
+    **STEP 5: Write Each Spec File**
+    
+    Use the write_file tool to create each specification file:
+    - File path: outputs/specs/frontend/component-name.md
+    - Content: The complete specification document
+    
+    Create one file for each frontend component identified.
 
   expected_output: >
     Multiple specification files in outputs/specs/frontend/:
@@ -739,9 +756,10 @@ create_frontend_specs:
     - Code examples
     
     Minimum 5-8 frontend component specifications created.
+    
+    Use write_file tool to create each specification file in outputs/specs/frontend/ directory.
 
   agent: software_architect
-  output_file: 'outputs/specs/frontend/'
   context:
     - read_strategy_outputs
     - design_high_level_architecture
